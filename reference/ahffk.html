@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextCore Technology - 통합 관제 솔루션 파트너</title>
+    <!-- Google Fonts: Noto Sans KR -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* 초기화 및 기본 스타일 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 1. 최상단 헤더 (흰색 배경) */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            height: 70px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #4169E1; /* 로고 색상 포인트 */
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        .main-nav a {
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .header-util {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        /* 2. 서브 내비게이션 (파란색 띠) - 왼쪽 이미지의 버튼들을 여기로 배치 */
+        .sub-nav {
+            background: linear-gradient(90deg, #4169E1, #5a4fcf);
+            height: 50px;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .sub-nav ul {
+            display: flex;
+            gap: 40px;
+        }
+
+        .sub-nav a {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .sub-nav a:hover {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* 3. 히어로 섹션 (메인 비주얼) */
+        .hero-section {
+            position: relative;
+            height: 600px;
+            /* 배경 이미지: 테크니컬한 느낌의 무료 이미지 사용 (Unsplash) */
+            background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: #fff;
+        }
+
+        /* 어두운 오버레이 */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 15, 50, 0.9) 0%, rgba(0, 20, 60, 0.6) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding-left: 10%;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #aaccff;
+        }
+
+        .hero-desc {
+            font-size: 16px;
+            margin-bottom: 40px;
+            color: #e0e0e0;
+            max-width: 600px;
+        }
+
+        .hero-desc strong {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* 버튼 스타일 */
+        .btn-outline {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid #fff;
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-outline:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* 오른쪽 하단 플로팅 버튼 (채팅 아이콘) */
+        .fab-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #4CAF50;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 100;
+            transition: transform 0.3s;
+        }
+
+        .fab-btn:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 반응형 처리 */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 32px; }
+            .sub-nav { display: none; } /* 모바일에서 서브메뉴 숨김 예시 */
+            .main-nav { display: none; } /* 모바일 메뉴는 햄버거 버튼으로 대체 필요 */
+            header { padding: 0 20px; }
+            .hero-content { padding-left: 20px; padding-right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. 상단 GNB (글로벌 내비게이션) -->
+    <header>
+        <div class="logo">NextCore Tech</div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#">디지털트윈</a></li>
+                <li><a href="#">통합관제</a></li>
+                <li><a href="#">AI 솔루션</a></li>
+                <li><a href="#">빅데이터</a></li>
+                <li><a href="#">환경·안전</a></li>
+            </ul>
+        </nav>
+        <div class="header-util">
+            <a href="#">인사이트</a>
+            <a href="#">문의하기</a>
+            <i class="fas fa-bars" style="font-size: 20px; cursor: pointer;"></i>
+        </div>
+    </header>
+
+    <!-- 2. 서브 내비게이션 (왼쪽 이미지의 상단 버튼들을 이쪽으로 배치) -->
+    <nav class="sub-nav">
+        <ul>
+            <li><a href="#">소개</a></li>
+            <li><a href="#">연혁</a></li>
+            <li><a href="#">인증 및 지재권 현황</a></li>
+            <li><a href="#">홍보 뉴스</a></li>
+            <li><a href="#">홍보 영상</a></li>
+            <li><a href="#">파트너사</a></li>
+        </ul>
+    </nav>
+
+    <!-- 3. 메인 히어로 섹션 (왼쪽 이미지의 텍스트 콘텐츠 + 오른쪽 이미지의 디자인) -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <!-- 왼쪽 이미지의 핵심 문구 활용 -->
+            <h2 class="hero-subtitle">NextCore Technology</h2>
+            <h1 class="hero-title">
+                목표와 이익을 위한<br>
+                최고의 솔루션을 지원합니다
+            </h1>
+            
+            <p class="hero-desc">
+                정보산업의 최고 기술분야인 <strong>통합 관제 솔루션</strong>을 보유하고 있으며,<br>
+                IOT 기반 관제 연동 및 레거시 프로세스 적용을 통해<br>
+                고객의 특수 환경에서 가장 적합한 <strong>SOLUTION</strong>을 제공해 드립니다.
+            </p>
+
+            <a href="#" class="btn-outline">전문가 상담하기</a>
+        </div>
+    </section>
+
+    <!-- 오른쪽 하단 플로팅 버튼 -->
+    <div class="fab-btn">
+        <i class="far fa-comment-dots"></i>
+    </div>
+
+</body>
+</html>
