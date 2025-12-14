@@ -1,132 +1,230 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NEXT CORE - Integrated Business Monitoring</title>
     <!-- 폰트 및 아이콘 로드 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-        /* === 기본 설정 === */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif; }
-        body { height: 100vh; overflow: hidden; background-color: #111; }
+      /* === 기본 설정 === */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Noto Sans KR", sans-serif;
+      }
+      body {
+        height: 100vh;
+        overflow: hidden;
+        background-color: #111;
+      }
 
-        /* === 배경 슬라이드쇼 컨테이너 === */
-        .background-slider {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -2;
-        }
+      /* === 배경 슬라이드쇼 컨테이너 === */
+      .background-slider {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -2;
+      }
 
-        /* 개별 슬라이드 이미지 */
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            animation: fadeSlide 15s infinite; /* 15초마다 반복 */
-        }
+      /* 개별 슬라이드 이미지 */
+      .slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        animation: fadeSlide 15s infinite; /* 15초마다 반복 */
+      }
 
-        /* 
+      /* 
            [이미지 설정 부분]
            제공해주신 이미지 컨셉(관제센터, 태블릿 제어, 로봇팔)에 맞춰 
            가장 유사한 고화질 이미지를 배치했습니다.
            *본인의 이미지를 사용하려면 url('') 안에 파일 경로를 넣으세요.*
         */
-        
-        /* 1. 대형 관제 센터 (첫 번째 이미지 컨셉) */
-        .slide:nth-child(1) {
-            background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop');
-            animation-delay: 0s;
+
+      /* 1. 대형 관제 센터 (첫 번째 이미지 컨셉) */
+      .slide:nth-child(1) {
+        background-image: url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop");
+        animation-delay: 0s;
+      }
+
+      /* 2. 태블릿을 이용한 현장 제어 (두 번째 이미지 컨셉) */
+      .slide:nth-child(2) {
+        background-image: url("https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop");
+        animation-delay: 5s;
+      }
+
+      /* 3. 자동화 공장 및 데이터 모니터링 */
+      .slide:nth-child(3) {
+        background-image: url("https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop");
+        animation-delay: 10s;
+      }
+
+      /* 페이드 애니메이션 정의 */
+      @keyframes fadeSlide {
+        0% {
+          opacity: 0;
+          transform: scale(1);
         }
-
-        /* 2. 태블릿을 이용한 현장 제어 (두 번째 이미지 컨셉) */
-        .slide:nth-child(2) {
-            background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop');
-            animation-delay: 5s;
+        5% {
+          opacity: 1;
+        } /* 등장 */
+        33% {
+          opacity: 1;
+        } /* 유지 */
+        38% {
+          opacity: 0;
+          transform: scale(1.05);
+        } /* 사라지면서 살짝 확대 */
+        100% {
+          opacity: 0;
         }
+      }
 
-        /* 3. 자동화 공장 및 데이터 모니터링 */
-        .slide:nth-child(3) {
-            background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop');
-            animation-delay: 10s;
-        }
+      /* === 짙은 남색 오버레이 (텍스트 가독성용) === */
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        /* 원본의 짙은 네이비 톤 유지 */
+        background: linear-gradient(
+          135deg,
+          rgba(11, 23, 45, 0.9) 0%,
+          rgba(16, 36, 74, 0.8) 100%
+        );
+      }
 
-        /* 페이드 애니메이션 정의 */
-        @keyframes fadeSlide {
-            0% { opacity: 0; transform: scale(1); }
-            5% { opacity: 1; }     /* 등장 */
-            33% { opacity: 1; }    /* 유지 */
-            38% { opacity: 0; transform: scale(1.05); } /* 사라지면서 살짝 확대 */
-            100% { opacity: 0; }
-        }
+      /* === 네비게이션 === */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 50px;
+        position: relative;
+        z-index: 10;
+      }
+      .logo {
+        font-size: 26px;
+        font-weight: 900;
+        color: #61ce70;
+        letter-spacing: 1px;
+        cursor: pointer;
+      }
+      .nav-links a {
+        color: #ccc;
+        text-decoration: none;
+        margin-left: 30px;
+        font-size: 15px;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+      .nav-links a:hover {
+        color: white;
+      }
 
-        /* === 짙은 남색 오버레이 (텍스트 가독성용) === */
-        .overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            /* 원본의 짙은 네이비 톤 유지 */
-            background: linear-gradient(135deg, rgba(11, 23, 45, 0.9) 0%, rgba(16, 36, 74, 0.8) 100%);
-        }
+      /* === 메인 컨텐츠 === */
+      .hero-section {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 80px);
+        text-align: center;
+        color: white;
+        padding: 0 20px;
+      }
 
-        /* === 네비게이션 === */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 25px 50px; position: relative; z-index: 10;
-        }
-        .logo { font-size: 26px; font-weight: 900; color: #61ce70; letter-spacing: 1px; cursor: pointer; }
-        .nav-links a { color: #ccc; text-decoration: none; margin-left: 30px; font-size: 15px; font-weight: 500; transition: 0.3s; }
-        .nav-links a:hover { color: white; }
+      h1 {
+        font-size: 70px;
+        font-weight: 900;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+        text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      }
+      .subtitle {
+        font-size: 26px;
+        color: #b0c4de;
+        margin-bottom: 30px;
+        font-weight: 300;
+      }
+      .highlight {
+        color: #61ce70;
+        font-weight: 700;
+      }
+      .description {
+        font-size: 16px;
+        line-height: 1.7;
+        color: #aabdd1;
+        margin-bottom: 50px;
+        max-width: 650px;
+      }
 
-        /* === 메인 컨텐츠 === */
-        .hero-section {
-            position: relative; z-index: 10;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            height: calc(100vh - 80px); text-align: center; color: white; padding: 0 20px;
-        }
+      /* === 버튼 그룹 === */
+      .button-group {
+        display: flex;
+        gap: 15px;
+      }
+      .btn {
+        padding: 14px 28px;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+      }
 
-        h1 { font-size: 70px; font-weight: 900; margin-bottom: 20px; letter-spacing: 2px; text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .subtitle { font-size: 26px; color: #b0c4de; margin-bottom: 30px; font-weight: 300; }
-        .highlight { color: #61ce70; font-weight: 700; }
-        .description { font-size: 16px; line-height: 1.7; color: #aabdd1; margin-bottom: 50px; max-width: 650px; }
-
-        /* === 버튼 그룹 === */
-        .button-group { display: flex; gap: 15px; }
-        .btn {
-            padding: 14px 28px; border: none; border-radius: 4px; color: white;
-            font-size: 15px; font-weight: 700; cursor: pointer;
-            display: flex; align-items: center; gap: 10px;
-            transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-        }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 7px 15px rgba(0,0,0,0.3); }
-        
-        /* 버튼 색상 */
-        .btn-green { background-color: #6cb958; }
-        .btn-blue { background-color: #4aa8d8; }
-        .btn-grey { background-color: #5a6268; }
-
+      /* 버튼 색상 */
+      .btn-green {
+        background-color: #6cb958;
+      }
+      .btn-blue {
+        background-color: #4aa8d8;
+      }
+      .btn-grey {
+        background-color: #5a6268;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- 배경 슬라이드쇼 영역 -->
     <div class="background-slider">
-        <!-- 1. 관제 센터 이미지 -->
-        <div class="slide"></div>
-        <!-- 2. 태블릿 제어 이미지 -->
-        <div class="slide"></div>
-        <!-- 3. 공장 자동화 이미지 -->
-        <div class="slide"></div>
+      <!-- 1. 관제 센터 이미지 -->
+      <div class="slide"></div>
+      <!-- 2. 태블릿 제어 이미지 -->
+      <div class="slide"></div>
+      <!-- 3. 공장 자동화 이미지 -->
+      <div class="slide"></div>
     </div>
 
     <!-- 색상 필터 (오버레이) -->
@@ -134,38 +232,38 @@
 
     <!-- 네비게이션 -->
     <nav>
-        <div class="logo">NEXT CORE</div>
-        <div class="nav-links">
-            <a href="#">회사 소개</a>
-            <a href="#">솔루션</a>
-        </div>
+      <div class="logo">NEXT CORE</div>
+      <div class="nav-links">
+        <a href="#">회사 소개</a>
+        <a href="#">솔루션</a>
+      </div>
     </nav>
 
     <!-- 메인 내용 -->
     <header class="hero-section">
-        <h1>NEXT CORE</h1>
-        
-        <p class="subtitle">
-            Technology for <span class="highlight">Integrated Business Monitoring</span>
-        </p>
+      <h1>NEXT CORE</h1>
 
-        <p class="description">
-            끊임없는 기술 개발을 통해 귀사의 핵심 비즈니스를 완벽하게<br>
-            모니터링하고 케어할 수 있는 Next Core 테크놀로지로 성장하겠습니다.
-        </p>
+      <p class="subtitle">
+        Technology for
+        <span class="highlight">Integrated Business Monitoring</span>
+      </p>
 
-        <div class="button-group">
-            <button class="btn btn-green">
-                <i class="far fa-building"></i> 회사 소개
-            </button>
-            <button class="btn btn-blue">
-                <i class="fas fa-desktop"></i> 솔루션
-            </button>
-            <button class="btn btn-grey">
-                <i class="far fa-envelope"></i> 문의
-            </button>
-        </div>
+      <p class="description">
+        끊임없는 기술 개발을 통해 귀사의 핵심 비즈니스를 완벽하게<br />
+        모니터링하고 케어할 수 있는 Next Core 테크놀로지로 성장하겠습니다.
+      </p>
+
+      <div class="button-group">
+        <button class="btn btn-green">
+          <i class="far fa-building"></i> 회사 소개
+        </button>
+        <button class="btn btn-blue">
+          <i class="fas fa-desktop"></i> 솔루션
+        </button>
+        <button class="btn btn-grey">
+          <i class="far fa-envelope"></i> 문의
+        </button>
+      </div>
     </header>
-
-</body>
+  </body>
 </html>

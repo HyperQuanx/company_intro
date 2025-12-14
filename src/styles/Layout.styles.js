@@ -51,40 +51,51 @@ export const Logo = styled.div`
 
 /* Desktop Navigation */
 export const DropdownMenu = styled.ul`
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  min-width: 220px;
-  background-color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 0.5rem 0;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  background-color: #4169e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 2rem 4rem;
   opacity: 0;
   visibility: hidden;
   transition: all 0.2s ease;
-  z-index: 1000;
+  z-index: 999;
+  border-top: 1px solid #eee;
 
   display: flex;
-  flex-direction: column;
-  gap: 0 !important; /* 상위 ul의 gap 무시 */
-  border: 1px solid #eee;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
+  height: 50px;
 
   li {
-    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
 
   a {
-    display: block;
-    padding: 0.8rem 1.5rem;
-    font-size: 0.9rem;
-    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    height: 100%;
+    font-size: 1rem;
+    color: #fff;
     font-weight: 500;
     white-space: nowrap;
+    transition: all 0.2s ease;
+    border-bottom: 2px solid transparent;
+    margin: 0 0.25rem;
 
     &:hover {
-      background-color: #f8f9fa;
-      color: #55b3d6;
+      // color: #55b3d6;
+      // border-bottom: 5px solid #55b3d6;
+      border-bottom: 5px solid #fff;
     }
   }
 `;
@@ -99,20 +110,28 @@ export const NavItem = styled.li`
   &:hover ${DropdownMenu} {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0);
   }
 
   > a {
     font-weight: 700;
-    font-size: 0.95rem;
-    color: #333;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: ${(props) => (props.$isActive ? "#fff" : "#333")};
+    background-color: ${(props) =>
+      props.$isActive ? "#4169e1" : "transparent"};
+    padding: ${(props) => (props.$isActive ? "0.5rem 1rem" : "2rem 0")};
     cursor: pointer;
-    transition: color 0.2s;
-    padding: 2rem 0;
     white-space: nowrap;
+    border-bottom: 2px solid transparent;
+
+    > .rightArea {
+      font-size: 1.1rem;
+    }
 
     &:hover {
-      color: #55b3d6;
+      color: ${(props) => (props.$isActive ? "#fff" : "#55b3d6")};
+      border-bottom: 2px solid
+        ${(props) => (props.$isActive ? "#fff" : "#55b3d6")};
     }
   }
 `;
@@ -130,9 +149,9 @@ export const Nav = styled.nav`
   /* 첫 번째 Nav (제품 메뉴)에 flex-grow 적용 */
   &:first-of-type {
     flex: 1;
-    
+
     > ul {
-      justify-content: flex-start;
+      justify-content: center;
     }
   }
 
@@ -140,6 +159,10 @@ export const Nav = styled.nav`
   &:last-of-type {
     > ul {
       justify-content: flex-end;
+    }
+
+    ${NavItem} > a {
+      font-size: 1.1rem;
     }
   }
 
@@ -271,6 +294,7 @@ export const FooterContainer = styled.footer`
   justify-content: center;
   align-items: center;
   position: relative;
+  z-index: 2; /* HeroSection(z-index: 1) 위에 표시되도록 */
   background-color: #1c1e21;
   padding: 2rem;
 

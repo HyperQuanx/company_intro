@@ -63,7 +63,7 @@ export const BackgroundSlider = styled.div`
   z-index: 0;
 `;
 
-/* 개별 슬라이드 이미지 */
+/* 개별 슬라이드 비디오 */
 export const BackgroundSlide = styled.div`
   position: absolute;
   width: 100%;
@@ -75,22 +75,27 @@ export const BackgroundSlide = styled.div`
   opacity: 0;
   animation: fadeSlide 15s infinite;
 
-  /* 1. 대형 관제 센터 */
+  /* 1. 비디오 01 */
   &:nth-child(1) {
-    background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop');
     animation-delay: 0s;
   }
 
-  /* 2. 태블릿을 이용한 현장 제어 */
+  /* 2. 비디오 02 */
   &:nth-child(2) {
-    background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop');
     animation-delay: 5s;
   }
 
-  /* 3. 자동화 공장 및 데이터 모니터링 */
+  /* 3. 비디오 03 */
   &:nth-child(3) {
-    background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop');
     animation-delay: 10s;
+  }
+
+  /* 비디오 스타일 */
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   /* 페이드 애니메이션 */
@@ -244,6 +249,117 @@ export const CTAButton = styled.button`
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+`;
+
+/* 새로운 히어로 콘텐츠 스타일 */
+export const HeroContentStatic = styled.div`
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+  animation: fadeInUp 1s ease-out;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
+export const HeroMainTitle = styled.h1`
+  font-size: 70px;
+  font-weight: 900;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 768px) {
+    font-size: 42px;
+  }
+`;
+
+export const HeroSubtitleStatic = styled.p`
+  font-size: 26px;
+  color: #b0c4de;
+  margin-bottom: 30px;
+  font-weight: 300;
+
+  .highlight {
+    color: #61ce70;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+`;
+
+export const HeroDescription = styled.p`
+  font-size: 16px;
+  line-height: 1.7;
+  color: #aabdd1;
+  margin-bottom: 50px;
+  max-width: 650px;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+`;
+
+export const ButtonGroup = styled.div`
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+export const HeroButton = styled.button`
+  padding: 14px 28px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+  background-color: ${(props) => {
+    switch (props.$variant) {
+      case "green":
+        return "#6cb958";
+      case "blue":
+        return "#4aa8d8";
+      case "grey":
+        return "#5a6268";
+      default:
+        return "#6cb958";
+    }
+  }};
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    padding: 12px 20px;
+    font-size: 14px;
   }
 `;
 

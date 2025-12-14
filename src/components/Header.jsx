@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   HeaderContainer,
   Logo,
@@ -16,6 +16,12 @@ import logoIcon from "../../public/nextcore_main_icon.png";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileOpenIndex, setMobileOpenIndex] = useState(null); // 모바일 서브메뉴 상태
+  const location = useLocation();
+
+  // 현재 경로가 해당 메뉴의 경로로 시작하는지 확인
+  const isActivePath = (path) => {
+    return location.pathname.startsWith(path);
+  };
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => {
@@ -33,8 +39,14 @@ const Header = () => {
       title: "Nextcare M",
       path: "/solutions/nextcare-m",
       subItems: [
-        { title: "Monitoring", path: "/solutions/nextcare-m/overview" },
-        { title: "도입효과와 주요기능", path: "/solutions/nextcare-m/features" },
+        {
+          title: "Nextcare - Monitoring",
+          path: "/solutions/nextcare-m",
+        },
+        {
+          title: "도입효과와 주요기능",
+          path: "/solutions/nextcare-m/features",
+        },
         { title: "구축 레퍼런스", path: "/solutions/nextcare-m/reference" },
       ],
     },
@@ -42,8 +54,11 @@ const Header = () => {
       title: "Nextcare E",
       path: "/solutions/nextcare-e",
       subItems: [
-        { title: "Energy", path: "/solutions/nextcare-e/overview" },
-        { title: "도입효과와 주요기능", path: "/solutions/nextcare-e/features" },
+        { title: "Nextcare - Energy", path: "/solutions/nextcare-e" },
+        {
+          title: "도입효과와 주요기능",
+          path: "/solutions/nextcare-e/features",
+        },
         { title: "구축 레퍼런스", path: "/solutions/nextcare-e/reference" },
       ],
     },
@@ -51,8 +66,11 @@ const Header = () => {
       title: "Nextcare S",
       path: "/solutions/nextcare-s",
       subItems: [
-        { title: "Safety", path: "/solutions/nextcare-s/overview" },
-        { title: "도입효과와 주요기능", path: "/solutions/nextcare-s/features" },
+        { title: "Nextcare - Safety", path: "/solutions/nextcare-s" },
+        {
+          title: "도입효과와 주요기능",
+          path: "/solutions/nextcare-s/features",
+        },
         { title: "구축 레퍼런스", path: "/solutions/nextcare-s/reference" },
       ],
     },
@@ -60,7 +78,7 @@ const Header = () => {
       title: "Nextcare AI",
       path: "/solutions/nextcare-ai",
       subItems: [
-        { title: "AI", path: "/solutions/nextcare-ai/overview" },
+        { title: "Nextcare - AI", path: "/solutions/nextcare-ai" },
         { title: "구축 레퍼런스", path: "/solutions/nextcare-ai/reference" },
       ],
     },
@@ -68,7 +86,7 @@ const Header = () => {
       title: "Nextcare IoT",
       path: "/solutions/nextcare-iot",
       subItems: [
-        { title: "IoT", path: "/solutions/nextcare-iot/overview" },
+        { title: "Nextcare - IoT", path: "/solutions/nextcare-iot" },
         { title: "구축 레퍼런스", path: "/solutions/nextcare-iot/reference" },
       ],
     },
@@ -135,7 +153,7 @@ const Header = () => {
       <Nav>
         <ul>
           {productNavItems.map((item, index) => (
-            <NavItem key={index}>
+            <NavItem key={index} $isActive={isActivePath(item.path)}>
               <Link to={item.path}>{item.title}</Link>
               {/* Dropdown Menu */}
               {item.subItems && (
@@ -156,7 +174,7 @@ const Header = () => {
       <Nav>
         <ul>
           {companyNavItems.map((item, index) => (
-            <NavItem key={index}>
+            <NavItem key={index} $isActive={isActivePath(item.path)}>
               <Link to={item.path}>{item.title}</Link>
               {/* Dropdown Menu */}
               {item.subItems && (
