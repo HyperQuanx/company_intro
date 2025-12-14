@@ -9,6 +9,15 @@ import AI_main from "./components/04_01_ai/04_01_ai_main";
 import IoT_main from "./components/05_01_iot/05_01_iot_main";
 import { AppContainer, MainContent } from "./styles/Layout.styles";
 import Footer from "./components/Footer";
+import M_features from "./components/01_sol_m/01_02_m_features";
+import M_reference from "./components/01_sol_m/01_03_m_reference";
+import E_features from "./components/02_sol_e/02_02_e_features";
+import E_reference from "./components/02_sol_e/02_03_e_reference";
+import S_features from "./components/03_01_s/03_02_s_features";
+import S_reference from "./components/03_01_s/03_03_s_reference";
+import AI_reference from "./components/04_01_ai/04_02_ai_reference";
+import IoT_reference from "./components/05_01_iot/05_02_iot_reference";
+import Insight_videos from "./components/09_insight/09_02_insight_videos";
 
 function App() {
   return (
@@ -19,13 +28,58 @@ function App() {
 
         <MainContent>
           <Routes>
+            {/* 메인페이지 */}
             <Route path="/" element={<MainPage />} />
+
+            {/* 01 Nextcare-M */}
             <Route path="/solutions/nextcare-m" element={<M_main />} />
+            <Route
+              path="/solutions/nextcare-m/features"
+              element={<M_features />}
+            />
+            <Route
+              path="/solutions/nextcare-m/reference"
+              element={<M_reference />}
+            />
+
+            {/* 02 Nextcare-E */}
             <Route path="/solutions/nextcare-e" element={<E_main />} />
+            <Route
+              path="/solutions/nextcare-e/features"
+              element={<E_features />}
+            />
+            <Route
+              path="/solutions/nextcare-e/reference"
+              element={<E_reference />}
+            />
+
+            {/* 03 Nextcare-S */}
             <Route path="/solutions/nextcare-s" element={<S_main />} />
+            <Route
+              path="/solutions/nextcare-s/features"
+              element={<S_features />}
+            />
+            <Route
+              path="/solutions/nextcare-s/reference"
+              element={<S_reference />}
+            />
+
+            {/* 04 Nextcare-AI */}
             <Route path="/solutions/nextcare-ai" element={<AI_main />} />
+            <Route
+              path="/solutions/nextcare-ai/reference"
+              element={<AI_reference />}
+            />
+
+            {/* 05 Nextcare-IoT */}
             <Route path="/solutions/nextcare-iot" element={<IoT_main />} />
-            {/* 추가 페이지 라우팅 */}
+            <Route
+              path="/solutions/nextcare-iot/reference"
+              element={<IoT_reference />}
+            />
+
+            {/* 09 레퍼런스 영상 */}
+            <Route path="/insight/videos" element={<Insight_videos />} />
           </Routes>
         </MainContent>
 

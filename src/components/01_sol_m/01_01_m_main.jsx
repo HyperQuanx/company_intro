@@ -33,6 +33,24 @@ import {
   HeroBannerTitle,
   HeroBannerDescription,
   HeroBannerButton,
+  PlatformDiagramContainer,
+  PlatformDiagramTitle,
+  PlatformDiagramWrapper,
+  DiagramMainBoard,
+  DiagramArrowRow,
+  DiagramArrow,
+  DiagramClientBox,
+  DiagramPlatformSection,
+  DiagramPlatformHeader,
+  DiagramPlatformGrid,
+  DiagramPlatformItem,
+  DiagramTargetSection,
+  DiagramTargetItems,
+  DiagramTargetItem,
+  DiagramFrameworkSection,
+  DiagramFrameworkHeader,
+  DiagramFrameworkGrid,
+  DiagramFrameworkItem,
 } from "../../styles/Nextcare.styles";
 
 // 테마 색상
@@ -68,10 +86,22 @@ const diagramTags = [
 
 // 주요 화면 데이터
 const screenData = [
-  { title: "스마트 서비스 모니터링 시스템", image: null },
-  { title: "단일 패키지 시스템 설치 통합 실시간 상황 관제", image: null },
-  { title: "스마트 Path를 통한 관제 구간 EndtoEND 통합 관제", image: null },
-  { title: "데이터 플로우 관제 시스템", image: null },
+  {
+    title: "스마트 서비스 모니터링 시스템",
+    image: null,
+  },
+  {
+    title: "단일 패키지 시스템 설치 통합 실시간 상황 관제",
+    image: "/solution_img/01m/m_ref02.png",
+  },
+  {
+    title: "스마트 Path를 통한 관제 구간 EndtoEND 통합 관제",
+    image: "/solution_img/01m/m_ref01.png",
+  },
+  {
+    title: "데이터 플로우 관제 시스템",
+    image: "/solution_img/01m/m_ref04.png",
+  },
   { title: "보안 관제 시스템", image: null },
   { title: "품질 통합 관리 시스템", image: null },
   { title: "전국 네트워크 통합 플랫폼", image: null },
@@ -193,6 +223,135 @@ const M_main = () => {
               </DiagramTagsContainer>
             </FeatureCenter>
           </FeaturesContainer>
+
+          {/* 플랫폼 다이어그램 */}
+          <PlatformDiagramContainer>
+            <PlatformDiagramWrapper>
+              {/* 메인 대시보드 */}
+              <DiagramMainBoard $themeColor={THEME_COLOR}>
+                [ Nextcare-M ] Main Dash board
+              </DiagramMainBoard>
+
+              {/* 화살표 */}
+              <DiagramArrowRow>
+                <DiagramArrow $themeColor={THEME_COLOR}>
+                  <div className="arrow-up"></div>
+                  <div className="arrow-line"></div>
+                </DiagramArrow>
+                <DiagramArrow $themeColor={THEME_COLOR}>
+                  <div className="arrow-up"></div>
+                  <div className="arrow-line"></div>
+                </DiagramArrow>
+                <DiagramArrow $themeColor={THEME_COLOR}>
+                  <div className="arrow-up"></div>
+                  <div className="arrow-line"></div>
+                </DiagramArrow>
+              </DiagramArrowRow>
+
+              {/* NMS Client */}
+              <DiagramClientBox>NMS M&O Client</DiagramClientBox>
+
+              {/* NMS Platform */}
+              <DiagramPlatformSection>
+                <DiagramPlatformHeader>NMS Platform</DiagramPlatformHeader>
+                <DiagramPlatformGrid>
+                  <DiagramPlatformItem
+                    $bgColor="#e3f2fd"
+                    $borderColor="#2196F3"
+                  >
+                    Routing Manager
+                  </DiagramPlatformItem>
+                  <DiagramPlatformItem
+                    $bgColor="#fff3e0"
+                    $borderColor="#ff9800"
+                  >
+                    Advanced Manager
+                  </DiagramPlatformItem>
+                  <DiagramPlatformItem
+                    $bgColor="#e8f5e9"
+                    $borderColor="#4caf50"
+                  >
+                    Server Security Center
+                  </DiagramPlatformItem>
+                  <DiagramPlatformItem
+                    $bgColor="#e3f2fd"
+                    $borderColor="#2196F3"
+                  >
+                    Operation Center
+                  </DiagramPlatformItem>
+                  <DiagramPlatformItem
+                    $bgColor="#fff3e0"
+                    $borderColor="#ff9800"
+                  >
+                    Command Center
+                  </DiagramPlatformItem>
+                  <DiagramPlatformItem
+                    $bgColor="#e8f5e9"
+                    $borderColor="#4caf50"
+                  >
+                    Network Security Center
+                  </DiagramPlatformItem>
+                </DiagramPlatformGrid>
+              </DiagramPlatformSection>
+
+              {/* 타겟 블록 */}
+              <DiagramTargetSection>
+                <div className="title">Intrgrated Control Target</div>
+                <div className="subtitle">Block Mechanism</div>
+              </DiagramTargetSection>
+
+              {/* 타겟 아이템들 */}
+              <DiagramTargetItems>
+                <DiagramTargetItem>네트워크 관리</DiagramTargetItem>
+                <DiagramTargetItem>서버 관리</DiagramTargetItem>
+                <DiagramTargetItem>보안 관리</DiagramTargetItem>
+                <DiagramTargetItem>방화벽</DiagramTargetItem>
+                <DiagramTargetItem>IPS</DiagramTargetItem>
+                <DiagramTargetItem>시설장비관리</DiagramTargetItem>
+              </DiagramTargetItems>
+
+              {/* Framework */}
+              <DiagramFrameworkSection>
+                <DiagramFrameworkHeader>
+                  NMS M&O Framework
+                </DiagramFrameworkHeader>
+                <DiagramFrameworkGrid>
+                  <DiagramFrameworkItem>
+                    NMS
+                    <div className="icons">
+                      <div className="icon-box"></div>
+                      <div className="icon-box"></div>
+                      <div className="icon-box"></div>
+                    </div>
+                  </DiagramFrameworkItem>
+                  <DiagramFrameworkItem>
+                    SMS
+                    <div className="icons">
+                      <div className="icon-box"></div>
+                      <div className="icon-box"></div>
+                      <div className="icon-box"></div>
+                    </div>
+                  </DiagramFrameworkItem>
+                  <DiagramFrameworkItem>
+                    TMS
+                    <div className="icons">
+                      <div className="icon-box"></div>
+                      <div className="icon-box"></div>
+                      <div className="icon-box"></div>
+                    </div>
+                  </DiagramFrameworkItem>
+                  <DiagramFrameworkItem>
+                    FMS
+                    <div className="icons">
+                      <div className="icon-box"></div>
+                      <div className="icon-box"></div>
+                      <div className="icon-box"></div>
+                    </div>
+                  </DiagramFrameworkItem>
+                </DiagramFrameworkGrid>
+              </DiagramFrameworkSection>
+            </PlatformDiagramWrapper>
+          </PlatformDiagramContainer>
 
           {/* 주요 화면 */}
           <SectionBar>주요 화면</SectionBar>

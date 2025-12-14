@@ -177,12 +177,10 @@ const E_main = () => {
             <FeatureCenter>
               <DiagramImageContainer>
                 {/* 다이어그램 이미지 영역 */}
-                <div className="placeholder">
-                  📊 시스템 구성도 이미지 영역
-                  <br />
-                  (Internet/Cloud, IoT Gateway, BUILDING, RENEWABLE ENERGY,
-                  FACTORY)
-                </div>
+                <img
+                  src="/solution_img/02e/e_q0102.png"
+                  alt="Energy_Brochure"
+                />
               </DiagramImageContainer>
             </FeatureCenter>
 

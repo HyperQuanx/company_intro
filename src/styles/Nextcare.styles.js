@@ -17,12 +17,13 @@ export const PageContainer = styled.div`
 
 export const ContentWrapper = styled.div`
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   background: white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   padding-bottom: 40px;
   position: relative;
   overflow: hidden;
+  font-size: 1.25rem;
 `;
 
 // 헤더 영역
@@ -120,12 +121,11 @@ export const IntroBox = styled.div`
 export const IntroTitle = styled.div`
   color: ${(props) => props.$themeColor || defaultColor};
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 3rem;
   margin-bottom: 8px;
 `;
 
 export const IntroDescription = styled.p`
-  font-size: 1rem;
   color: #555;
   line-height: 1.6;
 `;
@@ -153,7 +153,7 @@ export const NavPill = styled.div`
   padding: 12px 8px;
   border-radius: 30px;
   font-weight: bold;
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -176,7 +176,7 @@ export const SectionBar = styled.div`
   text-align: center;
   padding: 10px;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   margin: 20px 40px 15px 40px;
   border-radius: 4px;
 
@@ -240,7 +240,7 @@ export const FeatureBox = styled.div`
   border: 1px solid #ddd;
   border-top: none;
   padding: 15px;
-  font-size: 0.9rem;
+  font-size: 1.25rem;
   line-height: 1.7;
   height: 100%;
   background: white;
@@ -395,12 +395,13 @@ export const ScreenDash = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  overflow: hidden;
+  min-height: 0;
 
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
   }
 `;
 
@@ -418,17 +419,17 @@ export const DashPlaceholder = styled.div`
 export const ScreenCaption = styled.div`
   background: rgba(255, 255, 255, 0.95);
   color: #333;
-  padding: 8px;
+  padding: 10px 8px;
   font-size: 0.75rem;
   text-align: center;
   font-weight: bold;
+  flex-shrink: 0;
 `;
 
 // 기능 설명 텍스트
 export const FeatureDescription = styled.p`
   text-align: center;
   padding: 0 40px 20px;
-  font-size: 1rem;
   color: #333;
   line-height: 1.6;
 
@@ -596,8 +597,10 @@ export const HeroBannerBackground = styled.div`
   width: 100%;
   height: 100%;
   background-image: url(${(props) => props.$bgImage});
-  background-size: cover;
+  background-size: ${(props) => (props.$contain ? "contain" : "cover")};
+  background-color: ${(props) => props.$bgColor || "transparent"};
   background-position: center;
+  background-repeat: no-repeat;
   z-index: 0;
 
   &::after {
@@ -657,7 +660,6 @@ export const HeroBannerButton = styled.a`
   padding: 15px 30px;
   background: white;
   color: #333;
-  font-size: 1rem;
   font-weight: 700;
   border-radius: 4px;
   text-decoration: none;
@@ -672,5 +674,207 @@ export const HeroBannerButton = styled.a`
   @media (max-width: 768px) {
     padding: 12px 24px;
     font-size: 0.9rem;
+  }
+`;
+
+/* ========== 플랫폼 다이어그램 스타일 ========== */
+export const PlatformDiagramContainer = styled.div`
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 0 20px;
+`;
+
+export const PlatformDiagramTitle = styled.h3`
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: ${(props) => props.$themeColor || "#0066B3"};
+  margin-bottom: 20px;
+`;
+
+export const PlatformDiagramWrapper = styled.div`
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 25px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+`;
+
+export const DiagramMainBoard = styled.div`
+  text-align: center;
+  padding: 15px 20px;
+  border: 2px solid ${(props) => props.$themeColor || "#0066B3"};
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: ${(props) => props.$themeColor || "#0066B3"};
+  font-size: 1rem;
+  background: #fff;
+`;
+
+export const DiagramArrowRow = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin: 12px 0;
+`;
+
+export const DiagramArrow = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 12px solid ${(props) => props.$themeColor || "#0066B3"};
+  }
+
+  .arrow-line {
+    width: 2px;
+    height: 20px;
+    background: ${(props) => props.$themeColor || "#0066B3"};
+  }
+`;
+
+export const DiagramClientBox = styled.div`
+  text-align: center;
+  padding: 12px 20px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+`;
+
+export const DiagramPlatformSection = styled.div`
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+`;
+
+export const DiagramPlatformHeader = styled.div`
+  background: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+`;
+
+export const DiagramPlatformGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 15px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
+export const DiagramPlatformItem = styled.div`
+  background: ${(props) => props.$bgColor || "#fff"};
+  border: 2px solid ${(props) => props.$borderColor || "#ddd"};
+  border-radius: 20px;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #333;
+`;
+
+export const DiagramTargetSection = styled.div`
+  background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+  border: 2px solid #ffc107;
+  border-radius: 25px;
+  padding: 15px 30px;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 320px;
+
+  .title {
+    font-weight: 700;
+    color: #f57c00;
+    font-size: 1rem;
+    margin-bottom: 3px;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    color: #666;
+  }
+`;
+
+export const DiagramTargetItems = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+`;
+
+export const DiagramTargetItem = styled.div`
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  text-align: center;
+  color: #333;
+`;
+
+export const DiagramFrameworkSection = styled.div`
+  background: #37474f;
+  border-radius: 5px;
+  overflow: hidden;
+`;
+
+export const DiagramFrameworkHeader = styled.div`
+  background: #455a64;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+`;
+
+export const DiagramFrameworkGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: #37474f;
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
+export const DiagramFrameworkItem = styled.div`
+  background: #546e7a;
+  color: white;
+  padding: 12px 10px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 500;
+
+  .icons {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 10px;
+
+    .icon-box {
+      width: 28px;
+      height: 28px;
+      background: #78909c;
+      border-radius: 4px;
+    }
   }
 `;

@@ -130,8 +130,6 @@ export const NavItem = styled.li`
 
     &:hover {
       color: ${(props) => (props.$isActive ? "#fff" : "#55b3d6")};
-      border-bottom: 2px solid
-        ${(props) => (props.$isActive ? "#fff" : "#55b3d6")};
     }
   }
 `;

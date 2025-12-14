@@ -90,6 +90,10 @@ const Header = () => {
         { title: "구축 레퍼런스", path: "/solutions/nextcare-iot/reference" },
       ],
     },
+    {
+      title: "레퍼런스 영상",
+      path: "/insight/videos",
+    },
   ];
 
   // 회사 정보 메뉴 (오른쪽)
@@ -156,7 +160,7 @@ const Header = () => {
             <NavItem key={index} $isActive={isActivePath(item.path)}>
               <Link to={item.path}>{item.title}</Link>
               {/* Dropdown Menu */}
-              {item.subItems && (
+              {item.subItems && item.subItems.length > 0 && (
                 <DropdownMenu>
                   {item.subItems.map((sub, subIndex) => (
                     <li key={subIndex}>
@@ -177,7 +181,7 @@ const Header = () => {
             <NavItem key={index} $isActive={isActivePath(item.path)}>
               <Link to={item.path}>{item.title}</Link>
               {/* Dropdown Menu */}
-              {item.subItems && (
+              {item.subItems && item.subItems.length > 0 && (
                 <DropdownMenu>
                   {item.subItems.map((sub, subIndex) => (
                     <li key={subIndex}>
@@ -203,12 +207,14 @@ const Header = () => {
             <MobileNavItem key={index} $isOpen={mobileOpenIndex === index}>
               <div
                 className="mobile-menu-title"
-                onClick={() => toggleMobileSubMenu(index)}
+                onClick={() =>
+                  item.subItems?.length > 0 && toggleMobileSubMenu(index)
+                }
               >
                 {item.title}
-                <span className="arrow">▼</span>
+                {item.subItems?.length > 0 && <span className="arrow">▼</span>}
               </div>
-              {item.subItems && (
+              {item.subItems && item.subItems.length > 0 && (
                 <MobileSubMenu $isOpen={mobileOpenIndex === index}>
                   {item.subItems.map((sub, subIndex) => (
                     <li key={subIndex}>

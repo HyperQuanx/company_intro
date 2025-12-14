@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // import Slider from "react-slick";
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
@@ -93,20 +94,20 @@ const MainPage = () => {
           <HeroDescription>
             끊임없는 기술 개발을 통해 귀사의 핵심 비즈니스를 완벽하게
             <br />
-            모니터링하고 케어할 수 있는 Next Core 테크놀로지로 성장하겠습니다.
+            모니터링하고 케어할 수 있는 Nextcore Technology로 성장하겠습니다.
           </HeroDescription>
           <ButtonGroup>
-            <HeroButton $variant="green">
+            <HeroButton $variant="green" as={Link} to="/about/intro">
               <i className="far fa-building"></i>
-              <a href="/about/intro">회사 소개</a>
+              회사 소개
             </HeroButton>
-            <HeroButton $variant="blue">
+            <HeroButton $variant="blue" as={Link} to="/solutions/nextcare-m">
               <i className="fas fa-desktop"></i>
-              <a href="/solutions/nextcare-m">솔루션</a>
+              솔루션
             </HeroButton>
-            <HeroButton $variant="grey">
+            <HeroButton $variant="grey" as={Link} to="/contact/inquiry">
               <i className="far fa-envelope"></i>
-              <a href="/contact/inquiry">문의</a>
+              문의
             </HeroButton>
           </ButtonGroup>
         </HeroContentStatic>
