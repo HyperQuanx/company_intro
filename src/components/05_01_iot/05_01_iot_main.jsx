@@ -35,7 +35,7 @@ import {
 const THEME_COLOR = "#E36C09";
 
 // 히어로 배너 배경 이미지
-const HERO_BG_IMAGE = "/public/solution05.png";
+const HERO_BG_IMAGE = "/solution05.png";
 
 // 카테고리 데이터
 const categories = [
