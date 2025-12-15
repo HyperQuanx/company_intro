@@ -48,24 +48,51 @@ const categories = [
   "설비 시설물",
 ];
 
-// 주요 화면 데이터
+// 주요 화면 데이터 (images 배열: 2개 이상이면 넓은 카드)
 const screenData = [
-  { title: "위험 작업별 위치, 환경 모니터링", image: null },
-  { title: "지역별 통합 안전 모니터링", image: null },
-  { title: "3D 가상 스마트 안전 관리 시스템", image: null },
-  { title: "3D 가상 대시보드", image: null },
-  { title: "작업 현황", image: null },
-  { title: "작업 등록", image: null },
-  { title: "작업 통계", image: null },
-  { title: "출입 인원", image: null },
-  { title: "3D 작업 정보 및 근로자 위치 통합 대시보드", image: null },
-  { title: "실시간 디지털 안전 체계 관리 대시보드", image: null },
-  { title: "발전소 연료하역작업 안전관리플랫폼", image: null },
-  { title: "반지하주택 IoT 기반 침수경보시스템", image: null },
-  { title: "3D 작업 정보 및 근로자 위치 통합 대시보드", image: null },
-  { title: "3D 작업 정보 및 근로자 위치 통합 대시보드", image: null },
-  { title: "사고제보 - 안전행정 통합 업무 시스템", image: null },
-  { title: "노후산단 화학사고 영향모니터링시스템", image: null },
+  {
+    title: "위험 작업별 위치, 환경 모니터링",
+    images: ["/solution_img/03s/s_b_ref01.png"],
+  },
+  {
+    title: "지역별 통합 안전 모니터링",
+    images: ["/solution_img/03s/s_b_ref02.png"],
+  },
+  {
+    images: [
+      "/solution_img/03s/s_b_ref03_1.png",
+      "/solution_img/03s/s_b_ref03_2.png",
+    ],
+  },
+  {
+    title: "3D 작업 정보 및 근로자 위치 통합 대시보드",
+    images: [
+      "/solution_img/03s/s_b_ref04.png",
+      "/solution_img/03s/s_b_ref08.png",
+      "/solution_img/03s/s_b_ref09.png",
+    ],
+  },
+  {
+    title: "실시간 디지털 안전 체계 관리 모니터링",
+    images: ["/solution_img/03s/s_b_ref05.png"],
+  },
+  {
+    title: "발전소 연료하역작업 안전관리플랫폼",
+    images: ["/solution_img/03s/s_b_ref06.png"],
+  },
+
+  {
+    title: "반지하주택 IoT 기반 침수경보시스템",
+    images: ["/solution_img/03s/s_b_ref07.png"],
+  },
+  {
+    title: "사고제로 - 안전행정 통합 업무 시스템",
+    images: ["/solution_img/03s/s_b_ref10.png"],
+  },
+  {
+    title: "노후산단 화학사고 원격모니터링시스템",
+    images: ["/solution_img/03s/s_b_ref11.png"],
+  },
 ];
 
 const S_main = () => {
@@ -165,10 +192,7 @@ const S_main = () => {
               <DiagramImageContainer>
                 {/* 다이어그램 이미지 영역 */}
                 <div className="placeholder">
-                  🏭 디지털 안전관리 플랫폼 이미지 영역
-                  <br />
-                  (안전 명령 디지털 관리, 현장 QR 출입 관리, 안전교육 이수자
-                  관리, 3D/2D 작업자 위치 모니터링)
+                  <img src="/solution_img/03s/s_b_q01.png" alt="Nextcare-S" />
                 </div>
               </DiagramImageContainer>
             </FeatureCenter>
@@ -211,17 +235,53 @@ const S_main = () => {
           <SectionBar>주요 화면</SectionBar>
           <ScreensContainer>
             {screenData.map((screen, index) => (
-              <ScreenItem key={index}>
+              <ScreenItem
+                key={index}
+                $cols={screen.images.length}
+                $noTitle={!screen.title}
+              >
                 <ScreenDash>
-                  {screen.image ? (
-                    <img src={screen.image} alt={screen.title} />
-                  ) : (
-                    <DashPlaceholder>이미지 영역</DashPlaceholder>
-                  )}
+                  {screen.images.some((img) => img !== null)
+                    ? screen.images.map((img, imgIndex) =>
+                        img ? (
+                          <img
+                            key={imgIndex}
+                            src={img}
+                            alt={`${screen.title || "화면"} ${imgIndex + 1}`}
+                          />
+                        ) : (
+                          <DashPlaceholder key={imgIndex}>
+                            이미지 영역
+                          </DashPlaceholder>
+                        )
+                      )
+                    : screen.images.map((_, imgIndex) => (
+                        <DashPlaceholder key={imgIndex}>
+                          이미지 영역
+                        </DashPlaceholder>
+                      ))}
                 </ScreenDash>
-                <ScreenCaption>{screen.title}</ScreenCaption>
+                {screen.title && <ScreenCaption>{screen.title}</ScreenCaption>}
               </ScreenItem>
             ))}
+            {/* 빈 공간 채우기 */}
+            {(() => {
+              const totalCols = 4;
+              const usedCols = screenData.reduce(
+                (acc, screen) => acc + screen.images.length,
+                0
+              );
+              const remainder = usedCols % totalCols;
+              const emptySlots = remainder === 0 ? 0 : totalCols - remainder;
+              return Array.from({ length: emptySlots }).map((_, index) => (
+                <ScreenItem key={`empty-${index}`} $placeholder>
+                  <ScreenDash>
+                    <DashPlaceholder>추후 추가 예정입니다.</DashPlaceholder>
+                  </ScreenDash>
+                  <ScreenCaption>Coming Soon</ScreenCaption>
+                </ScreenItem>
+              ));
+            })()}
           </ScreensContainer>
         </ContentWrapper>
       </PageContainer>

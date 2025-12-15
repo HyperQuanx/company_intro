@@ -20,8 +20,6 @@ import {
   FeatureHeader,
   FeatureBox,
   HighlightText,
-  DiagramTagsContainer,
-  DiagramTag,
   ScreensContainer,
   ScreenItem,
   ScreenDash,
@@ -34,7 +32,6 @@ import {
   HeroBannerDescription,
   HeroBannerButton,
   PlatformDiagramContainer,
-  PlatformDiagramTitle,
   PlatformDiagramWrapper,
   DiagramMainBoard,
   DiagramArrowRow,
@@ -88,28 +85,43 @@ const diagramTags = [
 const screenData = [
   {
     title: "스마트 서비스 모니터링 시스템",
-    image: null,
+    image: "/solution_img/01m/m_b_ref01.png",
   },
   {
     title: "단일 패키지 시스템 설치 통합 실시간 상황 관제",
-    image: "/solution_img/01m/m_ref02.png",
+    image: "/solution_img/01m/m_b_ref02.png",
   },
   {
-    title: "스마트 Path를 통한 관제 구간 EndtoEND 통합 관제",
-    image: "/solution_img/01m/m_ref01.png",
+    title: "스마트 Path를 통한 전체 구간 EndtoEND 통합 관제",
+    image: "/solution_img/01m/m_b_ref03.png",
   },
   {
     title: "데이터 플로우 관제 시스템",
-    image: "/solution_img/01m/m_ref04.png",
+    image: "/solution_img/01m/m_b_ref04.png",
   },
-  { title: "보안 관제 시스템", image: null },
-  { title: "품질 통합 관리 시스템", image: null },
-  { title: "전국 네트워크 통합 플랫폼", image: null },
-  { title: "가상화 관제 시스템", image: null },
-  { title: "네트워크 장비 통합 플랫폼", image: null },
-  { title: "시설물 통합 관제 시스템", image: null },
-  { title: "입찰 시스템 메타버스 홍보관", image: null },
-  { title: "IT Park 센터 통합 관제", image: null },
+  { title: "보안 관제 시스템", image: "/solution_img/01m/m_b_ref05.png" },
+  { title: "품질 통합 관리 시스템", image: "/solution_img/01m/m_b_ref06.png" },
+  {
+    title: "전국 네트워크 통합 플랫폼",
+    image: "/solution_img/01m/m_b_ref07.png",
+  },
+  { title: "가상화 관제 시스템", image: "/solution_img/01m/m_b_ref08.png" },
+  {
+    title: "네트워크 장비 통합 플랫폼",
+    image: "/solution_img/01m/m_b_ref09.png",
+  },
+  {
+    title: "시설물 통합 관제 시스템",
+    image: "/solution_img/01m/m_b_ref10.png",
+  },
+  {
+    title: "입찰 시스템 메타버스 홍보관",
+    image: "/solution_img/01m/m_b_ref11.png",
+  },
+  {
+    title: "IT Park 센터 통합 관제",
+    image: "/solution_img/01m/m_b_ref12.png",
+  },
 ];
 
 // 히어로 배너 배경 이미지
@@ -210,17 +222,7 @@ const M_main = () => {
 
             {/* 우측: 다이어그램 태그들 */}
             <FeatureCenter>
-              <DiagramTagsContainer>
-                {diagramTags.map((tag, index) => (
-                  <DiagramTag
-                    key={index}
-                    $primary={tag.primary}
-                    $themeColor={THEME_COLOR}
-                  >
-                    {tag.label}
-                  </DiagramTag>
-                ))}
-              </DiagramTagsContainer>
+              <img src="/solution_img/01m/m_b_q01.png" alt="Nextcare-M" />
             </FeatureCenter>
           </FeaturesContainer>
 

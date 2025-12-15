@@ -106,15 +106,42 @@ const featureGridData = [
   },
 ];
 
-// 주요 화면 데이터
+// 주요 화면 데이터 (images 배열: 2개 이상이면 넓은 카드)
 const screenData = [
-  { title: "빌딩 에너지 관리 시스템", image: null },
-  { title: "에너지 절감을 위한 예측 및 분석 시스템", image: null },
-  { title: "FEMS (공장 에너지관리 시스템)", image: null },
-  { title: "REMS (신재생에너지 관제시스템)", image: null },
-  { title: "GIS기반 건물에너지 관리 시스템", image: null },
-  { title: "건물에너지관리시스템", image: null },
-  { title: "태양광발전소관리시스템", image: null },
+  {
+    title: "빌딩 에너지 관리 시스템",
+    images: [
+      "/solution_img/02e/e_b_ref01.png",
+      "/solution_img/02e/e_b_ref02.png",
+    ],
+  },
+  {
+    title: "에너지 절감을 위한 예측 및 분석 시스템",
+    images: ["/solution_img/02e/e_b_ref03.png"],
+  },
+  {
+    title: "FEMS (공장 에너지관리 시스템)",
+    images: ["/solution_img/02e/e_b_ref04.png"],
+  },
+  {
+    title: "REMS (신재생에너지 관제시스템)",
+    images: ["/solution_img/02e/e_b_ref05.png"],
+  },
+  {
+    title: "GIS기반 건물에너지 관리 시스템",
+    images: ["/solution_img/02e/e_b_ref06.png"],
+  },
+  {
+    title: "태양광발전소관리시스템",
+    images: [
+      "/solution_img/02e/e_b_ref08.png",
+      "/solution_img/02e/e_b_ref09.png",
+    ],
+  },
+  {
+    title: "건물외장재관리시스템",
+    images: ["/solution_img/02e/e_b_ref07.png"],
+  },
 ];
 
 const E_main = () => {
@@ -178,7 +205,7 @@ const E_main = () => {
               <DiagramImageContainer>
                 {/* 다이어그램 이미지 영역 */}
                 <img
-                  src="/solution_img/02e/e_q0102.png"
+                  src="/solution_img/02e/e_b_q01.png"
                   alt="Energy_Brochure"
                 />
               </DiagramImageContainer>
@@ -244,17 +271,49 @@ const E_main = () => {
           <SectionBar>주요 화면</SectionBar>
           <ScreensContainer>
             {screenData.map((screen, index) => (
-              <ScreenItem key={index}>
+              <ScreenItem key={index} $cols={screen.images.length} $noTitle={!screen.title}>
                 <ScreenDash>
-                  {screen.image ? (
-                    <img src={screen.image} alt={screen.title} />
-                  ) : (
-                    <DashPlaceholder>이미지 영역</DashPlaceholder>
-                  )}
+                  {screen.images.some((img) => img !== null)
+                    ? screen.images.map((img, imgIndex) =>
+                        img ? (
+                          <img
+                            key={imgIndex}
+                            src={img}
+                            alt={`${screen.title || "화면"} ${imgIndex + 1}`}
+                          />
+                        ) : (
+                          <DashPlaceholder key={imgIndex}>
+                            이미지 영역
+                          </DashPlaceholder>
+                        )
+                      )
+                    : screen.images.map((_, imgIndex) => (
+                        <DashPlaceholder key={imgIndex}>
+                          이미지 영역
+                        </DashPlaceholder>
+                      ))}
                 </ScreenDash>
-                <ScreenCaption>{screen.title}</ScreenCaption>
+                {screen.title && <ScreenCaption>{screen.title}</ScreenCaption>}
               </ScreenItem>
             ))}
+            {/* 빈 공간 채우기 */}
+            {(() => {
+              const totalCols = 4;
+              const usedCols = screenData.reduce(
+                (acc, screen) => acc + screen.images.length,
+                0
+              );
+              const remainder = usedCols % totalCols;
+              const emptySlots = remainder === 0 ? 0 : totalCols - remainder;
+              return Array.from({ length: emptySlots }).map((_, index) => (
+                <ScreenItem key={`empty-${index}`} $placeholder>
+                  <ScreenDash>
+                    <DashPlaceholder>추후 추가 예정입니다.</DashPlaceholder>
+                  </ScreenDash>
+                  <ScreenCaption>Coming Soon</ScreenCaption>
+                </ScreenItem>
+              ));
+            })()}
           </ScreensContainer>
         </ContentWrapper>
       </PageContainer>

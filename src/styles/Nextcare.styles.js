@@ -384,9 +384,30 @@ export const ScreenItem = styled.div`
   overflow: hidden;
   position: relative;
   border-radius: 5px;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: ${(props) => {
+    if (props.$cols === 3) return "48 / 9";
+    if (props.$wide || props.$cols === 2) return "32 / 9";
+    return "16 / 9";
+  }};
   display: flex;
   flex-direction: column;
+  grid-column: ${(props) => {
+    if (props.$cols === 3) return "span 3";
+    if (props.$wide || props.$cols === 2) return "span 2";
+    return "span 1";
+  }};
+
+  @media (max-width: 768px) {
+    grid-column: ${(props) =>
+      props.$cols === 3 ? "span 2" : props.$wide ? "span 2" : "span 1"};
+    aspect-ratio: ${(props) =>
+      props.$cols === 3 ? "32 / 9" : props.$wide ? "32 / 9" : "16 / 9"};
+  }
+
+  @media (max-width: 480px) {
+    grid-column: span 1;
+    aspect-ratio: 16 / 9;
+  }
 `;
 
 export const ScreenDash = styled.div`
@@ -397,11 +418,13 @@ export const ScreenDash = styled.div`
   justify-content: center;
   overflow: hidden;
   min-height: 0;
+  gap: 4px;
 
   img {
-    width: 100%;
+    flex: 1;
     height: 100%;
     object-fit: fill;
+    min-width: 0;
   }
 `;
 
@@ -413,7 +436,12 @@ export const DashPlaceholder = styled.div`
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 4px;
-  width: 100%;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
 `;
 
 export const ScreenCaption = styled.div`
@@ -445,48 +473,6 @@ export const FeatureDescription = styled.p`
 `;
 
 // 다이어그램 태그 컨테이너
-export const DiagramTagsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
-  gap: 10px;
-  padding: 20px;
-  width: 100%;
-  height: 100%;
-`;
-
-export const DiagramTag = styled.div`
-  padding: 8px 16px;
-  border-radius: 25px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-align: center;
-  transition: all 0.2s ease;
-  cursor: default;
-
-  ${(props) => {
-    const color = props.$themeColor || defaultColor;
-    return props.$primary
-      ? `
-      background: linear-gradient(135deg, ${color} 0%, ${color}cc 100%);
-      color: white;
-      border: none;
-      box-shadow: 0 2px 8px ${color}4d;
-    `
-      : `
-      background: white;
-      color: #333;
-      border: 2px solid ${color};
-    `;
-  }}
-
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px
-      ${(props) => (props.$themeColor || defaultColor) + "4d"};
-  }
-`;
 
 // 하단 기능 박스 그리드
 export const FeatureGridContainer = styled.div`

@@ -81,15 +81,23 @@ const techGridData = [
   },
 ];
 
-// 주요 화면 데이터
+// 주요 화면 데이터 (images 배열: 2개 이상이면 넓은 카드)
 const screenData = [
-  { title: "빅데이터 기반 데이터 분석 및 예측 시스템", image: null },
-  { title: "빅데이터 기반 데이터 분석 및 예측 시스템", image: null },
-  { title: "빅데이터 기반 데이터 분석 및 예측 시스템", image: null },
-  { title: "마스크 착용여부", image: null },
-  { title: "익명화", image: null },
-  { title: "사물 인식 및 헬멧 착용 여부", image: null },
-  { title: "이미지 인식", image: null },
+  {
+    title: "빅데이터 기반 데이터 분석 및 예측 시스템",
+    images: [
+      "/solution_img/04ai/ai_b_ref01.png",
+      "/solution_img/04ai/ai_b_ref02.png",
+      "/solution_img/04ai/ai_b_ref03.png",
+    ],
+  },
+  { title: "마스크 착용여부", images: ["/solution_img/04ai/ai_b_ref04.png"] },
+  { title: "익명화", images: ["/solution_img/04ai/ai_b_ref05.png"] },
+  {
+    title: "사물 인식 및 헬멧 착용 여부",
+    images: ["/solution_img/04ai/ai_b_ref06.png"],
+  },
+  { title: "이미지 인식", images: ["/solution_img/04ai/ai_b_ref07.png"] },
 ];
 
 const AI_main = () => {
@@ -200,6 +208,7 @@ const AI_main = () => {
             style={{
               display: "flex",
               justifyContent: "center",
+              alignItems: "stretch",
               gap: "20px",
               padding: "20px 40px",
               flexWrap: "wrap",
@@ -211,9 +220,12 @@ const AI_main = () => {
                 background: "#f8f9fa",
                 border: `2px solid ${THEME_COLOR}`,
                 borderRadius: "30px",
-                textAlign: "center",
                 fontWeight: "600",
                 color: "#333",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
               }}
             >
               적기 실행
@@ -225,9 +237,12 @@ const AI_main = () => {
                 padding: "15px 30px",
                 background: THEME_COLOR,
                 borderRadius: "30px",
-                textAlign: "center",
                 fontWeight: "600",
                 color: "white",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
               }}
             >
               "Seamless" Logistics Visibility
@@ -238,9 +253,12 @@ const AI_main = () => {
                 background: "#f8f9fa",
                 border: `2px solid ${THEME_COLOR}`,
                 borderRadius: "30px",
-                textAlign: "center",
                 fontWeight: "600",
                 color: "#333",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
               }}
             >
               능동적 대응
@@ -253,17 +271,53 @@ const AI_main = () => {
           <SectionBar>주요 화면</SectionBar>
           <ScreensContainer>
             {screenData.map((screen, index) => (
-              <ScreenItem key={index}>
+              <ScreenItem
+                key={index}
+                $cols={screen.images.length}
+                $noTitle={!screen.title}
+              >
                 <ScreenDash>
-                  {screen.image ? (
-                    <img src={screen.image} alt={screen.title} />
-                  ) : (
-                    <DashPlaceholder>이미지 영역</DashPlaceholder>
-                  )}
+                  {screen.images.some((img) => img !== null)
+                    ? screen.images.map((img, imgIndex) =>
+                        img ? (
+                          <img
+                            key={imgIndex}
+                            src={img}
+                            alt={`${screen.title || "화면"} ${imgIndex + 1}`}
+                          />
+                        ) : (
+                          <DashPlaceholder key={imgIndex}>
+                            이미지 영역
+                          </DashPlaceholder>
+                        )
+                      )
+                    : screen.images.map((_, imgIndex) => (
+                        <DashPlaceholder key={imgIndex}>
+                          이미지 영역
+                        </DashPlaceholder>
+                      ))}
                 </ScreenDash>
-                <ScreenCaption>{screen.title}</ScreenCaption>
+                {screen.title && <ScreenCaption>{screen.title}</ScreenCaption>}
               </ScreenItem>
             ))}
+            {/* 빈 공간 채우기 */}
+            {(() => {
+              const totalCols = 4;
+              const usedCols = screenData.reduce(
+                (acc, screen) => acc + screen.images.length,
+                0
+              );
+              const remainder = usedCols % totalCols;
+              const emptySlots = remainder === 0 ? 0 : totalCols - remainder;
+              return Array.from({ length: emptySlots }).map((_, index) => (
+                <ScreenItem key={`empty-${index}`} $placeholder>
+                  <ScreenDash>
+                    <DashPlaceholder>추후 추가 예정입니다.</DashPlaceholder>
+                  </ScreenDash>
+                  <ScreenCaption>Coming Soon</ScreenCaption>
+                </ScreenItem>
+              ));
+            })()}
           </ScreensContainer>
         </ContentWrapper>
       </PageContainer>

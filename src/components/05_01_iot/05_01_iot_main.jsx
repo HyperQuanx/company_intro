@@ -66,13 +66,34 @@ const gatewaySpecs = [
 
 // 주요 화면 데이터
 const screenData = [
-  { title: "스마트 홈 네트워크 시스템", image: null },
-  { title: "스마트 팜", image: null },
-  { title: "지게차 관제 시스템", image: null },
-  { title: "대기현황 관리 시스템", image: null },
-  { title: "CCTV 및 보안 관제 시스템", image: null },
-  { title: "창고 자동화 관리 시스템", image: null },
-  { title: "비콘, 바코드, 태블릿", image: null },
+  {
+    title: "스마트 홈 네트워크 시스템",
+    images: ["/solution_img/05iot/iot_b_ref01.png"],
+  },
+  { title: "스마트 팜", images: ["/solution_img/05iot/iot_b_ref02.png"] },
+  {
+    title: "지게차 관제 시스템",
+    images: [
+      "/solution_img/05iot/iot_b_ref03.png",
+      "/solution_img/05iot/iot_b_ref04.png",
+    ],
+  },
+  {
+    title: "대기현황 관리 시스템",
+    images: ["/solution_img/05iot/iot_b_ref05.png"],
+  },
+  {
+    title: "CCTV 및 보안 관제 시스템",
+    images: ["/solution_img/05iot/iot_b_ref06.png"],
+  },
+  {
+    title: "창고 자동화 관리 시스템",
+    images: ["/solution_img/05iot/iot_b_ref07.png"],
+  },
+  {
+    title: "비콘, 바코드, 태블릿",
+    images: ["/solution_img/05iot/iot_b_ref08.png"],
+  },
 ];
 
 const IoT_main = () => {
@@ -108,7 +129,7 @@ const IoT_main = () => {
           {/* 인트로 */}
           <IntroSection>
             <IntroBox>
-              <IntroTitle $themeColor={THEME_COLOR}>Nextcare-I</IntroTitle>
+              <IntroTitle $themeColor={THEME_COLOR}>Nextcare-IoT</IntroTitle>
               <IntroDescription>
                 IoT(Internet of Thing) 기술을 활용하여 장소·시간에 제약 없이
                 어떤 사물이든 관제하는 솔루션
@@ -222,6 +243,16 @@ const IoT_main = () => {
               </div>
             ))}
           </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "20px 40px",
+            }}
+          >
+            <img src="/solution_img/05iot/iot_b_q02.png" alt="IoT" />
+          </div>
 
           <FeatureDescription>
             <strong style={{ color: THEME_COLOR }}>
@@ -241,9 +272,7 @@ const IoT_main = () => {
             <FeatureCenter style={{ flex: "0.8" }}>
               <DiagramImageContainer>
                 <div className="placeholder">
-                  📟 IoT Gateway 이미지 영역
-                  <br />
-                  (하드웨어 장비 이미지)
+                  <img src="/solution_img/05iot/iot_q010203.png" alt="IoT" />
                 </div>
               </DiagramImageContainer>
             </FeatureCenter>
@@ -348,17 +377,53 @@ const IoT_main = () => {
           <SectionBar>주요 화면</SectionBar>
           <ScreensContainer>
             {screenData.map((screen, index) => (
-              <ScreenItem key={index}>
+              <ScreenItem
+                key={index}
+                $cols={screen.images.length}
+                $noTitle={!screen.title}
+              >
                 <ScreenDash>
-                  {screen.image ? (
-                    <img src={screen.image} alt={screen.title} />
-                  ) : (
-                    <DashPlaceholder>이미지 영역</DashPlaceholder>
-                  )}
+                  {screen.images.some((img) => img !== null)
+                    ? screen.images.map((img, imgIndex) =>
+                        img ? (
+                          <img
+                            key={imgIndex}
+                            src={img}
+                            alt={`${screen.title || "화면"} ${imgIndex + 1}`}
+                          />
+                        ) : (
+                          <DashPlaceholder key={imgIndex}>
+                            이미지 영역
+                          </DashPlaceholder>
+                        )
+                      )
+                    : screen.images.map((_, imgIndex) => (
+                        <DashPlaceholder key={imgIndex}>
+                          이미지 영역
+                        </DashPlaceholder>
+                      ))}
                 </ScreenDash>
-                <ScreenCaption>{screen.title}</ScreenCaption>
+                {screen.title && <ScreenCaption>{screen.title}</ScreenCaption>}
               </ScreenItem>
             ))}
+            {/* 빈 공간 채우기 */}
+            {(() => {
+              const totalCols = 4;
+              const usedCols = screenData.reduce(
+                (acc, screen) => acc + screen.images.length,
+                0
+              );
+              const remainder = usedCols % totalCols;
+              const emptySlots = remainder === 0 ? 0 : totalCols - remainder;
+              return Array.from({ length: emptySlots }).map((_, index) => (
+                <ScreenItem key={`empty-${index}`} $placeholder>
+                  <ScreenDash>
+                    <DashPlaceholder>추후 추가 예정입니다.</DashPlaceholder>
+                  </ScreenDash>
+                  <ScreenCaption>Coming Soon</ScreenCaption>
+                </ScreenItem>
+              ));
+            })()}
           </ScreensContainer>
         </ContentWrapper>
       </PageContainer>

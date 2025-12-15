@@ -8,6 +8,7 @@ const SCROLL_TO_TOP_PATHS = [
   "/solutions/nextcare-s",
   "/solutions/nextcare-ai",
   "/solutions/nextcare-iot",
+  "/insight/videos",
   // 추가할 경로는 여기에 작성
 ];
 
