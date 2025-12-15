@@ -774,6 +774,10 @@ export const DiagramPlatformItem = styled.div`
   font-size: 0.85rem;
   font-weight: 500;
   color: #333;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const DiagramTargetSection = styled.div`
