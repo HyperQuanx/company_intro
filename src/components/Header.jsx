@@ -205,15 +205,34 @@ const Header = () => {
         <ul>
           {allNavItems.map((item, index) => (
             <MobileNavItem key={index} $isOpen={mobileOpenIndex === index}>
-              <div
-                className="mobile-menu-title"
-                onClick={() =>
-                  item.subItems?.length > 0 && toggleMobileSubMenu(index)
-                }
-              >
-                {item.title}
-                {item.subItems?.length > 0 && <span className="arrow">▼</span>}
-              </div>
+              {/* 수정된 부분 시작: 하위 메뉴 유무에 따라 분기 처리 */}
+              {item.subItems && item.subItems.length > 0 ? (
+                // 1. 하위 메뉴가 있는 경우: 드롭다운 토글 기능
+                <div
+                  className="mobile-menu-title"
+                  onClick={() => toggleMobileSubMenu(index)}
+                >
+                  {item.title}
+                  <span className="arrow">▼</span>
+                </div>
+              ) : (
+                // 2. 하위 메뉴가 없는 경우 (예: 레퍼런스 영상): 바로 링크 이동 및 메뉴 닫기
+                <Link
+                  to={item.path}
+                  className="mobile-menu-title"
+                  onClick={closeMenu}
+                  style={{
+                    display: "block",
+                    textDecoration: "none",
+                    color: "inherit",
+                  }}
+                >
+                  {item.title}
+                </Link>
+              )}
+              {/* 수정된 부분 끝 */}
+
+              {/* 서브 메뉴 렌더링 (기존 유지) */}
               {item.subItems && item.subItems.length > 0 && (
                 <MobileSubMenu $isOpen={mobileOpenIndex === index}>
                   {item.subItems.map((sub, subIndex) => (
