@@ -4,20 +4,22 @@ import ScrollToTop from "./components/ScrollToTop";
 import MainPage from "./components/MainPage";
 import M_main from "./components/01_sol_m/01_01_m_main";
 import E_main from "./components/02_sol_e/02_01_e_main";
-import S_main from "./components/03_01_s/03_01_s_main";
-import AI_main from "./components/04_01_ai/04_01_ai_main";
-import IoT_main from "./components/05_01_iot/05_01_iot_main";
+import S_main from "./components/03_sol_s/03_01_s_main";
+import AI_main from "./components/04_sol_ai/04_01_ai_main";
+import IoT_main from "./components/05_sol_iot/05_01_iot_main";
 import { AppContainer, MainContent } from "./styles/Layout.styles";
 import Footer from "./components/Footer";
 import M_features from "./components/01_sol_m/01_02_m_features";
 import M_reference from "./components/01_sol_m/01_03_m_reference";
 import E_features from "./components/02_sol_e/02_02_e_features";
 import E_reference from "./components/02_sol_e/02_03_e_reference";
-import S_features from "./components/03_01_s/03_02_s_features";
-import S_reference from "./components/03_01_s/03_03_s_reference";
-import AI_reference from "./components/04_01_ai/04_02_ai_reference";
-import IoT_reference from "./components/05_01_iot/05_02_iot_reference";
+import S_features from "./components/03_sol_s/03_02_s_features";
+import S_reference from "./components/03_sol_s/03_03_s_reference";
+import AI_reference from "./components/04_sol_ai/04_02_ai_reference";
+import IoT_reference from "./components/05_sol_iot/05_02_iot_reference";
 import Insight_videos from "./components/09_insight/09_02_insight_videos";
+import AboutIntro from "./components/07_about/07_01_about_intro";
+import AboutLocation from "./components/07_about/07_02_about_location";
 
 function App() {
   return (
@@ -77,6 +79,10 @@ function App() {
               path="/solutions/nextcare-iot/reference"
               element={<IoT_reference />}
             />
+
+            {/* 07 회사소개 */}
+            <Route path="/about/intro" element={<AboutIntro />} />
+            <Route path="/about/location" element={<AboutLocation />} />
 
             {/* 09 레퍼런스 영상 */}
             <Route path="/insight/videos" element={<Insight_videos />} />

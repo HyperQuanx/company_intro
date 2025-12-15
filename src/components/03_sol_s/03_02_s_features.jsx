@@ -34,26 +34,26 @@ import {
   ShowcaseItem,
   ShowcaseImage,
   ShowcaseCaption,
-} from "../../styles/NextcareE.styles";
+} from "../../styles/NextcareS.styles";
 import { useLocation } from "react-router-dom";
 
-const E_features = () => {
+const S_features = () => {
   const benefits = [
-    "에너지 절감을 위한 효과적인 에너지 소비를 위한 에너지 경영 시스템 제공",
-    "스마트 미터를 통해 측정된 데이터를 가공, 건물 에너지 사용량과 절감현황 등을 확인 가능",
-    "관리자의 업무 프로세스 향상을 위한 모니터링 및 에너지 대시보드, 정보 가시화, 정보 통계 분석 기능",
+    "중대재해처벌법에 대응하기 위한 전문적이고 효과적인 안전관리 시스템 제공",
+    "작업장의 위험요소를 사전에 파악하고, 즉각적인 대응 및 개선을 통해 안전 향상",
+    "근로자의 안전의식 개선 및 기업의 안전 문화 조성을 통한 지속적인 성장",
   ];
 
   const showcaseItems = [
-    { n: "01", title: "3D기기 설비 관리" },
-    { n: "02", title: "기기 설비 관리" },
-    { n: "03", title: "전력 제어" },
-    { n: "04", title: "에너지 통계 관리" },
-    { n: "05", title: "원격검침 관리" },
-    { n: "06", title: "환경제어 APP" },
-    { n: "07", title: "태양광 발전소 관리" },
-    { n: "08", title: "지역별 발전 관리" },
-    { n: "09", title: "태양광 발전 관리 APP" },
+    { n: "01", title: "3D 대시보드" },
+    { n: "02", title: "2D 대시보드" },
+    { n: "03", title: "통합 운영 대시보드" },
+    { n: "04", title: "작업 관리" },
+    { n: "05", title: "법률 항목 관리" },
+    { n: "06", title: "안전점검 통계 관리" },
+    { n: "07", title: "위험성평가" },
+    { n: "08", title: "안전신문고" },
+    { n: "09", title: "안전서류 출력 관리" },
   ];
 
   const location = useLocation();
@@ -67,7 +67,7 @@ const E_features = () => {
         <HeroBannerContent>
           <HeroBannerTitle>도입효과와 주요기능</HeroBannerTitle>
           <HeroBannerDescription>
-            Nextcare-E의 강력한 기능과 도입 효과를
+            Nextcare-S의 강력한 기능과 도입 효과를
             <br />
             확인해보세요.
           </HeroBannerDescription>
@@ -79,25 +79,25 @@ const E_features = () => {
 
       <SolutionNavWrapper>
         <StyledLink
-          to="/solutions/nextcare-e"
-          className={isActivePath("/solutions/nextcare-e") ? "active" : ""}
+          to="/solutions/nextcare-s"
+          className={isActivePath("/solutions/nextcare-s") ? "active" : ""}
           $themeColor={THEME_COLOR}
         >
-          Nextcare-E
+          Nextcare-S
         </StyledLink>
         <StyledLink
-          to="/solutions/nextcare-e/features"
+          to="/solutions/nextcare-s/features"
           className={
-            isActivePath("/solutions/nextcare-e/features") ? "active" : ""
+            isActivePath("/solutions/nextcare-s/features") ? "active" : ""
           }
           $themeColor={THEME_COLOR}
         >
           도입효과와 주요기능
         </StyledLink>
         <StyledLink
-          to="/solutions/nextcare-e/reference"
+          to="/solutions/nextcare-s/reference"
           className={
-            isActivePath("/solutions/nextcare-e/reference") ? "active" : ""
+            isActivePath("/solutions/nextcare-s/reference") ? "active" : ""
           }
           $themeColor={THEME_COLOR}
         >
@@ -109,9 +109,9 @@ const E_features = () => {
         <ContentWrapper>
           {/* 헤더 */}
           <Header>
-            <TopShape $themeColor={THEME_COLOR}>Nextcare-E</TopShape>
+            <TopShape $themeColor={THEME_COLOR}>Nextcare-S</TopShape>
             <HeaderIcon $themeColor={THEME_COLOR}>
-              <i className="fas fa-bolt"></i>
+              <i className="fas fa-shield-alt"></i>
             </HeaderIcon>
             <HeaderTitle $themeColor={THEME_COLOR}>
               도입효과와 주요기능
@@ -121,10 +121,11 @@ const E_features = () => {
           {/* 인트로 */}
           <IntroSection>
             <IntroBox>
-              <IntroTitle $themeColor={THEME_COLOR}>Nextcare-E</IntroTitle>
+              <IntroTitle $themeColor={THEME_COLOR}>Nextcare-S</IntroTitle>
               <IntroDescription>
-                전기, 열, 가스 등의 에너지의 시각화나 설비의 최적 운용 등을 통해
-                에너지의 합리적 소비를 실현하는 솔루션
+                중대재해처벌법/산업안전보건법을 위한 안전솔루션으로, 작업장의
+                위험요소를 실시간 모니터링하고 즉각적인 대응이 가능한 종합
+                안전관리 솔루션입니다.
               </IntroDescription>
             </IntroBox>
           </IntroSection>
@@ -150,7 +151,7 @@ const E_features = () => {
                 <ShowcaseItem key={item.n}>
                   <ShowcaseImage $themeColor={THEME_COLOR}>
                     <img
-                      src={`/solution_img/02e/e_f${item.n}.png`}
+                      src={`/solution_img/03s/s_f${item.n}.png`}
                       alt={item.title}
                       style={{
                         width: "100%",
@@ -170,4 +171,4 @@ const E_features = () => {
   );
 };
 
-export default E_features;
+export default S_features;

@@ -18,6 +18,8 @@ import {
   HeroBannerTitle,
   HeroBannerDescription,
   HeroBannerButton,
+  SolutionNavWrapper,
+  StyledLink,
 } from "../../styles/Nextcare.styles";
 
 import {
@@ -35,6 +37,7 @@ import {
   ShowcaseImage,
   ShowcaseCaption,
 } from "../../styles/NextcareM.styles";
+import { useLocation } from "react-router-dom";
 
 // 테마 색상
 
@@ -47,16 +50,20 @@ const M_features = () => {
   ];
 
   const showcaseItems = [
-    "대시보드",
-    "통합 관제메뉴",
-    "우평관리",
-    "상황실",
-    "대시보드",
-    "구성관리",
-    "성능관리",
-    "구성관리",
-    "통계분석",
+    { n: "01", title: "대시보드" },
+    { n: "02", title: "통합 운영관리" },
+    { n: "03", title: "현황관리" },
+    { n: "04", title: "형상관리" },
+    { n: "05", title: "장비자원관리" },
+    { n: "06", title: "상세 형상관리" },
+    { n: "07", title: "장애관리" },
+    { n: "08", title: "구성관리" },
+    { n: "09", title: "품질통계관리" },
   ];
+
+  const THEME_COLOR = "#128AB0";
+  const location = useLocation();
+  const isActivePath = (path) => location.pathname === path;
 
   return (
     <>
@@ -75,6 +82,30 @@ const M_features = () => {
           </HeroBannerButton>
         </HeroBannerContent>
       </SolutionHeroBanner>
+
+      <SolutionNavWrapper>
+        <StyledLink
+          to="/solutions/nextcare-m"
+          className={isActivePath("/solutions/nextcare-m") ? "active" : ""}
+          $themeColor={THEME_COLOR}
+        >
+          Nextcare-M
+        </StyledLink>
+        <StyledLink
+          to="/solutions/nextcare-m/features"
+          className={isActivePath("/solutions/nextcare-m/features") ? "active" : ""}
+          $themeColor={THEME_COLOR}
+        >
+          도입효과와 주요기능
+        </StyledLink>
+        <StyledLink
+          to="/solutions/nextcare-m/reference"
+          className={isActivePath("/solutions/nextcare-m/reference") ? "active" : ""}
+          $themeColor={THEME_COLOR}
+        >
+          구축 레퍼런스
+        </StyledLink>
+      </SolutionNavWrapper>
 
       <PageContainer>
         <ContentWrapper>
@@ -111,30 +142,26 @@ const M_features = () => {
                 </BenefitItem>
               ))}
             </BenefitsColumn>
-
-            <BenefitsColumn>
-              <BenefitTitle $themeColor={THEME_COLOR}>
-                시스템 이미지
-              </BenefitTitle>
-              <SystemDiagram>
-                <img
-                  src="/nextcare_m_system.png"
-                  alt="Nextcare-M 통합 시스템"
-                />
-              </SystemDiagram>
-            </BenefitsColumn>
           </BenefitsSection>
 
           {/* 주요 기능 섹션 */}
           <SectionBar $themeColor={THEME_COLOR}>주요 기능</SectionBar>
           <FeaturesShowcase>
             <ShowcaseGrid>
-              {showcaseItems.map((item, index) => (
-                <ShowcaseItem key={index}>
+              {showcaseItems.map((item) => (
+                <ShowcaseItem key={item.n}>
                   <ShowcaseImage $themeColor={THEME_COLOR}>
-                    <span>📊</span>
+                    <img
+                      src={`/solution_img/01m/m_f${item.n}.png`}
+                      alt={item.title}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
                   </ShowcaseImage>
-                  <ShowcaseCaption>{item}</ShowcaseCaption>
+                  <ShowcaseCaption>{item.title}</ShowcaseCaption>
                 </ShowcaseItem>
               ))}
             </ShowcaseGrid>

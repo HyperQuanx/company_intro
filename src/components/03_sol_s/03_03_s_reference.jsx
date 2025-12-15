@@ -24,89 +24,88 @@ import {
   ScreenDash,
   ScreenCaption,
 } from "../../styles/Nextcare.styles";
-import { THEME_COLOR, HERO_BG_IMAGE } from "../../styles/NextcareM.styles";
 
-import styled from "styled-components";
+import {
+  THEME_COLOR,
+  HERO_BG_IMAGE,
+  ReferenceGrid,
+  ReferenceSection,
+  ReferenceCard,
+  ReferenceDash,
+  DashPlaceholder,
+  ReferenceTitle,
+  EmptyPlaceholder,
+  EmptyText,
+  EmptyLabel,
+  ReferenceImageArea,
+} from "../../styles/NextcareS.styles";
 import { useLocation } from "react-router-dom";
 
-const DashPlaceholder = styled.div`
-  width: 100%;
-  height: 200px;
-  background: linear-gradient(135deg, #f0f4f8 0%, #e8f1f7 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  color: #999;
-  border-right: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-
-  &:last-child {
-    border-right: none;
-  }
-`;
-
-const referenceData = [
-  {
-    title: "KT PTE2E 통합장비 운용팀",
-    images: ["/solution_img/01m/m_ref01.png", "/solution_img/01m/m_ref02.png"],
-  },
-  {
-    title: "LG이노와이어리스 OAM/MMS 시스템",
-    images: ["/solution_img/01m/m_ref03.png"],
-  },
-  {
-    title: "SKT FLOW NMS",
-    images: ["/solution_img/01m/m_ref04.png"],
-  },
-  {
-    title: "IBK 기업은행 통합 NMS 시스템",
-    images: ["/solution_img/01m/m_ref05.png"],
-  },
-  {
-    title: "인천국제공항 T2 IP 교환 실버관제 시스템",
-    images: ["/solution_img/01m/m_ref06.png"],
-  },
-  {
-    title: "SKT IDC센터 NMS",
-    images: ["/solution_img/01m/m_ref07.png"],
-  },
-  {
-    title: "수방사(KT) BTL 1.5",
-    images: ["/solution_img/01m/m_ref08.png"],
-  },
-  {
-    title: "코레일 철도공사",
-    images: ["/solution_img/01m/m_ref09.png", "/solution_img/01m/m_ref10.png"],
-  },
-  {
-    title: "군사업(해군, 인방사, 해작사) IPTNMS",
-    images: ["/solution_img/01m/m_ref11.png", "/solution_img/01m/m_ref12.png"],
-  },
-  {
-    title: "남양유업 시설물 관리 시스템",
-    images: ["/solution_img/01m/m_ref13.png"],
-  },
-  {
-    title: "서울교통공사 시설물 통합 관제 시스템",
-    images: ["/solution_img/01m/m_ref14.png"],
-  },
-  {
-    title: "한국 중부발전 K-Export Chain 메타버스 홍보관",
-    images: ["/solution_img/01m/m_ref15.png"],
-  },
-  {
-    title: "KT 파키스탄 IT Park 센터 통합 관제",
-    images: ["/solution_img/01m/m_ref16.png"],
-  },
-];
-
-const M_reference = () => {
+const S_reference = () => {
   const location = useLocation();
   const isActivePath = (path) => location.pathname === path;
-  const THEME_COLOR = "#128AB0";
 
-  // 구축 레퍼런스 사례들 (images 배열: 2개 이상이면 넓은 카드)
+  const safetyReferences = [
+    {
+      title: "3D기반 디지털 안전관리 플랫폼 WEB",
+      images: [
+        "/solution_img/03s/s_ref01_01.png",
+        "/solution_img/03s/s_ref01_02.png",
+      ],
+    },
+    {
+      title: "3D기반 디지털 안전관리 플랫폼 APP",
+      images: [
+        "/solution_img/03s/s_b_ref03_1.png",
+        "/solution_img/03s/s_b_ref03_2.png",
+      ],
+    },
+    {
+      title: "넥스트코어테크놀로지 안전관리 라이트 버전 WEB",
+      images: [
+        "/solution_img/03s/s_ref03_01.png",
+        "/solution_img/03s/s_ref03_02.png",
+      ],
+    },
+    {
+      title: "넥스트코어테크놀로지 안전관리 라이트버전 APP",
+      images: [
+        "/solution_img/03s/s_ref04_01.png",
+        "/solution_img/03s/s_ref04_02.png",
+      ],
+    },
+    {
+      title: "한국 서부발전 안전 위치기반 작업 통합 모니터링 시스템",
+      images: ["/solution_img/03s/s_ref05.png"],
+    },
+    {
+      title: "가스기술공사 안전작업 관리 시스템",
+      images: [
+        "/solution_img/03s/s_ref06_01.png",
+        "/solution_img/03s/s_ref06_02.png",
+      ],
+    },
+    {
+      title: "롯데케미칼 스마트 안전보건 통합 플랫폼",
+      images: ["/solution_img/03s/s_ref07.png"],
+    },
+    {
+      title: "한국중부발전 신서전 IoT 기반 연료하역작업 안전관리 플랫폼",
+      images: ["/solution_img/03s/s_ref08.png"],
+    },
+    {
+      title: "강남구, 관악구 반지하주택 IoT 기반 침수경보 시스템",
+      images: ["/solution_img/03s/s_ref09.png"],
+    },
+    {
+      title: "사고제로 - 안전행정 통합 업무 시스템",
+      images: ["/solution_img/03s/s_ref10.png"],
+    },
+    {
+      title: "SK Planet 노후산단 화학사고 원격 모니터링 시스템",
+      images: ["/solution_img/03s/s_ref11.png"],
+    },
+  ];
 
   return (
     <>
@@ -116,7 +115,7 @@ const M_reference = () => {
         <HeroBannerContent>
           <HeroBannerTitle>구축 레퍼런스</HeroBannerTitle>
           <HeroBannerDescription>
-            Nextcare-M이 실제로 구축된 다양한 프로젝트 사례를
+            Nextcare-S가 실제로 구축된 다양한 프로젝트 사례를
             <br />
             확인해보세요.
           </HeroBannerDescription>
@@ -128,25 +127,25 @@ const M_reference = () => {
 
       <SolutionNavWrapper>
         <StyledLink
-          to="/solutions/nextcare-m"
-          className={isActivePath("/solutions/nextcare-m") ? "active" : ""}
+          to="/solutions/nextcare-s"
+          className={isActivePath("/solutions/nextcare-s") ? "active" : ""}
           $themeColor={THEME_COLOR}
         >
-          Nextcare-M
+          Nextcare-S
         </StyledLink>
         <StyledLink
-          to="/solutions/nextcare-m/features"
+          to="/solutions/nextcare-s/features"
           className={
-            isActivePath("/solutions/nextcare-m/features") ? "active" : ""
+            isActivePath("/solutions/nextcare-s/features") ? "active" : ""
           }
           $themeColor={THEME_COLOR}
         >
           도입효과와 주요기능
         </StyledLink>
         <StyledLink
-          to="/solutions/nextcare-m/reference"
+          to="/solutions/nextcare-s/reference"
           className={
-            isActivePath("/solutions/nextcare-m/reference") ? "active" : ""
+            isActivePath("/solutions/nextcare-s/reference") ? "active" : ""
           }
           $themeColor={THEME_COLOR}
         >
@@ -158,9 +157,9 @@ const M_reference = () => {
         <ContentWrapper>
           {/* 헤더 */}
           <Header>
-            <TopShape $themeColor={THEME_COLOR}>Nextcare-M</TopShape>
+            <TopShape $themeColor={THEME_COLOR}>Nextcare-S</TopShape>
             <HeaderIcon $themeColor={THEME_COLOR}>
-              <i className="fas fa-desktop"></i>
+              <i className="fas fa-shield-alt"></i>
             </HeaderIcon>
             <HeaderTitle $themeColor={THEME_COLOR}>구축 레퍼런스</HeaderTitle>
           </Header>
@@ -168,18 +167,18 @@ const M_reference = () => {
           {/* 인트로 */}
           <IntroSection>
             <IntroBox>
-              <IntroTitle $themeColor={THEME_COLOR}>Nextcare-M</IntroTitle>
+              <IntroTitle $themeColor={THEME_COLOR}>Nextcare-S</IntroTitle>
               <IntroDescription>
-                네트워크, 시스템, 애플리케이션, 데이터베이스 등의 자원을 하나의
-                창에서 관리하기 위한 통합관리 솔루션의 구축 사례입니다.
+                중대재해처벌법/산업안전보건법을 위한 안전솔루션으로, 작업장의
+                위험요소를 실시간 모니터링하고 즉각적인 대응이 가능한 종합
+                안전관리 솔루션의 구축 사례입니다.
               </IntroDescription>
             </IntroBox>
           </IntroSection>
 
-          {/* 참고 사례 섹션 */}
           <SectionBar $themeColor={THEME_COLOR}>구축 사례</SectionBar>
           <ScreensContainer>
-            {referenceData.map((screen, index) => (
+            {safetyReferences.map((screen, index) => (
               <ScreenItem
                 key={index}
                 $cols={screen.images.length}
@@ -212,7 +211,7 @@ const M_reference = () => {
             {/* 빈 공간 채우기 */}
             {(() => {
               const totalCols = 4;
-              const usedCols = referenceData.reduce(
+              const usedCols = safetyReferences.reduce(
                 (acc, screen) => acc + screen.images.length,
                 0
               );
@@ -234,4 +233,4 @@ const M_reference = () => {
   );
 };
 
-export default M_reference;
+export default S_reference;

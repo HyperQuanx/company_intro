@@ -29,7 +29,10 @@ import {
   HeroBannerTitle,
   HeroBannerDescription,
   HeroBannerButton,
+  StyledLink,
+  SolutionNavWrapper,
 } from "../../styles/Nextcare.styles";
+import { useLocation } from "react-router-dom";
 
 // 테마 색상
 const THEME_COLOR = "#5F487A";
@@ -101,6 +104,9 @@ const screenData = [
 ];
 
 const AI_main = () => {
+  const location = useLocation();
+  const isActivePath = (path) => location.pathname === path;
+
   return (
     <>
       {/* 히어로 배너 */}
@@ -118,6 +124,23 @@ const AI_main = () => {
           </HeroBannerButton>
         </HeroBannerContent>
       </SolutionHeroBanner>
+
+      <SolutionNavWrapper>
+        <StyledLink
+          to="/solutions/nextcare-ai"
+          className={isActivePath("/solutions/nextcare-ai") ? "active" : ""}
+          $themeColor={THEME_COLOR}
+        >
+          Nextcare-AI
+        </StyledLink>
+        <StyledLink
+          to="/solutions/nextcare-ai/reference"
+          className={isActivePath("/solutions/nextcare-ai/reference") ? "active" : ""}
+          $themeColor={THEME_COLOR}
+        >
+          구축 레퍼런스
+        </StyledLink>
+      </SolutionNavWrapper>
 
       <PageContainer>
         <ContentWrapper>

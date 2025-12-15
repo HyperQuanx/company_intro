@@ -10,7 +10,7 @@ export const HERO_BG_IMAGE =
 // 커스텀 스타일
 export const BenefitsSection = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 40px;
   padding: 40px;
   max-width: 1600px;

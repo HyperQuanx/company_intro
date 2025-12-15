@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 // 기본 테마 색상
 const defaultColor = "#55b3d6";
@@ -12,7 +13,6 @@ export const PageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  margin-top: 50px;
 `;
 
 export const ContentWrapper = styled.div`
@@ -80,6 +80,10 @@ export const HeaderIcon = styled.div`
     width: 60px;
     height: 60px;
     object-fit: contain;
+  }
+
+  div {
+    gap: 18px;
   }
 
   @media (max-width: 768px) {
@@ -659,6 +663,67 @@ export const HeroBannerButton = styled.a`
 
   @media (max-width: 768px) {
     padding: 12px 24px;
+    font-size: 0.9rem;
+  }
+`;
+
+// 네비게이션 컨테이너: 전체 너비, 흰색 배경, 하단 경계선
+export const SolutionNavWrapper = styled.nav`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0; /* 연한 회색 줄 */
+  height: 60px; /* 적당한 높이감 */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* 살짝 떠있는 듯한 그림자 */
+  position: sticky; /* 스크롤 시 상단 고정 (선택사항) */
+  top: 0;
+  z-index: 10;
+`;
+
+// 개별 링크 아이템
+export const StyledLink = styled(Link)`
+  position: relative;
+  margin: 0 2rem; /* 메뉴 간 간격 넓게 */
+  font-size: 1.1rem;
+  font-weight: 600; /* 굵은 글씨로 가독성 확보 */
+  color: #555555; /* 기본은 진한 회색 */
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+
+  /* 마우스 오버 시 & 활성화 시 효과 */
+  &:hover,
+  &.active {
+    color: ${(props) =>
+      props.$themeColor || defaultColor}; /* 테마 색상으로 변경 */
+  }
+
+  /* 하단 밑줄 애니메이션 효과 */
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px; /* 밑줄 두께 */
+    background-color: ${(props) => props.$themeColor || defaultColor};
+    transform: scaleX(0); /* 처음엔 숨김 */
+    transition: transform 0.3s ease;
+    transform-origin: bottom center;
+  }
+
+  /* 호버하거나, active 클래스가 있을 때 밑줄 촥! */
+  &:hover::after,
+  &.active::after {
+    transform: scaleX(1);
+  }
+
+  /* 모바일 대응 (화면이 작아지면 간격 조정) */
+  @media (max-width: 768px) {
+    margin: 0 10px;
     font-size: 0.9rem;
   }
 `;

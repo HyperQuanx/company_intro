@@ -82,7 +82,7 @@ const Insight_videos = () => {
     <>
       <SolutionHeroBanner>
         <HeroBannerBackground
-          $bgImage={HERO_BG_IMAGE}
+          $bgImage="/nextcore_text.png"
           $contain
           $bgColor="#4aa8d8"
         />

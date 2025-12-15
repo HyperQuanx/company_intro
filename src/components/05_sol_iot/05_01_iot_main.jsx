@@ -29,7 +29,10 @@ import {
   HeroBannerTitle,
   HeroBannerDescription,
   HeroBannerButton,
+  SolutionNavWrapper,
+  StyledLink,
 } from "../../styles/Nextcare.styles";
+import { useLocation } from "react-router-dom";
 
 // 테마 색상
 const THEME_COLOR = "#E36C09";
@@ -97,6 +100,9 @@ const screenData = [
 ];
 
 const IoT_main = () => {
+  const location = useLocation();
+  const isActivePath = (path) => location.pathname === path;
+
   return (
     <>
       {/* 히어로 배너 */}
@@ -114,6 +120,23 @@ const IoT_main = () => {
           </HeroBannerButton>
         </HeroBannerContent>
       </SolutionHeroBanner>
+
+      <SolutionNavWrapper>
+        <StyledLink
+          to="/solutions/nextcare-iot"
+          className={isActivePath("/solutions/nextcare-iot") ? "active" : ""}
+          $themeColor={THEME_COLOR}
+        >
+          Nextcare-IoT
+        </StyledLink>
+        <StyledLink
+          to="/solutions/nextcare-iot/reference"
+          className={isActivePath("/solutions/nextcare-iot/reference") ? "active" : ""}
+          $themeColor={THEME_COLOR}
+        >
+          구축 레퍼런스
+        </StyledLink>
+      </SolutionNavWrapper>
 
       <PageContainer>
         <ContentWrapper>

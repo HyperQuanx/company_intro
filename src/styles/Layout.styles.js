@@ -284,7 +284,7 @@ export const FooterContainer = styled.footer`
   text-align: center;
   color: #fff;
   margin-top: auto;
-  height: calc(100vh - 80px);
+  height: 10vh;
   width: 100%;
   scroll-snap-align: start;
   display: flex;

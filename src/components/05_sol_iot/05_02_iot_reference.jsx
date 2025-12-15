@@ -20,93 +20,47 @@ import {
   SolutionNavWrapper,
   StyledLink,
   ScreensContainer,
-  ScreenItem,
   ScreenDash,
+  ScreenItem,
+  DashPlaceholder,
   ScreenCaption,
 } from "../../styles/Nextcare.styles";
-import { THEME_COLOR, HERO_BG_IMAGE } from "../../styles/NextcareM.styles";
 
-import styled from "styled-components";
+import {
+  THEME_COLOR,
+  HERO_BG_IMAGE,
+  ReferenceGrid,
+  ReferenceSection,
+  ReferenceCard,
+  ReferenceImageArea,
+  ReferenceTitle,
+  SpecsContainer,
+  SpecCard,
+} from "../../styles/NextcareIoT.styles";
 import { useLocation } from "react-router-dom";
 
-const DashPlaceholder = styled.div`
-  width: 100%;
-  height: 200px;
-  background: linear-gradient(135deg, #f0f4f8 0%, #e8f1f7 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  color: #999;
-  border-right: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-
-  &:last-child {
-    border-right: none;
-  }
-`;
-
-const referenceData = [
-  {
-    title: "KT PTE2E 통합장비 운용팀",
-    images: ["/solution_img/01m/m_ref01.png", "/solution_img/01m/m_ref02.png"],
-  },
-  {
-    title: "LG이노와이어리스 OAM/MMS 시스템",
-    images: ["/solution_img/01m/m_ref03.png"],
-  },
-  {
-    title: "SKT FLOW NMS",
-    images: ["/solution_img/01m/m_ref04.png"],
-  },
-  {
-    title: "IBK 기업은행 통합 NMS 시스템",
-    images: ["/solution_img/01m/m_ref05.png"],
-  },
-  {
-    title: "인천국제공항 T2 IP 교환 실버관제 시스템",
-    images: ["/solution_img/01m/m_ref06.png"],
-  },
-  {
-    title: "SKT IDC센터 NMS",
-    images: ["/solution_img/01m/m_ref07.png"],
-  },
-  {
-    title: "수방사(KT) BTL 1.5",
-    images: ["/solution_img/01m/m_ref08.png"],
-  },
-  {
-    title: "코레일 철도공사",
-    images: ["/solution_img/01m/m_ref09.png", "/solution_img/01m/m_ref10.png"],
-  },
-  {
-    title: "군사업(해군, 인방사, 해작사) IPTNMS",
-    images: ["/solution_img/01m/m_ref11.png", "/solution_img/01m/m_ref12.png"],
-  },
-  {
-    title: "남양유업 시설물 관리 시스템",
-    images: ["/solution_img/01m/m_ref13.png"],
-  },
-  {
-    title: "서울교통공사 시설물 통합 관제 시스템",
-    images: ["/solution_img/01m/m_ref14.png"],
-  },
-  {
-    title: "한국 중부발전 K-Export Chain 메타버스 홍보관",
-    images: ["/solution_img/01m/m_ref15.png"],
-  },
-  {
-    title: "KT 파키스탄 IT Park 센터 통합 관제",
-    images: ["/solution_img/01m/m_ref16.png"],
-  },
-];
-
-const M_reference = () => {
+const IoT_reference = () => {
   const location = useLocation();
   const isActivePath = (path) => location.pathname === path;
-  const THEME_COLOR = "#128AB0";
 
-  // 구축 레퍼런스 사례들 (images 배열: 2개 이상이면 넓은 카드)
+  const referenceData = [
+    {
+      title: "로지스풀 지게차 관제 시스템",
+      images: ["/solution_img/05iot/iot_ref01.png"],
+    },
+    {
+      title: "씨에스 정보 기술 여기미세",
+      images: ["/solution_img/05iot/iot_ref02.png"],
+    },
+    {
+      title: "대우건설 푸르지오 - 스마트 홈 네트워크 시스템",
+      images: ["/solution_img/05iot/iot_ref03.png"],
+    },
+    {
+      title: "점터 양계 농가 - 스마트 팜",
+      images: ["/solution_img/05iot/iot_ref04.png"],
+    },
+  ];
 
   return (
     <>
@@ -116,7 +70,7 @@ const M_reference = () => {
         <HeroBannerContent>
           <HeroBannerTitle>구축 레퍼런스</HeroBannerTitle>
           <HeroBannerDescription>
-            Nextcare-M이 실제로 구축된 다양한 프로젝트 사례를
+            Nextcare-IoT가 실제로 구축된 다양한 프로젝트 사례를
             <br />
             확인해보세요.
           </HeroBannerDescription>
@@ -128,25 +82,16 @@ const M_reference = () => {
 
       <SolutionNavWrapper>
         <StyledLink
-          to="/solutions/nextcare-m"
-          className={isActivePath("/solutions/nextcare-m") ? "active" : ""}
+          to="/solutions/nextcare-iot"
+          className={isActivePath("/solutions/nextcare-iot") ? "active" : ""}
           $themeColor={THEME_COLOR}
         >
-          Nextcare-M
+          Nextcare-IoT
         </StyledLink>
         <StyledLink
-          to="/solutions/nextcare-m/features"
+          to="/solutions/nextcare-iot/reference"
           className={
-            isActivePath("/solutions/nextcare-m/features") ? "active" : ""
-          }
-          $themeColor={THEME_COLOR}
-        >
-          도입효과와 주요기능
-        </StyledLink>
-        <StyledLink
-          to="/solutions/nextcare-m/reference"
-          className={
-            isActivePath("/solutions/nextcare-m/reference") ? "active" : ""
+            isActivePath("/solutions/nextcare-iot/reference") ? "active" : ""
           }
           $themeColor={THEME_COLOR}
         >
@@ -158,9 +103,9 @@ const M_reference = () => {
         <ContentWrapper>
           {/* 헤더 */}
           <Header>
-            <TopShape $themeColor={THEME_COLOR}>Nextcare-M</TopShape>
+            <TopShape $themeColor={THEME_COLOR}>Nextcare-IoT</TopShape>
             <HeaderIcon $themeColor={THEME_COLOR}>
-              <i className="fas fa-desktop"></i>
+              <i className="fas fa-network-wired"></i>
             </HeaderIcon>
             <HeaderTitle $themeColor={THEME_COLOR}>구축 레퍼런스</HeaderTitle>
           </Header>
@@ -168,15 +113,14 @@ const M_reference = () => {
           {/* 인트로 */}
           <IntroSection>
             <IntroBox>
-              <IntroTitle $themeColor={THEME_COLOR}>Nextcare-M</IntroTitle>
+              <IntroTitle $themeColor={THEME_COLOR}>Nextcare-IoT</IntroTitle>
               <IntroDescription>
-                네트워크, 시스템, 애플리케이션, 데이터베이스 등의 자원을 하나의
-                창에서 관리하기 위한 통합관리 솔루션의 구축 사례입니다.
+                IoT(Internet of Things) 기술을 활용한 장소·시간에 제약 없이 어떤
+                사물도 관계하는 솔루션의 구축 사례입니다.
               </IntroDescription>
             </IntroBox>
           </IntroSection>
 
-          {/* 참고 사례 섹션 */}
           <SectionBar $themeColor={THEME_COLOR}>구축 사례</SectionBar>
           <ScreensContainer>
             {referenceData.map((screen, index) => (
@@ -234,4 +178,4 @@ const M_reference = () => {
   );
 };
 
-export default M_reference;
+export default IoT_reference;

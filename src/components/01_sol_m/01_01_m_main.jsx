@@ -48,7 +48,10 @@ import {
   DiagramFrameworkHeader,
   DiagramFrameworkGrid,
   DiagramFrameworkItem,
+  SolutionNavWrapper,
+  StyledLink,
 } from "../../styles/Nextcare.styles";
+import { useLocation } from "react-router-dom";
 
 // 테마 색상
 const THEME_COLOR = "#128AB0";
@@ -129,6 +132,9 @@ const HERO_BG_IMAGE =
   "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop";
 
 const M_main = () => {
+  const location = useLocation();
+  const isActivePath = (path) => location.pathname === path;
+
   return (
     <>
       {/* 히어로 배너 */}
@@ -146,6 +152,34 @@ const M_main = () => {
           </HeroBannerButton>
         </HeroBannerContent>
       </SolutionHeroBanner>
+
+      <SolutionNavWrapper>
+        <StyledLink
+          to="/solutions/nextcare-m"
+          className={isActivePath("/solutions/nextcare-m") ? "active" : ""}
+          $themeColor={THEME_COLOR}
+        >
+          Nextcare-M
+        </StyledLink>
+        <StyledLink
+          to="/solutions/nextcare-m/features"
+          className={
+            isActivePath("/solutions/nextcare-m/features") ? "active" : ""
+          }
+          $themeColor={THEME_COLOR}
+        >
+          도입효과와 주요기능
+        </StyledLink>
+        <StyledLink
+          to="/solutions/nextcare-m/reference"
+          className={
+            isActivePath("/solutions/nextcare-m/reference") ? "active" : ""
+          }
+          $themeColor={THEME_COLOR}
+        >
+          구축 레퍼런스
+        </StyledLink>
+      </SolutionNavWrapper>
 
       <PageContainer>
         <ContentWrapper>
