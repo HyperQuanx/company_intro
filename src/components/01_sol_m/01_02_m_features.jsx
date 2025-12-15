@@ -1,7 +1,6 @@
 import React from "react";
+
 import {
-  THEME_COLOR,
-  HERO_BG_IMAGE,
   PageContainer,
   ContentWrapper,
   Header,
@@ -19,6 +18,11 @@ import {
   HeroBannerTitle,
   HeroBannerDescription,
   HeroBannerButton,
+} from "../../styles/Nextcare.styles";
+
+import {
+  THEME_COLOR,
+  HERO_BG_IMAGE,
   BenefitsSection,
   BenefitsColumn,
   BenefitTitle,
@@ -32,8 +36,9 @@ import {
   ShowcaseCaption,
 } from "../../styles/NextcareM.styles";
 
+// 테마 색상
+
 const M_features = () => {
-  // 도입효과 데이터
   const benefits = [
     "신기술 서비스 최적화 시스템 구축 및 안정적인 통합제 관리",
     "Non-Stop Service (NMS, SMS, TMS, FMS 통합 가능)",
@@ -41,7 +46,6 @@ const M_features = () => {
     "권제 대상인프 내 NMS, SMS, TMS, FMS 기능 통합 가능",
   ];
 
-  // 주요 기능 아이템들
   const showcaseItems = [
     "대시보드",
     "통합 관제메뉴",
@@ -109,7 +113,9 @@ const M_features = () => {
             </BenefitsColumn>
 
             <BenefitsColumn>
-              <BenefitTitle $themeColor={THEME_COLOR}>시스템 이미지</BenefitTitle>
+              <BenefitTitle $themeColor={THEME_COLOR}>
+                시스템 이미지
+              </BenefitTitle>
               <SystemDiagram>
                 <img
                   src="/nextcare_m_system.png"
