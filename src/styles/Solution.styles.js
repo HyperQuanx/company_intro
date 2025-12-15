@@ -188,7 +188,7 @@ export const Tag = styled.div`
   );
   border: 1px solid rgba(85, 179, 214, 0.2);
   border-radius: 12px;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: #444;
   font-weight: 700;
   text-align: center;
