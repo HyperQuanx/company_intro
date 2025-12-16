@@ -70,8 +70,8 @@ const S_reference = () => {
     {
       title: "넥스트코어테크놀로지 안전관리 라이트버전 APP",
       images: [
-        "/solution_img/03s/s_ref04_01.png",
-        "/solution_img/03s/s_ref04_02.png",
+        "/solution_img/03s/s_ref04_011.png",
+        "/solution_img/03s/s_ref04_022.png",
       ],
     },
     {
