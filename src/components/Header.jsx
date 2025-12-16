@@ -124,7 +124,7 @@ const Header = () => {
       path: "/insight/news",
       subItems: [
         { title: "홍보기사", path: "/insight/news" },
-        { title: "관련영상", path: "/insight/videos" },
+        { title: "레퍼런스 영상", path: "/insight/videos" },
       ],
     },
     {

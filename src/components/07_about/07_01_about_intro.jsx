@@ -1,4 +1,11 @@
 import {
+  HeroBannerBackground,
+  HeroBannerContent,
+  HeroBannerDescription,
+  HeroBannerTitle,
+  SolutionHeroBanner,
+} from "../../styles/Nextcare.styles";
+import {
   IntroductionSection,
   SectionTitle,
   IntroContainer,
@@ -21,21 +28,36 @@ import {
   ContactInfo,
 } from "../../styles/NextcoreAbout.styles";
 
+import {
+  FaNetworkWired,
+  FaHelmetSafety,
+  FaBolt,
+  FaBuilding,
+  FaCube,
+  FaMicrochip,
+  FaIndustry,
+  FaSeedling,
+  FaRadiation,
+  FaGlobe,
+  FaChartLine,
+  FaCloud,
+} from "react-icons/fa6";
+
 const AboutIntro = () => {
   // 서비스 항목
   const services = [
-    { icon: "📊", name: "시스템 통합관제" },
-    { icon: "🔒", name: "디지털 안전관리 플랫폼" },
-    { icon: "⚡", name: "에너지 사업" },
-    { icon: "🏗️", name: "전융 통합 관리" },
-    { icon: "📱", name: "디지털 트윈 기반 서비스 관제" },
-    { icon: "🤖", name: "스마트 IoT 산업" },
-    { icon: "🔥", name: "스마트 택로이/MES" },
-    { icon: "🌐", name: "스마트 빔/스마트 홈" },
-    { icon: "🛡️", name: "방사선 안전관리" },
-    { icon: "🎯", name: "기업 포렌 서비스" },
-    { icon: "🤖", name: "AI 빅데이터 기반 문석 솔루션" },
-    { icon: "☁️", name: "클라우드 SaaS 서비스" },
+    { icon: FaNetworkWired, name: "시스템 통합관제" },
+    { icon: FaHelmetSafety, name: "디지털 안전관리 플랫폼" },
+    { icon: FaBolt, name: "에너지 사업" },
+    { icon: FaBuilding, name: "건물 통합 관리" },
+    { icon: FaCube, name: "디지털 트윈 기반 서비스 관제" },
+    { icon: FaMicrochip, name: "스마트 IoT 산업" },
+    { icon: FaIndustry, name: "스마트 팩토리/MES" },
+    { icon: FaSeedling, name: "스마트 팜/스마트 홈" },
+    { icon: FaRadiation, name: "방사선 안전관리" },
+    { icon: FaGlobe, name: "기업 포탈 서비스" },
+    { icon: FaChartLine, name: "AI 빅데이터 기반 분석 솔루션" },
+    { icon: FaCloud, name: "클라우드 SaaS 서비스" },
   ];
 
   // 주요 사업
@@ -49,79 +71,74 @@ const AboutIntro = () => {
 
   return (
     <div>
+      <SolutionHeroBanner>
+        <HeroBannerBackground
+          $bgImage="/nextcore_text.png"
+          $contain
+          $bgColor="#4aa8d8"
+        />
+        <HeroBannerContent>
+          <HeroBannerTitle>Nextcore Technology</HeroBannerTitle>
+          <HeroBannerDescription>
+            끊임없는 기술개발을 통해 마음까지 케어할 수 있는
+            <br />
+            넥스트코어테크놀로지로 성장하겠습니다.
+          </HeroBannerDescription>
+        </HeroBannerContent>
+      </SolutionHeroBanner>
+
       {/* Section 1: Introduction */}
       <IntroductionSection>
-        <SectionTitle>
-          <h2>INTRODUCTION</h2>
-        </SectionTitle>
-
         <IntroContainer>
           <IntroContent>
-            <IntroText>
-              (합)넥스트코어테크놀로지는 통합 관제 솔루션 전문 기업입니다. 데이터 수집·분석·서비스하는 과정에서
-              차별화된 기술력을 보유하고 있습니다.
-            </IntroText>
+            <div>
+              <IntroText className="mainIntroText">
+                NEXTCORE Technology
+                <br />
+                통합 관제 모니터링 솔루션 전문 기업
+              </IntroText>
+            </div>
 
             <IntroText>
-              IoT 기반 설비 관제, 에너지·인환·공장·고객관리 등 이는 End-to-End 지원을 통해, 안전 및 서비스
-              통합관리 솔루션을 고도화하여 국내 주요 기업에 최적화된 컨설팅과 최고 수준의 기업으로 성장하는 기업입니다.
+              최고의 ICT 기술력과 다양의 경험으로 국내의 주요 대기업 및 <br />
+              공공기관에 B2B, B2C 사업 다양한 분야의 기술을 제공하는 기업입니다.
             </IntroText>
 
             <div>
-              <h3 style={{ margin: "20px 0 0 0", fontSize: "1.2rem", fontWeight: "700", color: "#2d3748" }}>
+              <h3
+                style={{
+                  margin: "20px 0 0 0",
+                  fontSize: "2.2rem",
+                  fontWeight: "800",
+                  color: "#2d3748",
+                }}
+              >
                 NEXTCORE 사업범위
               </h3>
               <ServiceGrid>
-                {services.map((service, idx) => (
-                  <ServiceBox key={idx}>
-                    <div className="service-icon">{service.icon}</div>
-                    <div className="service-name">{service.name}</div>
-                  </ServiceBox>
-                ))}
+                {services.map((service, idx) => {
+                  const Icon = service.icon;
+                  return (
+                    <ServiceBox key={idx}>
+                      <div className="service-icon">
+                        <Icon size={22} />
+                      </div>
+                      <div className="service-name">{service.name}</div>
+                    </ServiceBox>
+                  );
+                })}
               </ServiceGrid>
             </div>
           </IntroContent>
-
-          <IntroImage>
-            <div className="placeholder">회사 이미지 영역</div>
-          </IntroImage>
         </IntroContainer>
       </IntroductionSection>
 
-      {/* Section 2: Company Info */}
       <CompanyInfoSection>
-        <SectionTitle>
-          <h2>회사 소개 및 연혁</h2>
-        </SectionTitle>
-
         <CompanyInfoContainer>
-          <CompanyDescription>
-            <CompanyName>
-              <h3>NEXTCORE Technology</h3>
-              <p>통합 관제 모니터링 솔루션 전문 기업</p>
-            </CompanyName>
-
-            <CompanyMainText>
-              최고의 ICT 기술력과 다양의 경험으로 국내의 주요 대기업 및 공공기관에 B2B, B2C 사업 다양한 분야의
-              기술을 제공하는 기업입니다.
-            </CompanyMainText>
-
-            <div>
-              <h4 style={{ margin: "0 0 12px 0", fontSize: "1rem", fontWeight: "700", color: "#2d3748" }}>
-                주요 사업 영역
-              </h4>
-              <BusinessList>
-                {businesses.map((business, idx) => (
-                  <BusinessItem key={idx}>{business}</BusinessItem>
-                ))}
-              </BusinessList>
-            </div>
-          </CompanyDescription>
-
           <CompanyInfoTable>
             <TableRow>
               <TableLabel>회사명</TableLabel>
-              <TableValue>(합)넥스트코어테크놀로지</TableValue>
+              <TableValue>(주)넥스트코어테크놀로지</TableValue>
             </TableRow>
 
             <TableRow>
@@ -131,7 +148,7 @@ const AboutIntro = () => {
 
             <TableRow>
               <TableLabel>대표자</TableLabel>
-              <TableValue>서준기</TableValue>
+              <TableValue>서원기</TableValue>
             </TableRow>
 
             <TableRow>
@@ -142,7 +159,7 @@ const AboutIntro = () => {
             <TableRow>
               <TableLabel>소재지</TableLabel>
               <TableValue>
-                서울특별시 송파구 범원로 128, A동 610호 (SK V1 GL메트로시티)
+                서울특별시 송파구 법원로 128, A동 610호 (SK V1 GL메트로시티)
               </TableValue>
             </TableRow>
 

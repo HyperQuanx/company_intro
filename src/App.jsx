@@ -20,6 +20,8 @@ import IoT_reference from "./components/05_sol_iot/05_02_iot_reference";
 import Insight_videos from "./components/09_insight/09_02_insight_videos";
 import AboutIntro from "./components/07_about/07_01_about_intro";
 import AboutLocation from "./components/07_about/07_02_about_location";
+import AboutHistory from "./components/07_about/07_03_about_history";
+import AboutOrganization from "./components/07_about/07_04_about_organization";
 
 function App() {
   return (
@@ -83,6 +85,8 @@ function App() {
             {/* 07 회사소개 */}
             <Route path="/about/intro" element={<AboutIntro />} />
             <Route path="/about/location" element={<AboutLocation />} />
+            <Route path="/about/history" element={<AboutHistory />} />
+            <Route path="/about/organization" element={<AboutOrganization />} />
 
             {/* 09 레퍼런스 영상 */}
             <Route path="/insight/videos" element={<Insight_videos />} />

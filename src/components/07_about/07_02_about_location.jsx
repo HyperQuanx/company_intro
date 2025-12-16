@@ -124,6 +124,7 @@ const AboutLocation = () => {
           </HeroBannerDescription>
         </HeroBannerContent>
       </SolutionHeroBanner>
+
       <MapArea>
         <MapCanvas ref={mapElRef} />
       </MapArea>
