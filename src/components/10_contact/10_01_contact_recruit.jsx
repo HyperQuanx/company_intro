@@ -163,39 +163,45 @@ const ContactRecruit = () => {
       // FormData 객체 생성
       const submitData = new FormData();
 
-      // 기본 필드 추가
+      // 1. 기본 설정값
+      // _subject: 이메일 제목
       submitData.append(
         "_subject",
         `[입사지원] ${formData.team} - ${formData.name}`
       );
-      submitData.append("_template", "box");
+      // _template: 이메일 디자인 (table, basic, box)
+      submitData.append("_template", "table");
+      // _captcha: 스팸 방지 캡차 끄기 (테스트용, 필요시 "true")
       submitData.append("_captcha", "false");
 
-      // 폼 데이터 추가
+      // 2. 텍스트 데이터 추가
       submitData.append("지원부서", formData.team);
       submitData.append("성명", formData.name);
       submitData.append("이메일", formData.email);
       submitData.append("연락처", formData.phone);
       submitData.append("생년월일", formData.birthdate);
       submitData.append("자기소개", formData.introduction || "작성 내용 없음");
-      submitData.append(
-        "_autoresponse",
-        `${formData.name}님, 넥스트코어테크놀로지에 지원해주셔서 감사합니다. 서류 검토 후 연락드리겠습니다.`
-      );
 
-      // 파일 첨부
+      // 3. 파일 첨부 (수정된 부분)
+      // 'attachment'라는 이름 대신 구체적인 이름(resume, portfolio)을 사용하면
+      // formsubmit.co가 이를 자동으로 감지하여 파일로 첨부합니다.
       if (resume) {
-        submitData.append("attachment", resume);
+        submitData.append("이력서", resume);
       }
       if (portfolio) {
-        submitData.append("attachment", portfolio);
+        submitData.append("포트폴리오", portfolio);
       }
 
-      // FormSubmit.co로 전송
+      // 4. 전송 (수정된 부분)
+      // URL에서 '/ajax/'를 제거하고 본인의 이메일로 변경하세요.
+      // fetch 옵션에 headers: { "Accept": "application/json" }을 추가해야 리다이렉트 되지 않습니다.
       const response = await fetch(
-        "https://formsubmit.co/ajax/qbixroqkfwk@gmail.com",
+        "https://formsubmit.co/qbixroqkfwk@gmail.com",
         {
           method: "POST",
+          headers: {
+            Accept: "application/json", // 중요: 이 설정이 있어야 JSON 응답을 받습니다.
+          },
           body: submitData,
         }
       );
