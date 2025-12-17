@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   HeroBannerBackground,
   HeroBannerContent,
@@ -8,9 +7,7 @@ import {
   SolutionHeroBanner,
 } from "../../styles/Nextcare.styles";
 
-import ClientList from "../00_main/00_03_main_clientList";
-
-const AboutClients = () => {
+const BusinessPerformance = () => {
   return (
     <>
       <SolutionHeroBanner>
@@ -20,18 +17,18 @@ const AboutClients = () => {
           $bgColor="#b1b1b1"
         />
         <HeroBannerContent>
-          <HeroBannerTitle>고객사</HeroBannerTitle>
+          <HeroBannerTitle>기술 개발 사업화 실적</HeroBannerTitle>
           <HeroBannerDescription>
-            다양한 산업 분야의 고객사와 구축한 신뢰를 바탕으로
+            기술 개발부터 사업화까지 체계적인 수행 경험을 통해
             <br />
-            현장 중심의 실질적인 디지털 전환 성과를 창출합니다.
+            안정적이고 신뢰할 수 있는 성과를 제공합니다.
           </HeroBannerDescription>
         </HeroBannerContent>
       </SolutionHeroBanner>
 
-      <ClientList />
+      <div>여기에 작성해</div>
     </>
   );
 };
 
-export default AboutClients;
+export default BusinessPerformance;

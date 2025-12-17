@@ -195,7 +195,7 @@ const InsightNews = () => {
         <HeroBannerBackground
           $bgImage="/nextcore_text.png"
           $contain
-          $bgColor="#4aa8d8"
+          $bgColor="#b1b1b1"
         />
         <HeroBannerContent>
           <HeroBannerTitle>뉴스</HeroBannerTitle>

@@ -125,7 +125,7 @@ const AboutOrganization = () => {
         <HeroBannerBackground
           $bgImage="/nextcore_text.png"
           $contain
-          $bgColor="#4aa8d8"
+          $bgColor="#b1b1b1"
         />
         <HeroBannerContent>
           <HeroBannerTitle>조직도 및 구성</HeroBannerTitle>

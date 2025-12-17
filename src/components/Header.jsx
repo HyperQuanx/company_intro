@@ -18,8 +18,18 @@ const Header = () => {
   const [mobileOpenIndex, setMobileOpenIndex] = useState(null); // 모바일 서브메뉴 상태
   const location = useLocation();
 
-  // 현재 경로가 해당 메뉴의 경로로 시작하는지 확인
+  // 왼쪽 메뉴(제품 메뉴) - 정확한 경로 비교
   const isActivePath = (path) => {
+    return location.pathname.startsWith(path);
+  };
+
+  // 오른쪽 메뉴(회사 정보 메뉴) - base path 비교
+  const isActiveCompanyPath = (path) => {
+    const pathParts = path.split("/").filter(Boolean);
+    if (pathParts.length > 0) {
+      const basePath = "/" + pathParts[0];
+      return location.pathname.startsWith(basePath);
+    }
     return location.pathname.startsWith(path);
   };
 
@@ -124,7 +134,7 @@ const Header = () => {
       path: "/insight/news",
       subItems: [
         { title: "홍보기사", path: "/insight/news" },
-        // { title: "레퍼런스 영상", path: "/insight/videos" },
+        { title: "레퍼런스 영상", path: "/insight/videos" },
       ],
     },
     {
@@ -178,7 +188,7 @@ const Header = () => {
       <Nav>
         <ul>
           {companyNavItems.map((item, index) => (
-            <NavItem key={index} $isActive={isActivePath(item.path)}>
+            <NavItem key={index} $isActive={isActiveCompanyPath(item.path)}>
               <Link to={item.path}>{item.title}</Link>
               {/* Dropdown Menu */}
               {item.subItems && item.subItems.length > 0 && (

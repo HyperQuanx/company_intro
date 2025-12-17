@@ -88,7 +88,7 @@ const AboutMOU = () => {
         <HeroBannerBackground
           $bgImage="/nextcore_text.png"
           $contain
-          $bgColor="#4aa8d8"
+          $bgColor="#b1b1b1"
         />
         <HeroBannerContent>
           <HeroBannerTitle>기술 교류 및 MOU 실적</HeroBannerTitle>

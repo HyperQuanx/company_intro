@@ -26,6 +26,10 @@ import AboutCertification from "./components/07_about/07_05_about_certification"
 import AboutMou from "./components/07_about/07_06_about_mou";
 import AboutClients from "./components/07_about/07_07_about_clients";
 import InsightNews from "./components/09_insight/09_01_insight_news";
+import BusinessProducts from "./components/08_business/08_01_business_products";
+import BusinessPerformance from "./components/08_business/08_02_business_performance";
+import ContactRecruit from "./components/10_contact/10_01_contact_recruit";
+import ContactInquiry from "./components/10_contact/10_02_contact_inquiry";
 
 function App() {
   return (
@@ -98,9 +102,20 @@ function App() {
             <Route path="/about/mou" element={<AboutMou />} />
             <Route path="/about/clients" element={<AboutClients />} />
 
+            {/* 사업분야 */}
+            <Route path="/business/products" element={<BusinessProducts />} />
+            <Route
+              path="/business/performance"
+              element={<BusinessPerformance />}
+            />
+
             {/* 09 인사이트 */}
             <Route path="/insight/news" element={<InsightNews />} />
             <Route path="/insight/videos" element={<Insight_videos />} />
+
+            {/* 고객센터 */}
+            <Route path="/contact/recruit" element={<ContactRecruit />} />
+            <Route path="/contact/inquiry" element={<ContactInquiry />} />
           </Routes>
         </MainContent>
 

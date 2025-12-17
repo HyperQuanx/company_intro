@@ -129,7 +129,7 @@ export const NavItem = styled.li`
     }
 
     &:hover {
-      color: ${(props) => (props.$isActive ? "#fff" : "#55b3d6")};
+      color: ${(props) => (props.$isActive ? "#fff" : "#4169e1")};
     }
   }
 `;
@@ -204,7 +204,7 @@ export const MobileSubMenu = styled.ul`
     font-weight: 500 !important;
 
     &:hover {
-      color: #55b3d6 !important;
+      color: #4169e1 !important;
       background-color: #f0f0f0;
     }
   }
@@ -227,7 +227,7 @@ export const MobileNavItem = styled.li`
 
     &:hover {
       background-color: #fafafa;
-      color: #55b3d6;
+      color: #4169e1;
     }
 
     .arrow {

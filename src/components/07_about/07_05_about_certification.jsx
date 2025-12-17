@@ -329,7 +329,7 @@ const AboutCertification = () => {
         <HeroBannerBackground
           $bgImage="/nextcore_text.png"
           $contain
-          $bgColor="#4aa8d8"
+          $bgColor="#b1b1b1"
         />
         <HeroBannerContent>
           <HeroBannerTitle>인증 및 지적재산권</HeroBannerTitle>
