@@ -25,6 +25,11 @@ const ContactInquiry = () => {
           </HeroBannerDescription>
         </HeroBannerContent>
       </SolutionHeroBanner>
+
+      <div>
+        여기다 작성해. 스타일은 NextcoreContact.styles.js에 저장, 스타일 명에는
+        Con 붙이고
+      </div>
     </>
   );
 };
