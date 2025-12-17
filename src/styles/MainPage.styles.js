@@ -60,7 +60,7 @@ export const BackgroundSlider = styled.div`
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: -5;
 `;
 
 /* 개별 슬라이드 비디오 */
@@ -256,14 +256,16 @@ export const CTAButton = styled.button`
 export const HeroContentStatic = styled.div`
   position: relative;
   z-index: 10;
-  display: flex;
+  display: ${(props) => (props.$isVisible ? "flex" : "none")};
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: white;
   padding: 0 20px;
-  animation: fadeInUp 1s ease-out;
+  opacity: ${(props) => props.$opacity || 1};
+  transition: opacity 0.3s ease-out;
+  animation: ${(props) => (props.$isVisible ? "fadeInUp 1s ease-out" : "none")};
 
   @keyframes fadeInUp {
     from {

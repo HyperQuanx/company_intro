@@ -67,7 +67,7 @@ export const DropdownMenu = styled.ul`
 
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: ${(props) => (props.$isCompany ? "flex-end" : "flex-start")};
   align-items: center;
   gap: 0;
   height: 50px;

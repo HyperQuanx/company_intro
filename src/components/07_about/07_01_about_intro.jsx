@@ -1,3 +1,5 @@
+import React, { useRef, useEffect, useState } from "react";
+
 import {
   HeroBannerBackground,
   HeroBannerContent,
@@ -14,18 +16,18 @@ import {
   ServiceGrid,
   ServiceBox,
   IntroImage,
-  CompanyInfoSection,
-  CompanyInfoContainer,
-  CompanyDescription,
-  CompanyName,
-  CompanyMainText,
-  BusinessList,
-  BusinessItem,
-  CompanyInfoTable,
-  TableRow,
-  TableLabel,
-  TableValue,
-  ContactInfo,
+  VideoSection,
+  VideoOverlay,
+  CompanyInfoModernSection,
+  CompanyInfoModernContainer,
+  CompanyInfoTableWrapper,
+  CompanyInfoTableStyled,
+  HighlightBox,
+  AboutSectionTitle,
+  AbtVFixedVideoContainer,
+  AbtVMainContent,
+  AbtVTransparentSection,
+  AbtVSolidSection,
 } from "../../styles/NextcoreAbout.styles";
 
 import {
@@ -42,6 +44,7 @@ import {
   FaChartLine,
   FaCloud,
 } from "react-icons/fa6";
+import { HeroSection } from "../../styles/MainPage.styles";
 
 const AboutIntro = () => {
   // 서비스 항목
@@ -60,14 +63,51 @@ const AboutIntro = () => {
     { icon: FaCloud, name: "클라우드 SaaS 서비스" },
   ];
 
-  // 주요 사업
-  const businesses = [
-    "기업 통합관제 솔루션",
-    "IoT 기반 에너지 관제 솔루션",
-    "디지털 트윈 기반 산업 안전관리 시스템",
-    "Big Data 기반 예측 서비스",
-    "지능형 DT(Digital Transformation) 서비스",
-  ];
+  // Intersection Observer를 위한 ref들
+  const introSectionRef = useRef(null);
+  const companySectionRef = useRef(null);
+  const [introVisible, setIntroVisible] = useState(false);
+  const [companyVisible, setCompanyVisible] = useState(false);
+
+  // Intersection Observer 설정
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -100px 0px",
+    };
+
+    const observerCallback = (entries, ref) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (ref === introSectionRef) {
+            setIntroVisible(true);
+          } else if (ref === companySectionRef) {
+            setCompanyVisible(true);
+          }
+        }
+      });
+    };
+
+    const introObserver = new IntersectionObserver(
+      (entries) => observerCallback(entries, introSectionRef),
+      observerOptions
+    );
+    const companyObserver = new IntersectionObserver(
+      (entries) => observerCallback(entries, companySectionRef),
+      observerOptions
+    );
+
+    if (introSectionRef.current) introObserver.observe(introSectionRef.current);
+    if (companySectionRef.current)
+      companyObserver.observe(companySectionRef.current);
+
+    return () => {
+      if (introSectionRef.current)
+        introObserver.unobserve(introSectionRef.current);
+      if (companySectionRef.current)
+        companyObserver.unobserve(companySectionRef.current);
+    };
+  }, []);
 
   return (
     <div>
@@ -88,9 +128,9 @@ const AboutIntro = () => {
       </SolutionHeroBanner>
 
       {/* Section 1: Introduction */}
-      <IntroductionSection>
+      <IntroductionSection ref={introSectionRef}>
         <IntroContainer>
-          <IntroContent>
+          <IntroContent $visible={introVisible}>
             <div>
               <IntroText className="mainIntroText">
                 NEXTCORE Technology
@@ -105,23 +145,17 @@ const AboutIntro = () => {
             </IntroText>
 
             <div>
-              <h3
-                style={{
-                  margin: "20px 0 0 0",
-                  fontSize: "2.2rem",
-                  fontWeight: "800",
-                  color: "#2d3748",
-                }}
-              >
-                NEXTCORE 사업범위
-              </h3>
+              <AboutSectionTitle>
+                <h3>넥스트코어 사업범위</h3>
+              </AboutSectionTitle>
+
               <ServiceGrid>
                 {services.map((service, idx) => {
                   const Icon = service.icon;
                   return (
                     <ServiceBox key={idx}>
                       <div className="service-icon">
-                        <Icon size={22} />
+                        <Icon size={42} />
                       </div>
                       <div className="service-name">{service.name}</div>
                     </ServiceBox>
@@ -133,54 +167,85 @@ const AboutIntro = () => {
         </IntroContainer>
       </IntroductionSection>
 
-      <CompanyInfoSection>
-        <CompanyInfoContainer>
-          <CompanyInfoTable>
-            <TableRow>
-              <TableLabel>회사명</TableLabel>
-              <TableValue>(주)넥스트코어테크놀로지</TableValue>
-            </TableRow>
+      <AbtVFixedVideoContainer>
+        <video autoPlay muted loop playsInline>
+          <source src="/videos/video01.mp4" type="video/mp4" />
+        </video>
+      </AbtVFixedVideoContainer>
 
-            <TableRow>
-              <TableLabel>설립일</TableLabel>
-              <TableValue>2013. 03. 07</TableValue>
-            </TableRow>
+      {/* 컨텐츠 영역. 뭐쓰징 */}
+      <AbtVMainContent>
+        <AbtVTransparentSection>
+          <div>
+            <p style={{ marginBottom: "1.5rem" }}>
+              넥스트코어테크놀로지의 가장 중요한 목표는 도전과 겸손, 그리고
+              사람과 기술입니다.
+            </p>
+            <h2>끊임 없는 기술개발을 통해 마음까지 케어 할 수 있는</h2>
+            <h2>넥스트코어테크놀로지로 성장하겠습니다.</h2>
+          </div>
+        </AbtVTransparentSection>
+      </AbtVMainContent>
 
-            <TableRow>
-              <TableLabel>대표자</TableLabel>
-              <TableValue>서원기</TableValue>
-            </TableRow>
+      <CompanyInfoModernSection ref={companySectionRef}>
+        <CompanyInfoModernContainer>
+          <AboutSectionTitle>
+            <h3>회사 정보</h3>
+          </AboutSectionTitle>
 
-            <TableRow>
-              <TableLabel>임직원수</TableLabel>
-              <TableValue>15명(2025. 12월 기준)</TableValue>
-            </TableRow>
+          <CompanyInfoTableWrapper $visible={companyVisible}>
+            <CompanyInfoTableStyled>
+              <thead>
+                <tr>
+                  <th>항목</th>
+                  <th>정보</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>회사명</td>
+                  <td>(주)넥스트코어테크놀로지</td>
+                </tr>
+                <tr>
+                  <td>설립일</td>
+                  <td>2013년 3월 7일</td>
+                </tr>
+                <tr>
+                  <td>대표자</td>
+                  <td>서원기</td>
+                </tr>
+                <tr>
+                  <td>임직원수</td>
+                  <td>15명</td>
+                </tr>
+                <tr>
+                  <td>소재지</td>
+                  <td>
+                    서울특별시 송파구 법원로 128, A동 610호 (SK V1 GL메트로시티)
+                  </td>
+                </tr>
+                <tr>
+                  <td>연락처</td>
+                  <td>
+                    Tel: 070-5015-2313
+                    <br />
+                    Fax: 070-8240-2314
+                  </td>
+                </tr>
+              </tbody>
+            </CompanyInfoTableStyled>
+          </CompanyInfoTableWrapper>
 
-            <TableRow>
-              <TableLabel>소재지</TableLabel>
-              <TableValue>
-                서울특별시 송파구 법원로 128, A동 610호 (SK V1 GL메트로시티)
-              </TableValue>
-            </TableRow>
-
-            <TableRow>
-              <TableLabel>연락처</TableLabel>
-              <TableValue>
-                <ContactInfo>
-                  <div className="contact-item">
-                    <span className="label">Tel</span>
-                    <span className="value">070-5015-2313</span>
-                  </div>
-                  <div className="contact-item">
-                    <span className="label">Fax</span>
-                    <span className="value">070-8240-2314</span>
-                  </div>
-                </ContactInfo>
-              </TableValue>
-            </TableRow>
-          </CompanyInfoTable>
-        </CompanyInfoContainer>
-      </CompanyInfoSection>
+          {/* <HighlightBox>
+            <h3>넥스트코어테크놀로지</h3>
+            <p>
+              끊임없는 기술개발을 통해 마음까지 케어할 수 있는
+              <br />
+              최고의 ICT 솔루션 전문 기업으로 성장하겠습니다.
+            </p>
+          </HighlightBox> */}
+        </CompanyInfoModernContainer>
+      </CompanyInfoModernSection>
     </div>
   );
 };

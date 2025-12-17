@@ -182,7 +182,7 @@ const Header = () => {
               <Link to={item.path}>{item.title}</Link>
               {/* Dropdown Menu */}
               {item.subItems && item.subItems.length > 0 && (
-                <DropdownMenu>
+                <DropdownMenu $isCompany>
                   {item.subItems.map((sub, subIndex) => (
                     <li key={subIndex}>
                       <Link to={sub.path}>{sub.title}</Link>

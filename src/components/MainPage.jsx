@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // import Slider from "react-slick";
 // import "slick-carousel/slick/slick.css";
@@ -29,6 +29,11 @@ import {
 } from "../styles/MainPage.styles";
 import Solution from "./00_main/00_02_solution";
 import ClientList from "./00_main/00_03_main_clientList";
+import {
+  AbtVFixedVideoContainer,
+  AbtVMainContent,
+  AbtVTransparentSection,
+} from "../styles/NextcoreAbout.styles";
 
 /* 기존 캐러셀 데이터 - 주석 처리
 const heroSlides = [
@@ -43,6 +48,31 @@ const heroSlides = [
 */
 
 const MainPage = () => {
+  const [heroVisible, setHeroVisible] = useState(true);
+  const [heroOpacity, setHeroOpacity] = useState(1);
+
+  // 스크롤 이벤트 처리
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const heroHeight = window.innerHeight - 80; // 헤더 높이 제외
+
+      // 스크롤이 hero 높이의 25% 이상이면 숨김
+      if (scrollY > heroHeight * 0.55) {
+        setHeroVisible(false);
+      } else {
+        setHeroVisible(true);
+      }
+
+      // 자연스러운 페이드 효과
+      const opacity = Math.max(0, 1 - scrollY / (heroHeight * 0.55));
+      setHeroOpacity(opacity);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   /* 기존 캐러셀 설정 - 주석 처리
   const carouselSettings = {
     dots: true,
@@ -85,7 +115,7 @@ const MainPage = () => {
         <BackgroundOverlay />
 
         {/* 새로운 히어로 콘텐츠 */}
-        <HeroContentStatic>
+        <HeroContentStatic $isVisible={heroVisible} $opacity={heroOpacity}>
           <HeroMainTitle>NEXT CORE</HeroMainTitle>
           <HeroSubtitleStatic>
             Technology for{" "}
@@ -143,6 +173,18 @@ const MainPage = () => {
         {/* Client List Section */}
         <ClientList />
       </MainContainer>
+
+      <AbtVMainContent>
+        <AbtVTransparentSection>
+          <h2>넥스트코어 기술을 통해 산업현장에서의</h2>
+          <h2>안전사각지대를 줄여, 더 이상 산업재해로 인해</h2>
+          <h2>
+            일터에서 노동자가 목숨을 잃는 비극이 발생하지 않기를 기원합니다.
+          </h2>
+
+          <p>-Nextcore Technology 일동</p>
+        </AbtVTransparentSection>
+      </AbtVMainContent>
     </>
   );
 };

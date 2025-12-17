@@ -125,30 +125,30 @@ export const TransitIcon = styled.div`
 export const IntroductionSection = styled.section`
   width: 100%;
   background: #ffffff;
-  padding: 60px 40px;
+  padding: 6rem 2.5rem;
 
   @media (max-width: 768px) {
-    padding: 40px 20px;
+    padding: 4rem 1.25rem;
   }
 `;
 
 export const SectionTitle = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 40px;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
 
   &::before {
     content: "";
     display: block;
-    width: 4px;
-    height: 28px;
+    width: 0.25rem;
+    height: 1.75rem;
     background: #55b3d6;
-    border-radius: 2px;
+    border-radius: 0.125rem;
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 800;
     color: #101828;
     margin: 0;
@@ -156,12 +156,13 @@ export const SectionTitle = styled.div`
 
   @media (max-width: 768px) {
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
     }
   }
 `;
 
 export const IntroContainer = styled.div`
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -169,46 +170,75 @@ export const IntroContainer = styled.div`
 
   @media (max-width: 968px) {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 2.5rem;
   }
 `;
 
 export const IntroContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 5rem;
+  width: 100%;
+  animation: ${(props) =>
+    props.$visible ? "fadeInUp 0.8s ease-out forwards" : "none"};
+  opacity: ${(props) => (props.$visible ? 1 : 0)};
+  transform: ${(props) =>
+    props.$visible ? "translateY(0)" : "translateY(2rem)"};
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 `;
 
 export const IntroText = styled.p`
   &.mainIntroText {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 900;
     font-family: "Pretendard", "Malgun Gothic", dotum, sans-serif;
+    line-height: 1.3;
   }
 
   line-height: 1.8;
   color: #4a5568;
   margin: 0;
+  font-size: 1.5rem;
 
   &:first-of-type {
     font-weight: 600;
     color: #2d3748;
+  }
+
+  @media (max-width: 768px) {
+    &.mainIntroText {
+      font-size: 2.5rem;
+    }
+    font-size: 1rem;
   }
 `;
 
 export const ServiceGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  margin-top: 20px;
+  gap: 1.25rem;
+  margin-top: 2rem;
+  font-size: 1rem;
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
   }
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 0.75rem;
   }
 `;
 
@@ -217,37 +247,90 @@ export const ServiceBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 20px;
+  gap: 0.75rem;
+  padding: 1.5rem;
   border: 2px solid #e2e8f0;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   background: #f8f9fa;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(1.5rem);
+  animation: slideUp 0.6s ease-out forwards;
+
+  @keyframes slideUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  &:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  &:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  &:nth-child(4) {
+    animation-delay: 0.25s;
+  }
+  &:nth-child(5) {
+    animation-delay: 0.3s;
+  }
+  &:nth-child(6) {
+    animation-delay: 0.35s;
+  }
+  &:nth-child(7) {
+    animation-delay: 0.4s;
+  }
+  &:nth-child(8) {
+    animation-delay: 0.45s;
+  }
+  &:nth-child(9) {
+    animation-delay: 0.5s;
+  }
+  &:nth-child(10) {
+    animation-delay: 0.55s;
+  }
+  &:nth-child(11) {
+    animation-delay: 0.6s;
+  }
+  &:nth-child(12) {
+    animation-delay: 0.65s;
+  }
 
   &:hover {
     border-color: #55b3d6;
     background: #f0f7fb;
     box-shadow: 0 4px 12px rgba(85, 179, 214, 0.15);
+    transform: translateY(-0.5rem);
   }
 
   .service-icon {
-    font-size: 2rem;
+    font-size: 5rem;
+    color: #4169e1;
   }
 
   .service-name {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: #2d3748;
     line-height: 1.4;
   }
 
   @media (max-width: 768px) {
-    padding: 16px;
+    padding: 1.25rem;
 
     .service-name {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+    }
+
+    .service-icon {
+      font-size: 1.5rem;
     }
   }
 `;
@@ -769,7 +852,7 @@ export const OrgSectionKicker = styled.div`
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.2px;
-  color: #4aa8d8;
+  color: #4169e1;
   margin-bottom: 10px;
 `;
 
@@ -1678,7 +1761,7 @@ export const AboutSectionTitle = styled.div`
     display: block;
     width: 4px;
     height: 28px;
-    background: #55b3d6;
+    background: #4169e1;
     border-radius: 2px;
   }
 
@@ -1698,7 +1781,7 @@ export const AboutSectionTitle = styled.div`
 
 export const CertificationSubtitle = styled.div`
   font-size: 0.95rem;
-  color: #4aa8d8;
+  color: #4169e1;
   font-weight: 600;
   margin-bottom: 30px;
 `;
@@ -1825,7 +1908,7 @@ export const PatentTitle = styled.div`
 
 export const PatentSubtitle = styled.div`
   font-size: 0.95rem;
-  color: #4aa8d8;
+  color: #4169e1;
   font-weight: 600;
   margin-bottom: 30px;
 `;
@@ -1999,7 +2082,7 @@ export const ProgramIPTitle = styled.div`
 
 export const ProgramIPSubtitle = styled.div`
   font-size: 0.95rem;
-  color: #4aa8d8;
+  color: #4169e1;
   font-weight: 600;
   margin-bottom: 30px;
 `;
@@ -2214,3 +2297,441 @@ export const MOUImageCardBody = styled.div`
   }
 `;
 /* ===== MOU Section End ===== */
+
+/* ===== Video Section ===== */
+export const VideoSection = styled.div`
+  width: 100%;
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+
+  @media (max-width: 768px) {
+    height: 400px;
+  }
+`;
+
+export const VideoContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateY(${(props) => props.$translateY || 0}px);
+  transition: transform 0.1s linear;
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+`;
+
+export const VideoOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 10;
+  pointer-events: none;
+`;
+
+/* ===== Company Info Modern Section ===== */
+export const CompanyInfoModernSection = styled.section`
+  width: 100%;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  padding: 5rem 2.5rem;
+
+  @media (max-width: 768px) {
+    padding: 3.75rem 1.25rem;
+  }
+`;
+
+export const CompanyInfoModernContainer = styled.div`
+  max-width: 75rem;
+  margin: 0 auto;
+`;
+
+export const CompanyInfoGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.875rem;
+  margin-top: 3.125rem;
+
+  @media (max-width: 968px) {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  ${(props) =>
+    props.$visible &&
+    css`
+      & > div {
+        animation: companyFadeInUp 0.6s ease-out forwards !important;
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+
+        &:nth-child(1) {
+          animation-delay: 0.1s !important;
+        }
+        &:nth-child(2) {
+          animation-delay: 0.2s !important;
+        }
+        &:nth-child(3) {
+          animation-delay: 0.3s !important;
+        }
+        &:nth-child(4) {
+          animation-delay: 0.4s !important;
+        }
+        &:nth-child(5) {
+          animation-delay: 0.5s !important;
+        }
+        &:nth-child(6) {
+          animation-delay: 0.6s !important;
+        }
+      }
+
+      @keyframes companyFadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(1.875rem);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    `}
+`;
+
+export const CompanyInfoItem = styled.div`
+  background: #ffffff;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  border-left: 4px solid #55b3d6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(1.875rem);
+
+  &:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 12px 24px rgba(85, 179, 214, 0.15);
+    border-left-color: #2d8fa3;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+`;
+
+export const CompanyInfoLabel = styled.div`
+  font-size: 0.9rem;
+  color: #55b3d6;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.0625rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 50%;
+    background: #55b3d6;
+  }
+`;
+
+export const CompanyInfoValue = styled.div`
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #2d3748;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.05rem;
+  }
+`;
+
+export const CompanyInfoDetail = styled.div`
+  font-size: 1rem;
+  color: #718096;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+`;
+
+export const ContactInfoModern = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem;
+    background: #f8f9fa;
+    border-radius: 0.375rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #e8f4f8;
+      transform: translateX(0.25rem);
+    }
+
+    .label {
+      font-weight: 700;
+      color: #55b3d6;
+      min-width: 2.1875rem;
+      font-size: 0.85rem;
+    }
+
+    .value {
+      color: #2d3748;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+  }
+`;
+
+/* ===== Company Info Table Section ===== */
+export const CompanyInfoTableWrapper = styled.div`
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 3.125rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+  ${(props) =>
+    props.$visible &&
+    css`
+      animation: fadeInUp 0.8s ease-out forwards;
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(1.875rem);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    `}
+`;
+
+export const CompanyInfoTableStyled = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+
+  thead {
+    background: linear-gradient(135deg, #4190e1 0%, #4169e1 100%);
+
+    th {
+      padding: 1.25rem;
+      text-align: left;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1rem;
+      border: none;
+      letter-spacing: 0.5px;
+
+      &:first-child {
+        border-radius: 1rem 0 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 1rem 0 0;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid #e8ecf1;
+      transition: all 0.3s ease;
+
+      &:last-child {
+        border-bottom: none;
+
+        td {
+          &:first-child {
+            border-radius: 0 0 0 1rem;
+          }
+
+          &:last-child {
+            border-radius: 0 0 1rem 0;
+          }
+        }
+      }
+
+      &:hover {
+        background: #f0f7fc;
+
+        td:first-child {
+          color: #4169e1;
+          font-weight: 700;
+        }
+      }
+    }
+
+    td {
+      padding: 1.25rem;
+      color: #4a5568;
+      font-size: 0.95rem;
+      line-height: 1.6;
+
+      &:first-child {
+        font-weight: 700;
+        color: #2d3748;
+        background: #f8f9fb;
+        width: 25%;
+      }
+    }
+  }
+`;
+
+export const HighlightBox = styled.div`
+  background: linear-gradient(135deg, #55b3d6 0%, #4169e1 100%);
+  color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 2.5rem;
+  margin-top: 3.125rem;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(85, 179, 214, 0.2);
+  animation: slideUp 0.8s ease-out;
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(2.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  h3 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    opacity: 0.95;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.875rem 1.25rem;
+
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+`;
+/* ===== Company Info Modern Section End ===== */
+
+// 회사 소개 비디오 실험 시작
+// 1. [배경] 화면 뒤에 고정될 비디오 영역
+// 핵심: position: fixed로 뷰포트에 고정시키고, z-index를 낮게 설정
+export const AbtVFixedVideoContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  /* 이거 히어로에는 -1, 아니면 -3으로 할거임 */
+  z-index: ${(props) => (props.zIndex !== undefined ? props.zIndex : -3)};
+  overflow: hidden;
+
+  /* 비디오와 이미지 공통 스타일 적용 */
+  video,
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 비율을 유지하면서 빈 공간 없이 가득 채움 */
+    display: block; /* 이미지 하단 미세한 공백 제거용 */
+  }
+
+  /* img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: white;
+    display: block;
+  } */
+
+  /* 영상 위에 살짝 어두운 딤 처리를 하고 싶다면 가상요소 사용 */
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 필요 없으면 제거 */
+  }
+`;
+
+// 2. [전체 컨텐츠] 스크롤되는 전체 영역
+export const AbtVMainContent = styled.div`
+  position: relative;
+  width: 100%;
+  z-index: 1; /* 비디오보다 위에 와야 함 */
+`;
+
+// 3. [가림막 섹션] 비디오를 가리는 일반 배경색 섹션 (흰색 등)
+export const AbtVSolidSection = styled.div`
+  position: relative;
+  background-color: #fff; /* 비디오를 가리는 색상 */
+  padding: 100px 0;
+  min-height: 50vh; /* 예시 높이 */
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+// 4. [투명 섹션] 비디오가 보여야 하는 섹션 (주력사업 부분)
+// 배경을 transparent(투명)로 설정하여 뒤에 고정된 비디오가 보이게 함
+export const AbtVTransparentSection = styled.div`
+  position: relative;
+  background-color: transparent; /* 핵심: 여기가 투명해야 뒤에 영상이 보임 */
+  padding: 150px 30px;
+  min-height: 60vh;
+  color: #fff; /* 영상 위 글씨는 밝게 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h2 {
+    font-size: 2.2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); /* 영상 위 글씨 가독성 위해 그림자 추가 */
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+`;
+
+// 회사 소개 비디오 실험 끝
