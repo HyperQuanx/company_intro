@@ -613,7 +613,7 @@ export const HeroBannerContent = styled.div`
   position: relative;
   z-index: 1;
   padding: 60px 80px;
-  max-width: 800px;
+  max-width: 1200px;
   color: white;
 
   @media (max-width: 768px) {

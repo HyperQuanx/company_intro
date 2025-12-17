@@ -8,6 +8,8 @@ import {
   SolutionHeroBanner,
 } from "../../styles/Nextcare.styles";
 
+import ClientList from "../00_main/00_03_main_clientList";
+
 const AboutClients = () => {
   return (
     <>
@@ -18,14 +20,16 @@ const AboutClients = () => {
           $bgColor="#4aa8d8"
         />
         <HeroBannerContent>
-          <HeroBannerTitle>연혁</HeroBannerTitle>
+          <HeroBannerTitle>고객사</HeroBannerTitle>
           <HeroBannerDescription>
-            넥스트코어테크놀로지가 걸어온 성장의 발자취와
+            다양한 산업 분야의 고객사와 구축한 신뢰를 바탕으로
             <br />
-            주요 기술·사업 성과를 한눈에 확인하세요.
+            현장 중심의 실질적인 디지털 전환 성과를 창출합니다.
           </HeroBannerDescription>
         </HeroBannerContent>
       </SolutionHeroBanner>
+
+      <ClientList />
     </>
   );
 };

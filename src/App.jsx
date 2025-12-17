@@ -22,6 +22,9 @@ import AboutIntro from "./components/07_about/07_01_about_intro";
 import AboutLocation from "./components/07_about/07_02_about_location";
 import AboutHistory from "./components/07_about/07_03_about_history";
 import AboutOrganization from "./components/07_about/07_04_about_organization";
+import AboutCertification from "./components/07_about/07_05_about_certification";
+import AboutMou from "./components/07_about/07_06_about_mou";
+import AboutClients from "./components/07_about/07_07_about_clients";
 
 function App() {
   return (
@@ -87,6 +90,12 @@ function App() {
             <Route path="/about/location" element={<AboutLocation />} />
             <Route path="/about/history" element={<AboutHistory />} />
             <Route path="/about/organization" element={<AboutOrganization />} />
+            <Route
+              path="/about/certification"
+              element={<AboutCertification />}
+            />
+            <Route path="/about/mou" element={<AboutMou />} />
+            <Route path="/about/clients" element={<AboutClients />} />
 
             {/* 09 레퍼런스 영상 */}
             <Route path="/insight/videos" element={<Insight_videos />} />
