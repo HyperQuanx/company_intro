@@ -25,6 +25,7 @@ import AboutOrganization from "./components/07_about/07_04_about_organization";
 import AboutCertification from "./components/07_about/07_05_about_certification";
 import AboutMou from "./components/07_about/07_06_about_mou";
 import AboutClients from "./components/07_about/07_07_about_clients";
+import InsightNews from "./components/09_insight/09_01_insight_news";
 
 function App() {
   return (
@@ -97,7 +98,8 @@ function App() {
             <Route path="/about/mou" element={<AboutMou />} />
             <Route path="/about/clients" element={<AboutClients />} />
 
-            {/* 09 레퍼런스 영상 */}
+            {/* 09 인사이트 */}
+            <Route path="/insight/news" element={<InsightNews />} />
             <Route path="/insight/videos" element={<Insight_videos />} />
           </Routes>
         </MainContent>
