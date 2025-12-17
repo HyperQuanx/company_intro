@@ -274,7 +274,7 @@ export const ConSubmitButton = styled.button`
   font-size: 1.1rem;
   font-weight: 700;
   color: #ffffff;
-  background: linear-gradient(135deg, #55b3d6 0%, #3d9fc2 100%);
+  background: linear-gradient(135deg, #55b3d6 0%, #4169e1 100%);
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -282,7 +282,7 @@ export const ConSubmitButton = styled.button`
   margin-top: 16px;
 
   &:hover {
-    background: linear-gradient(135deg, #3d9fc2 0%, #2d8fa3 100%);
+    background: linear-gradient(135deg, #3d9fc2 0%, #4169e1 100%);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(85, 179, 214, 0.3);
   }
