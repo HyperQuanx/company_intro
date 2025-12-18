@@ -29,19 +29,17 @@ import {
   ConLoadingSpinner,
 } from "../../styles/NextcoreContact.styles";
 import { AboutSectionTitle } from "../../styles/NextcoreAbout.styles";
+import { PublicSContainer } from "../../styles/PublicS.styles";
 
 // 지원 가능한 팀 목록
 const TEAM_OPTIONS = [
   { value: "", label: "지원 부서를 선택해주세요" },
-  { value: "경영지원팀", label: "경영지원팀", dept: "경영지원" },
-  { value: "개발1팀", label: "개발 1팀", dept: "R&D 부문" },
-  { value: "개발2팀", label: "개발 2팀", dept: "R&D 부문" },
-  { value: "영업1팀", label: "영업 1팀", dept: "영업부문" },
-  { value: "영업2팀", label: "영업 2팀", dept: "영업부문" },
-  { value: "영업3팀", label: "영업 3팀", dept: "영업부문" },
-  { value: "PM팀", label: "PM팀", dept: "기술부" },
-  { value: "기술1팀", label: "기술 1팀", dept: "기술부" },
-  { value: "기술2팀", label: "기술 2팀", dept: "기술부" },
+  { value: "솔루션팀", label: "FullStack", dept: "솔루션팀" },
+  { value: "솔루션팀", label: "Infra/Server", dept: "솔루션팀" },
+  { value: "솔루션팀", label: "Web/Application Developer", dept: "솔루션팀" },
+  { value: "솔루션팀", label: "AI/ML Engineer", dept: "솔루션팀" },
+  { value: "사업팀", label: "사업기획", dept: "사업팀" },
+  { value: "사업팀", label: "전략기획", dept: "사업팀" },
 ];
 
 const ContactRecruit = () => {
@@ -64,6 +62,7 @@ const ContactRecruit = () => {
   const formRef = useRef(null);
 
   // 입력 핸들러 (유효성 검사 및 길이 제한 추가)
+  // 정규식을 보니 난 왜 여기 정규직인가 탈출좀
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     let newValue = value;
@@ -195,8 +194,8 @@ const ContactRecruit = () => {
       // 4. 전송 (수정된 부분)
       // URL에서 '/ajax/'를 제거하고 본인의 이메일로 변경하세요.
       const response = await fetch(
-        "https://formsubmit.co/qbixroqkfwk@gmail.com",
-        // "https://formsubmit.co/qbixroqkfwk@next-core.co.kr",
+        // "https://formsubmit.co/qbixroqkfwk@gmail.com",
+        "https://formsubmit.co/qbixroqkfwk@next-core.co.kr",
         {
           method: "POST",
           headers: {
@@ -294,257 +293,259 @@ const ContactRecruit = () => {
         </HeroBannerContent>
       </SolutionHeroBanner>
 
-      <ConRecruitSection>
-        <ConRecruitContainer>
-          <AboutSectionTitle>
-            <h3>입사 지원서</h3>
-          </AboutSectionTitle>
-          <ConSectionDescription>
-            아래 양식을 작성하여 지원해주세요. 이력서는 필수 첨부 항목입니다.
-          </ConSectionDescription>
+      <PublicSContainer>
+        <ConRecruitSection>
+          <ConRecruitContainer>
+            <AboutSectionTitle>
+              <h3>입사 지원서</h3>
+            </AboutSectionTitle>
+            <ConSectionDescription>
+              아래 양식을 작성하여 지원해주세요. 이력서는 필수 첨부 항목입니다.
+            </ConSectionDescription>
 
-          <ConFormWrapper ref={formRef} onSubmit={handleSubmit}>
-            {/* 지원 부서 선택 */}
-            <ConFormGroup>
-              <ConFormLabel>
-                지원 부서 <span className="required">*</span>
-              </ConFormLabel>
-              <ConFormSelect
-                name="team"
-                value={formData.team}
-                onChange={handleInputChange}
-                required
-              >
-                {TEAM_OPTIONS.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.dept
-                      ? `[${option.dept}] ${option.label}`
-                      : option.label}
-                  </option>
-                ))}
-              </ConFormSelect>
-            </ConFormGroup>
-
-            <ConDivider />
-
-            {/* 인적 사항 */}
-            <ConFormRow>
+            <ConFormWrapper ref={formRef} onSubmit={handleSubmit}>
+              {/* 지원 부서 선택 */}
               <ConFormGroup>
                 <ConFormLabel>
-                  성명 <span className="required">*</span>
+                  지원 부서 <span className="required">*</span>
                 </ConFormLabel>
-                <ConFormInput
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="홍길동"
-                  required
-                />
-              </ConFormGroup>
-              <ConFormGroup>
-                <ConFormLabel>
-                  생년월일 <span className="required">*</span>
-                </ConFormLabel>
-                <ConFormInput
-                  type="date"
-                  name="birthdate"
-                  value={formData.birthdate}
+                <ConFormSelect
+                  name="team"
+                  value={formData.team}
                   onChange={handleInputChange}
                   required
-                />
+                >
+                  {TEAM_OPTIONS.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.dept
+                        ? `[${option.dept}] ${option.label}`
+                        : option.label}
+                    </option>
+                  ))}
+                </ConFormSelect>
               </ConFormGroup>
-            </ConFormRow>
 
-            <ConFormRow>
-              <ConFormGroup>
-                <ConFormLabel>
-                  이메일 <span className="required">*</span>
-                </ConFormLabel>
-                <ConFormInput
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="example@email.com"
-                  required
-                />
-              </ConFormGroup>
-              <ConFormGroup>
-                <ConFormLabel>
-                  연락처 <span className="required">*</span>
-                </ConFormLabel>
-                <ConFormInput
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  placeholder="'-' 없이 숫자만 입력 (11자리)"
-                  maxLength={11}
-                  required
-                />
-              </ConFormGroup>
-            </ConFormRow>
+              <ConDivider />
 
-            <ConDivider />
+              {/* 인적 사항 */}
+              <ConFormRow>
+                <ConFormGroup>
+                  <ConFormLabel>
+                    성명 <span className="required">*</span>
+                  </ConFormLabel>
+                  <ConFormInput
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="홍길동"
+                    required
+                  />
+                </ConFormGroup>
+                <ConFormGroup>
+                  <ConFormLabel>
+                    생년월일 <span className="required">*</span>
+                  </ConFormLabel>
+                  <ConFormInput
+                    type="date"
+                    name="birthdate"
+                    value={formData.birthdate}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </ConFormGroup>
+              </ConFormRow>
 
-            {/* 자기소개 */}
-            <ConFormGroup>
-              <ConFormLabel
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <span>자기소개</span>
-                <span
+              <ConFormRow>
+                <ConFormGroup>
+                  <ConFormLabel>
+                    이메일 <span className="required">*</span>
+                  </ConFormLabel>
+                  <ConFormInput
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="example@email.com"
+                    required
+                  />
+                </ConFormGroup>
+                <ConFormGroup>
+                  <ConFormLabel>
+                    연락처 <span className="required">*</span>
+                  </ConFormLabel>
+                  <ConFormInput
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder="'-' 없이 숫자만 입력 (11자리)"
+                    maxLength={11}
+                    required
+                  />
+                </ConFormGroup>
+              </ConFormRow>
+
+              <ConDivider />
+
+              {/* 자기소개 */}
+              <ConFormGroup>
+                <ConFormLabel
                   style={{
-                    fontSize: "13px",
-                    color: "#667085",
-                    fontWeight: "400",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
                   }}
                 >
-                  {formData.introduction.length} / 500
-                </span>
-              </ConFormLabel>
-              <ConFormTextarea
-                name="introduction"
-                value={formData.introduction}
-                onChange={handleInputChange}
-                placeholder="간단한 자기소개 및 지원 동기를 작성해주세요. (최대 500자, 선택사항)"
-                rows={5}
-                maxLength={500}
-              />
-            </ConFormGroup>
-
-            <ConDivider />
-
-            {/* 파일 첨부 */}
-            <ConFormRow>
-              <ConFileUploadWrapper>
-                <ConFormLabel>
-                  이력서 <span className="required">*</span>
+                  <span>자기소개</span>
+                  <span
+                    style={{
+                      fontSize: "13px",
+                      color: "#667085",
+                      fontWeight: "400",
+                    }}
+                  >
+                    {formData.introduction.length} / 500
+                  </span>
                 </ConFormLabel>
-                {!resume ? (
-                  <ConFileUploadLabel>
-                    <input
-                      ref={resumeInputRef}
-                      type="file"
-                      accept=".pdf,.doc,.docx,.hwp"
-                      onChange={(e) => handleFileChange(e, "resume")}
-                    />
-                    <div className="upload-icon">&#128196;</div>
-                    <div className="upload-text">
-                      <div className="main-text">이력서 파일 업로드</div>
-                      <div className="sub-text">
-                        PDF, DOC, DOCX, HWP (최대 10MB)
+                <ConFormTextarea
+                  name="introduction"
+                  value={formData.introduction}
+                  onChange={handleInputChange}
+                  placeholder="간단한 자기소개 및 지원 동기를 작성해주세요. (최대 500자, 선택사항)"
+                  rows={5}
+                  maxLength={500}
+                />
+              </ConFormGroup>
+
+              <ConDivider />
+
+              {/* 파일 첨부 */}
+              <ConFormRow>
+                <ConFileUploadWrapper>
+                  <ConFormLabel>
+                    이력서 <span className="required">*</span>
+                  </ConFormLabel>
+                  {!resume ? (
+                    <ConFileUploadLabel>
+                      <input
+                        ref={resumeInputRef}
+                        type="file"
+                        accept=".pdf,.doc,.docx,.hwp"
+                        onChange={(e) => handleFileChange(e, "resume")}
+                      />
+                      <div className="upload-icon">&#128196;</div>
+                      <div className="upload-text">
+                        <div className="main-text">이력서 파일 업로드</div>
+                        <div className="sub-text">
+                          PDF, DOC, DOCX, HWP (최대 10MB)
+                        </div>
                       </div>
-                    </div>
-                  </ConFileUploadLabel>
-                ) : (
-                  <ConFileInfo>
-                    <span className="file-icon">&#128196;</span>
-                    <span className="file-name">{resume.name}</span>
-                    <button
-                      type="button"
-                      className="remove-btn"
-                      onClick={() => removeFile("resume")}
-                    >
-                      &#10005;
-                    </button>
-                  </ConFileInfo>
-                )}
-              </ConFileUploadWrapper>
+                    </ConFileUploadLabel>
+                  ) : (
+                    <ConFileInfo>
+                      <span className="file-icon">&#128196;</span>
+                      <span className="file-name">{resume.name}</span>
+                      <button
+                        type="button"
+                        className="remove-btn"
+                        onClick={() => removeFile("resume")}
+                      >
+                        &#10005;
+                      </button>
+                    </ConFileInfo>
+                  )}
+                </ConFileUploadWrapper>
 
-              <ConFileUploadWrapper>
-                <ConFormLabel>포트폴리오</ConFormLabel>
-                {!portfolio ? (
-                  <ConFileUploadLabel>
-                    <input
-                      ref={portfolioInputRef}
-                      type="file"
-                      accept=".pdf,.doc,.docx,.hwp,.ppt,.pptx,.zip"
-                      onChange={(e) => handleFileChange(e, "portfolio")}
-                    />
-                    <div className="upload-icon">&#128188;</div>
-                    <div className="upload-text">
-                      <div className="main-text">포트폴리오 업로드</div>
-                      <div className="sub-text">
-                        PDF, DOC, PPT, ZIP (최대 10MB)
+                <ConFileUploadWrapper>
+                  <ConFormLabel>포트폴리오</ConFormLabel>
+                  {!portfolio ? (
+                    <ConFileUploadLabel>
+                      <input
+                        ref={portfolioInputRef}
+                        type="file"
+                        accept=".pdf,.doc,.docx,.hwp,.ppt,.pptx,.zip"
+                        onChange={(e) => handleFileChange(e, "portfolio")}
+                      />
+                      <div className="upload-icon">&#128188;</div>
+                      <div className="upload-text">
+                        <div className="main-text">포트폴리오 업로드</div>
+                        <div className="sub-text">
+                          PDF, DOC, PPT, ZIP (최대 10MB)
+                        </div>
                       </div>
-                    </div>
-                  </ConFileUploadLabel>
-                ) : (
-                  <ConFileInfo>
-                    <span className="file-icon">&#128188;</span>
-                    <span className="file-name">{portfolio.name}</span>
-                    <button
-                      type="button"
-                      className="remove-btn"
-                      onClick={() => removeFile("portfolio")}
-                    >
-                      &#10005;
-                    </button>
-                  </ConFileInfo>
-                )}
-              </ConFileUploadWrapper>
-            </ConFormRow>
+                    </ConFileUploadLabel>
+                  ) : (
+                    <ConFileInfo>
+                      <span className="file-icon">&#128188;</span>
+                      <span className="file-name">{portfolio.name}</span>
+                      <button
+                        type="button"
+                        className="remove-btn"
+                        onClick={() => removeFile("portfolio")}
+                      >
+                        &#10005;
+                      </button>
+                    </ConFileInfo>
+                  )}
+                </ConFileUploadWrapper>
+              </ConFormRow>
 
-            <ConFormNotice>
-              <span className="notice-icon">&#9888;</span>
-              <span className="notice-text">
-                파일은 PDF, DOC, DOCX, HWP, PPT, PPTX, ZIP 형식만 지원되며, 최대
-                10MB까지 업로드 가능합니다.
-              </span>
-            </ConFormNotice>
-
-            <ConDivider />
-
-            {/* 개인정보 동의 */}
-            <ConPrivacyCheckbox>
-              <input
-                type="checkbox"
-                id="privacy"
-                checked={privacyAgreed}
-                onChange={(e) => setPrivacyAgreed(e.target.checked)}
-              />
-              <label htmlFor="privacy" className="checkbox-text">
-                <strong>[필수]</strong> 개인정보 수집 및 이용에 동의합니다.
-                <br />
-                <span style={{ fontSize: "0.8rem", color: "#667085" }}>
-                  수집항목: 성명, 이메일, 연락처, 생년월일 / 수집목적: 채용 전형
-                  진행 / 보유기간: 채용 완료 후 1년
+              <ConFormNotice>
+                <span className="notice-icon">&#9888;</span>
+                <span className="notice-text">
+                  파일은 PDF, DOC, DOCX, HWP, PPT, PPTX, ZIP 형식만 지원되며,
+                  최대 10MB까지 업로드 가능합니다.
                 </span>
-              </label>
-            </ConPrivacyCheckbox>
+              </ConFormNotice>
 
-            {/* 에러 메시지 */}
-            {submitStatus === "error" && (
-              <ConMessageBox className="error">
-                <div className="icon">&#10060;</div>
-                <div className="title">전송에 실패했습니다</div>
-                <div className="message">
-                  잠시 후 다시 시도해주세요. 문제가 지속되면
-                  이메일(qbixroqkfwk@next-core.co.kr)로 직접 보내주세요.
-                </div>
-              </ConMessageBox>
-            )}
+              <ConDivider />
 
-            {/* 제출 버튼 */}
-            <ConSubmitButton type="submit" disabled={isSubmitting}>
-              {isSubmitting ? (
-                <>
-                  <ConLoadingSpinner />
-                  지원서 제출 중...
-                </>
-              ) : (
-                "지원하기"
+              {/* 개인정보 동의 */}
+              <ConPrivacyCheckbox>
+                <input
+                  type="checkbox"
+                  id="privacy"
+                  checked={privacyAgreed}
+                  onChange={(e) => setPrivacyAgreed(e.target.checked)}
+                />
+                <label htmlFor="privacy" className="checkbox-text">
+                  <strong>[필수]</strong> 개인정보 수집 및 이용에 동의합니다.
+                  <br />
+                  <span style={{ fontSize: "0.8rem", color: "#667085" }}>
+                    수집항목: 성명, 이메일, 연락처, 생년월일 / 수집목적: 채용
+                    전형 진행 / 보유기간: 채용 완료 후 1년
+                  </span>
+                </label>
+              </ConPrivacyCheckbox>
+
+              {/* 에러 메시지 */}
+              {submitStatus === "error" && (
+                <ConMessageBox className="error">
+                  <div className="icon">&#10060;</div>
+                  <div className="title">전송에 실패했습니다</div>
+                  <div className="message">
+                    잠시 후 다시 시도해주세요. 문제가 지속되면
+                    이메일(qbixroqkfwk@next-core.co.kr)로 직접 보내주세요.
+                  </div>
+                </ConMessageBox>
               )}
-            </ConSubmitButton>
-          </ConFormWrapper>
-        </ConRecruitContainer>
-      </ConRecruitSection>
+
+              {/* 제출 버튼 */}
+              <ConSubmitButton type="submit" disabled={isSubmitting}>
+                {isSubmitting ? (
+                  <>
+                    <ConLoadingSpinner />
+                    지원서 제출 중...
+                  </>
+                ) : (
+                  "지원하기"
+                )}
+              </ConSubmitButton>
+            </ConFormWrapper>
+          </ConRecruitContainer>
+        </ConRecruitSection>
+      </PublicSContainer>
     </>
   );
 };

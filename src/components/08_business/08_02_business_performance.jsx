@@ -39,6 +39,7 @@ import {
   BuPerList,
 } from "../../styles/NextcoreBu.styles";
 import { AboutSectionTitle } from "../../styles/NextcoreAbout.styles";
+import { PublicSContainer } from "../../styles/PublicS.styles";
 
 const timelineData = [
   {
@@ -237,309 +238,315 @@ const BusinessPerformance = () => {
         </HeroBannerContent>
       </SolutionHeroBanner>
 
-      <BuPerSection>
-        <BuPerContainer>
-          <BuPerIntro>
-            <BuPerIntroTitle>
-              R&amp;D 연구 수행 기반, 사업화 성과로 확장
-            </BuPerIntroTitle>
-            <BuPerIntroDesc>
-              넥스트코어테크놀로지는 연구개발 수행을 통해 기술을 인정받고,
-              사업화 실적으로 기술이전 및 확산을 지속하고 있습니다.
-            </BuPerIntroDesc>
-          </BuPerIntro>
+      <PublicSContainer>
+        <BuPerSection>
+          <BuPerContainer>
+            <BuPerIntro>
+              <BuPerIntroTitle>
+                R&amp;D 연구 수행 기반, 사업화 성과로 확장
+              </BuPerIntroTitle>
+              <BuPerIntroDesc>
+                넥스트코어테크놀로지는 연구개발 수행을 통해 기술을 인정받고,
+                사업화 실적으로 기술이전 및 확산을 지속하고 있습니다.
+              </BuPerIntroDesc>
+            </BuPerIntro>
 
-          <BuPerDivider />
+            <BuPerDivider />
 
-          <BuPerTimelineArea>
-            <BuPerTimelineHeader>
-              <div>
-                <AboutSectionTitle style={{ marginTop: "50px" }}>
-                  <h3>사업화를 위한 연구개발 실적</h3>
-                </AboutSectionTitle>
-              </div>
-            </BuPerTimelineHeader>
+            <BuPerTimelineArea>
+              <BuPerTimelineHeader>
+                <div>
+                  <AboutSectionTitle style={{ marginTop: "50px" }}>
+                    <h3>사업화를 위한 연구개발 실적</h3>
+                  </AboutSectionTitle>
+                </div>
+              </BuPerTimelineHeader>
 
-            <BuPerStairs role="list" aria-label="사업화 실적 타임라인">
-              {timelineData.map((item) => (
-                <BuPerStep key={item.year} role="listitem">
-                  <BuPerStepYear>{item.year}</BuPerStepYear>
-                  <BuPerStepBody>
-                    <BuPerStepDesc>{item.desc}</BuPerStepDesc>
-                    {item.highlights?.map((h, idx) => (
-                      <BuPerStepDesc
-                        key={`${item.year}-${idx}`}
-                        data-variant="highlight"
-                      >
-                        {h}
-                      </BuPerStepDesc>
+              <BuPerStairs role="list" aria-label="사업화 실적 타임라인">
+                {timelineData.map((item) => (
+                  <BuPerStep key={item.year} role="listitem">
+                    <BuPerStepYear>{item.year}</BuPerStepYear>
+                    <BuPerStepBody>
+                      <BuPerStepDesc>{item.desc}</BuPerStepDesc>
+                      {item.highlights?.map((h, idx) => (
+                        <BuPerStepDesc
+                          key={`${item.year}-${idx}`}
+                          data-variant="highlight"
+                        >
+                          {h}
+                        </BuPerStepDesc>
+                      ))}
+                    </BuPerStepBody>
+                  </BuPerStep>
+                ))}
+              </BuPerStairs>
+            </BuPerTimelineArea>
+
+            <div>
+              <AboutSectionTitle style={{ marginTop: "50px" }}>
+                <h3>상세 수행 실적</h3>
+              </AboutSectionTitle>
+              <BuPerTableWrapper>
+                <BuPerTable>
+                  <BuPerThead>
+                    <tr>
+                      <BuPerTh width="10%">년도</BuPerTh>
+                      <BuPerTh width="20%">전담기관</BuPerTh>
+                      <BuPerTh width="15%">기간</BuPerTh>
+                      <BuPerTh width="55%">과제명</BuPerTh>
+                    </tr>
+                  </BuPerThead>
+                  <BuPerTbody>
+                    {projectHistory.map((project, index) => (
+                      <BuPerTr key={index} $isBold={project.bold}>
+                        <BuPerTd $isBold={project.bold}>{project.year}</BuPerTd>
+                        <BuPerTd $isBold={project.bold}>
+                          {project.agency}
+                        </BuPerTd>
+                        <BuPerTd $isBold={project.bold}>{project.term}</BuPerTd>
+                        <BuPerTd $isBold={project.bold}>
+                          {project.title}
+                        </BuPerTd>
+                      </BuPerTr>
                     ))}
-                  </BuPerStepBody>
-                </BuPerStep>
-              ))}
-            </BuPerStairs>
-          </BuPerTimelineArea>
+                  </BuPerTbody>
+                </BuPerTable>
+              </BuPerTableWrapper>
+            </div>
 
-          <div>
-            <AboutSectionTitle style={{ marginTop: "50px" }}>
-              <h3>상세 수행 실적</h3>
-            </AboutSectionTitle>
-            <BuPerTableWrapper>
-              <BuPerTable>
-                <BuPerThead>
-                  <tr>
-                    <BuPerTh width="10%">년도</BuPerTh>
-                    <BuPerTh width="20%">전담기관</BuPerTh>
-                    <BuPerTh width="15%">기간</BuPerTh>
-                    <BuPerTh width="55%">과제명</BuPerTh>
-                  </tr>
-                </BuPerThead>
-                <BuPerTbody>
-                  {projectHistory.map((project, index) => (
-                    <BuPerTr key={index} $isBold={project.bold}>
-                      <BuPerTd $isBold={project.bold}>{project.year}</BuPerTd>
-                      <BuPerTd $isBold={project.bold}>{project.agency}</BuPerTd>
-                      <BuPerTd $isBold={project.bold}>{project.term}</BuPerTd>
-                      <BuPerTd $isBold={project.bold}>{project.title}</BuPerTd>
-                    </BuPerTr>
-                  ))}
-                </BuPerTbody>
-              </BuPerTable>
-            </BuPerTableWrapper>
-          </div>
-
-          <div>
-            <AboutSectionTitle style={{ marginTop: "50px" }}>
-              <h3>핵심 기술 및 지재권 현황</h3>
-            </AboutSectionTitle>
-            <BuPerTableWrapper>
-              <BuPerTable>
-                <BuPerThead>
-                  <tr>
-                    {/* 첫 번째 컬럼은 본문의 Rowspan 헤더를 위한 공간으로 비워두거나 병합할 수 있지만, 
+            <div>
+              <AboutSectionTitle style={{ marginTop: "50px" }}>
+                <h3>핵심 기술 및 지재권 현황</h3>
+              </AboutSectionTitle>
+              <BuPerTableWrapper>
+                <BuPerTable>
+                  <BuPerThead>
+                    <tr>
+                      {/* 첫 번째 컬럼은 본문의 Rowspan 헤더를 위한 공간으로 비워두거나 병합할 수 있지만, 
                         디자인상 헤더 텍스트가 4개이므로 아래와 같이 구성합니다. */}
-                    <BuPerTh width="10%">분야</BuPerTh>
-                    <BuPerTh width="12%">핵심 기술</BuPerTh>
-                    <BuPerTh width="28%">기술 내용</BuPerTh>
-                    <BuPerTh width="25%">사업화 실적</BuPerTh>
-                    <BuPerTh width="25%">관련 지재권</BuPerTh>
-                  </tr>
-                </BuPerThead>
-                <BuPerTbody>
-                  {/* --- 1. 3D기반 디지털 트윈 (첫 번째 행) --- */}
-                  <BuPerTr>
-                    <BuPerVerticalHeader rowSpan={2}>
-                      3D기반
-                      <br />
-                      디지털 트윈
-                    </BuPerVerticalHeader>
-                    <BuPerTd style={{ fontWeight: "bold", color: "#333" }}>
-                      위치센싱 데이터
-                      <br />
-                      수집/분석
-                    </BuPerTd>
-                    <BuPerListTd>
-                      <BuPerList $check>
-                        <li>실시간 위치측위 센싱 데이터 수집 관리</li>
-                        <li>GPS 측위 데이터 맵핑 알고리즘 적용</li>
-                      </BuPerList>
-                    </BuPerListTd>
-                    <BuPerListTd>
-                      <BuPerList>
-                        <li>롯데케미칼 화학공장 안전관리 시스템</li>
-                        <li>
-                          한국서부발전 웨어러블 센싱기반 고위험지역 안전관리
-                          시스템
-                        </li>
-                        <li>Skplanet 노후산단 화학물질 모니터링시스템</li>
-                      </BuPerList>
-                    </BuPerListTd>
-                    <BuPerListTd>
-                      <BuPerList>
-                        <li>
-                          [특허] 제 10-2391207호
-                          <br />
-                          3D 모델링 기반 작업자 위치관리 시스템
-                        </li>
-                        <li>
-                          [특허] 제 10-2204091호
-                          <br />
-                          작업장 안전 통합관리 장치 및 방법
-                        </li>
-                      </BuPerList>
-                    </BuPerListTd>
-                  </BuPerTr>
+                      <BuPerTh width="10%">분야</BuPerTh>
+                      <BuPerTh width="12%">핵심 기술</BuPerTh>
+                      <BuPerTh width="28%">기술 내용</BuPerTh>
+                      <BuPerTh width="25%">사업화 실적</BuPerTh>
+                      <BuPerTh width="25%">관련 지재권</BuPerTh>
+                    </tr>
+                  </BuPerThead>
+                  <BuPerTbody>
+                    {/* --- 1. 3D기반 디지털 트윈 (첫 번째 행) --- */}
+                    <BuPerTr>
+                      <BuPerVerticalHeader rowSpan={2}>
+                        3D기반
+                        <br />
+                        디지털 트윈
+                      </BuPerVerticalHeader>
+                      <BuPerTd style={{ fontWeight: "bold", color: "#333" }}>
+                        위치센싱 데이터
+                        <br />
+                        수집/분석
+                      </BuPerTd>
+                      <BuPerListTd>
+                        <BuPerList $check>
+                          <li>실시간 위치측위 센싱 데이터 수집 관리</li>
+                          <li>GPS 측위 데이터 맵핑 알고리즘 적용</li>
+                        </BuPerList>
+                      </BuPerListTd>
+                      <BuPerListTd>
+                        <BuPerList>
+                          <li>롯데케미칼 화학공장 안전관리 시스템</li>
+                          <li>
+                            한국서부발전 웨어러블 센싱기반 고위험지역 안전관리
+                            시스템
+                          </li>
+                          <li>Skplanet 노후산단 화학물질 모니터링시스템</li>
+                        </BuPerList>
+                      </BuPerListTd>
+                      <BuPerListTd>
+                        <BuPerList>
+                          <li>
+                            [특허] 제 10-2391207호
+                            <br />
+                            3D 모델링 기반 작업자 위치관리 시스템
+                          </li>
+                          <li>
+                            [특허] 제 10-2204091호
+                            <br />
+                            작업장 안전 통합관리 장치 및 방법
+                          </li>
+                        </BuPerList>
+                      </BuPerListTd>
+                    </BuPerTr>
 
-                  {/* --- 1. 3D기반 디지털 트윈 (두 번째 행) --- */}
-                  <BuPerTr>
-                    {/* 분야 컬럼은 위에서 rowSpan으로 병합됨 */}
-                    <BuPerTd style={{ fontWeight: "bold", color: "#333" }}>
-                      3D 데이터
-                      <br />
-                      맵핑 알고리즘
-                      <br />
-                      개발
-                    </BuPerTd>
-                    <BuPerListTd>
-                      <BuPerList $check>
-                        <li>
-                          3D 콘텐츠 활용 기존 센서 및 설비 관리 맵핑을 통한 운영
-                          관리
-                        </li>
-                        <li>
-                          스마트 역사 통합 관리 설비, PSD, 환경센서, CCTV 외
-                          11종 시스템 통합 연동을 3D콘텐츠 제공
-                        </li>
-                      </BuPerList>
-                    </BuPerListTd>
-                    <BuPerListTd>
-                      <BuPerList>
-                        <li>서울교통공사 스마트 역사 시스템</li>
-                        <li>보바스기념병원 건물 에너지 관리 시스템</li>
-                        <li>한국동서발전 작업자위치기반 안전관리 시스템</li>
-                      </BuPerList>
-                    </BuPerListTd>
-                    <BuPerListTd>
-                      <BuPerList>
-                        <li>
-                          [특허] 제 10-1921093호
-                          <br />
-                          IOT 기반 지능형데이터 통합 시스템
-                        </li>
-                        <li>
-                          [GS인증] 21-0451
-                          <br />
-                          스마트 팩토리 통합 운영 관제 시스템
-                        </li>
-                        <li>
-                          [GS인증] 20-0289
-                          <br />
-                          3D기반 디지털 안전관리 플랫폼
-                        </li>
-                      </BuPerList>
-                    </BuPerListTd>
-                  </BuPerTr>
+                    {/* --- 1. 3D기반 디지털 트윈 (두 번째 행) --- */}
+                    <BuPerTr>
+                      {/* 분야 컬럼은 위에서 rowSpan으로 병합됨 */}
+                      <BuPerTd style={{ fontWeight: "bold", color: "#333" }}>
+                        3D 데이터
+                        <br />
+                        맵핑 알고리즘
+                        <br />
+                        개발
+                      </BuPerTd>
+                      <BuPerListTd>
+                        <BuPerList $check>
+                          <li>
+                            3D 콘텐츠 활용 기존 센서 및 설비 관리 맵핑을 통한
+                            운영 관리
+                          </li>
+                          <li>
+                            스마트 역사 통합 관리 설비, PSD, 환경센서, CCTV 외
+                            11종 시스템 통합 연동을 3D콘텐츠 제공
+                          </li>
+                        </BuPerList>
+                      </BuPerListTd>
+                      <BuPerListTd>
+                        <BuPerList>
+                          <li>서울교통공사 스마트 역사 시스템</li>
+                          <li>보바스기념병원 건물 에너지 관리 시스템</li>
+                          <li>한국동서발전 작업자위치기반 안전관리 시스템</li>
+                        </BuPerList>
+                      </BuPerListTd>
+                      <BuPerListTd>
+                        <BuPerList>
+                          <li>
+                            [특허] 제 10-1921093호
+                            <br />
+                            IOT 기반 지능형데이터 통합 시스템
+                          </li>
+                          <li>
+                            [GS인증] 21-0451
+                            <br />
+                            스마트 팩토리 통합 운영 관제 시스템
+                          </li>
+                          <li>
+                            [GS인증] 20-0289
+                            <br />
+                            3D기반 디지털 안전관리 플랫폼
+                          </li>
+                        </BuPerList>
+                      </BuPerListTd>
+                    </BuPerTr>
 
-                  {/* --- 2. 빅데이터 통합 플랫폼 (첫 번째 행) --- */}
-                  <BuPerTr>
-                    <BuPerVerticalHeader rowSpan={2}>
-                      빅데이터
-                      <br />
-                      통합 플랫폼
-                    </BuPerVerticalHeader>
-                    <BuPerTd style={{ fontWeight: "bold", color: "#333" }}>
-                      IoT 기반
-                      <br />
-                      데이터 통합
-                    </BuPerTd>
-                    <BuPerListTd>
-                      <BuPerList $check>
-                        <li>
-                          에너지 설비 및 제조 공정 설비에 대한 데이터 무선 전송
-                          시스템 개발
-                        </li>
-                        <li>
-                          IOT 기반 모뎀을 통한 네트워크 공사 독립적인 시스템
-                          적용
-                        </li>
-                        <li>
-                          기존 센서 및 설비 프로토콜 연동을 통한 스마트 통합
-                          플랫폼 개발
-                        </li>
-                      </BuPerList>
-                    </BuPerListTd>
-                    <BuPerListTd>
-                      <BuPerList>
-                        <li>한국로지스풀 전국 지게차 관리 시스템</li>
-                        <li>몽골국립대학교 몽골 스마트 그리드 시스템</li>
-                        <li>에이맵 세홍 FEMS (스마트 팩토리 시스템)</li>
-                        <li>㈜한국수력원자력 스마트응급위기관리시스템</li>
-                      </BuPerList>
-                    </BuPerListTd>
-                    <BuPerListTd>
-                      <BuPerList>
-                        <li>
-                          [특허] 제 10-1327477호
-                          <br />
-                          통합 관제 및 제어 관리 시스템
-                        </li>
-                        <li>
-                          [특허] 제 10-1656011호
-                          <br />
-                          빅데이터 기반 고장 모니터링 시스템 및 방법
-                        </li>
-                      </BuPerList>
-                    </BuPerListTd>
-                  </BuPerTr>
+                    {/* --- 2. 빅데이터 통합 플랫폼 (첫 번째 행) --- */}
+                    <BuPerTr>
+                      <BuPerVerticalHeader rowSpan={2}>
+                        빅데이터
+                        <br />
+                        통합 플랫폼
+                      </BuPerVerticalHeader>
+                      <BuPerTd style={{ fontWeight: "bold", color: "#333" }}>
+                        IoT 기반
+                        <br />
+                        데이터 통합
+                      </BuPerTd>
+                      <BuPerListTd>
+                        <BuPerList $check>
+                          <li>
+                            에너지 설비 및 제조 공정 설비에 대한 데이터 무선
+                            전송 시스템 개발
+                          </li>
+                          <li>
+                            IOT 기반 모뎀을 통한 네트워크 공사 독립적인 시스템
+                            적용
+                          </li>
+                          <li>
+                            기존 센서 및 설비 프로토콜 연동을 통한 스마트 통합
+                            플랫폼 개발
+                          </li>
+                        </BuPerList>
+                      </BuPerListTd>
+                      <BuPerListTd>
+                        <BuPerList>
+                          <li>한국로지스풀 전국 지게차 관리 시스템</li>
+                          <li>몽골국립대학교 몽골 스마트 그리드 시스템</li>
+                          <li>에이맵 세홍 FEMS (스마트 팩토리 시스템)</li>
+                          <li>㈜한국수력원자력 스마트응급위기관리시스템</li>
+                        </BuPerList>
+                      </BuPerListTd>
+                      <BuPerListTd>
+                        <BuPerList>
+                          <li>
+                            [특허] 제 10-1327477호
+                            <br />
+                            통합 관제 및 제어 관리 시스템
+                          </li>
+                          <li>
+                            [특허] 제 10-1656011호
+                            <br />
+                            빅데이터 기반 고장 모니터링 시스템 및 방법
+                          </li>
+                        </BuPerList>
+                      </BuPerListTd>
+                    </BuPerTr>
 
-                  {/* --- 2. 빅데이터 통합 플랫폼 (두 번째 행) --- */}
-                  <BuPerTr>
-                    {/* 분야 컬럼은 위에서 rowSpan으로 병합됨 */}
-                    <BuPerTd style={{ fontWeight: "bold", color: "#333" }}>
-                      통합 관제
-                      <br />
-                      모니터링 플랫폼
-                    </BuPerTd>
-                    <BuPerListTd>
-                      <BuPerList $check>
-                        <li>
-                          건물 공정 관리를 위한 통합 플랫폼 개발 (자재, 작업자,
-                          CCTV 상황 관리)
-                        </li>
-                        <li>
-                          전체 데이터를 실시간으로 한눈에 볼 수 있는 대시보드
-                          제공
-                        </li>
-                        <li>
-                          가시/가청/E-mail/팝업 등을 통한 실시간 고장 알람 발송
-                          기능 제공
-                        </li>
-                        <li>
-                          분/시/일/주/월/연 별 성능 이력 관리 및 조회 검색
-                        </li>
-                      </BuPerList>
-                    </BuPerListTd>
-                    <BuPerListTd>
-                      <BuPerList>
-                        <li>SKTelecom, KT, LG U+</li>
-                        <li>국내 물류 및 제조업</li>
-                        <li>공공기관 등</li>
-                        <li>SKPlanet 노후산단화학물질모니터링시스템</li>
-                        <li>
-                          ㈜한국수력원자력 방사선보건원 원전내외부 방사선원항 DB
-                          구축
-                        </li>
-                      </BuPerList>
-                    </BuPerListTd>
-                    <BuPerListTd>
-                      <BuPerList>
-                        <li>
-                          [특허] 제 10-1716140호
-                          <br />
-                          물류장비 관제 시스템 장치 및 그 동작 방법
-                        </li>
-                        <li>
-                          [특허] 제 10-2048408호
-                          <br />
-                          전력 설비내 에너지 데이터 통합관리 방법 및 에너지
-                          모니터링 시스템
-                        </li>
-                        <li>
-                          [GS인증] 15-0288
-                          <br />
-                          넥스트케어 엠
-                        </li>
-                      </BuPerList>
-                    </BuPerListTd>
-                  </BuPerTr>
-                </BuPerTbody>
-              </BuPerTable>
-            </BuPerTableWrapper>
-          </div>
+                    {/* --- 2. 빅데이터 통합 플랫폼 (두 번째 행) --- */}
+                    <BuPerTr>
+                      {/* 분야 컬럼은 위에서 rowSpan으로 병합됨 */}
+                      <BuPerTd style={{ fontWeight: "bold", color: "#333" }}>
+                        통합 관제
+                        <br />
+                        모니터링 플랫폼
+                      </BuPerTd>
+                      <BuPerListTd>
+                        <BuPerList $check>
+                          <li>
+                            건물 공정 관리를 위한 통합 플랫폼 개발 (자재,
+                            작업자, CCTV 상황 관리)
+                          </li>
+                          <li>
+                            전체 데이터를 실시간으로 한눈에 볼 수 있는 대시보드
+                            제공
+                          </li>
+                          <li>
+                            가시/가청/E-mail/팝업 등을 통한 실시간 고장 알람
+                            발송 기능 제공
+                          </li>
+                          <li>
+                            분/시/일/주/월/연 별 성능 이력 관리 및 조회 검색
+                          </li>
+                        </BuPerList>
+                      </BuPerListTd>
+                      <BuPerListTd>
+                        <BuPerList>
+                          <li>SKTelecom, KT, LG U+</li>
+                          <li>국내 물류 및 제조업</li>
+                          <li>공공기관 등</li>
+                          <li>SKPlanet 노후산단화학물질모니터링시스템</li>
+                          <li>
+                            ㈜한국수력원자력 방사선보건원 원전내외부 방사선원항
+                            DB 구축
+                          </li>
+                        </BuPerList>
+                      </BuPerListTd>
+                      <BuPerListTd>
+                        <BuPerList>
+                          <li>
+                            [특허] 제 10-1716140호
+                            <br />
+                            물류장비 관제 시스템 장치 및 그 동작 방법
+                          </li>
+                          <li>
+                            [특허] 제 10-2048408호
+                            <br />
+                            전력 설비내 에너지 데이터 통합관리 방법 및 에너지
+                            모니터링 시스템
+                          </li>
+                          <li>
+                            [GS인증] 15-0288
+                            <br />
+                            넥스트케어 엠
+                          </li>
+                        </BuPerList>
+                      </BuPerListTd>
+                    </BuPerTr>
+                  </BuPerTbody>
+                </BuPerTable>
+              </BuPerTableWrapper>
+            </div>
 
-          <BuPerDivider />
-        </BuPerContainer>
-      </BuPerSection>
+            <BuPerDivider />
+          </BuPerContainer>
+        </BuPerSection>
+      </PublicSContainer>
     </BuPerPage>
   );
 };

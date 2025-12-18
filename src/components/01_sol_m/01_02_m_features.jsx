@@ -38,6 +38,7 @@ import {
   ShowcaseCaption,
 } from "../../styles/NextcareM.styles";
 import { useLocation } from "react-router-dom";
+import { PublicSContainer } from "../../styles/PublicS.styles";
 
 // 테마 색상
 
@@ -77,7 +78,10 @@ const M_features = () => {
             <br />
             확인해보세요.
           </HeroBannerDescription>
-          <HeroBannerButton $themeColor={THEME_COLOR} href="/contact/inquiry">
+          <HeroBannerButton
+            $themeColor={THEME_COLOR}
+            href="/contact/inquiry?solution=Nextcare-M"
+          >
             전문가 문의하기
           </HeroBannerButton>
         </HeroBannerContent>
@@ -93,81 +97,87 @@ const M_features = () => {
         </StyledLink>
         <StyledLink
           to="/solutions/nextcare-m/features"
-          className={isActivePath("/solutions/nextcare-m/features") ? "active" : ""}
+          className={
+            isActivePath("/solutions/nextcare-m/features") ? "active" : ""
+          }
           $themeColor={THEME_COLOR}
         >
           도입효과와 주요기능
         </StyledLink>
         <StyledLink
           to="/solutions/nextcare-m/reference"
-          className={isActivePath("/solutions/nextcare-m/reference") ? "active" : ""}
+          className={
+            isActivePath("/solutions/nextcare-m/reference") ? "active" : ""
+          }
           $themeColor={THEME_COLOR}
         >
           구축 레퍼런스
         </StyledLink>
       </SolutionNavWrapper>
 
-      <PageContainer>
-        <ContentWrapper>
-          {/* 헤더 */}
-          <Header>
-            <TopShape $themeColor={THEME_COLOR}>Nextcare-M</TopShape>
-            <HeaderIcon $themeColor={THEME_COLOR}>
-              <i className="fas fa-desktop"></i>
-            </HeaderIcon>
-            <HeaderTitle $themeColor={THEME_COLOR}>
-              도입효과와 주요기능
-            </HeaderTitle>
-          </Header>
+      <PublicSContainer>
+        <PageContainer>
+          <ContentWrapper>
+            {/* 헤더 */}
+            <Header>
+              <TopShape $themeColor={THEME_COLOR}>Nextcare-M</TopShape>
+              <HeaderIcon $themeColor={THEME_COLOR}>
+                <i className="fas fa-desktop"></i>
+              </HeaderIcon>
+              <HeaderTitle $themeColor={THEME_COLOR}>
+                도입효과와 주요기능
+              </HeaderTitle>
+            </Header>
 
-          {/* 인트로 */}
-          <IntroSection>
-            <IntroBox>
-              <IntroTitle $themeColor={THEME_COLOR}>Nextcare-M</IntroTitle>
-              <IntroDescription>
-                네트워크, 시스템, 애플리케이션, 데이터베이스 등의 자원을 하나의
-                창에서 관리하기 위한 통합관리 솔루션
-              </IntroDescription>
-            </IntroBox>
-          </IntroSection>
+            {/* 인트로 */}
+            <IntroSection>
+              <IntroBox>
+                <IntroTitle $themeColor={THEME_COLOR}>Nextcare-M</IntroTitle>
+                <IntroDescription>
+                  네트워크, 시스템, 애플리케이션, 데이터베이스 등의 자원을
+                  하나의 창에서 관리하기 위한 통합관리 솔루션
+                </IntroDescription>
+              </IntroBox>
+            </IntroSection>
 
-          {/* 도입효과 섹션 */}
-          <SectionBar $themeColor={THEME_COLOR}>도입효과</SectionBar>
-          <BenefitsSection>
-            <BenefitsColumn>
-              <BenefitTitle $themeColor={THEME_COLOR}>주요 이점</BenefitTitle>
-              {benefits.map((benefit, index) => (
-                <BenefitItem key={index} $themeColor={THEME_COLOR}>
-                  <BenefitText>{benefit}</BenefitText>
-                </BenefitItem>
-              ))}
-            </BenefitsColumn>
-          </BenefitsSection>
+            {/* 도입효과 섹션 */}
+            <SectionBar $themeColor={THEME_COLOR}>도입효과</SectionBar>
+            <BenefitsSection>
+              <BenefitsColumn>
+                <BenefitTitle $themeColor={THEME_COLOR}>주요 이점</BenefitTitle>
+                {benefits.map((benefit, index) => (
+                  <BenefitItem key={index} $themeColor={THEME_COLOR}>
+                    <BenefitText>{benefit}</BenefitText>
+                  </BenefitItem>
+                ))}
+              </BenefitsColumn>
+            </BenefitsSection>
 
-          {/* 주요 기능 섹션 */}
-          <SectionBar $themeColor={THEME_COLOR}>주요 기능</SectionBar>
-          <FeaturesShowcase>
-            <ShowcaseGrid>
-              {showcaseItems.map((item) => (
-                <ShowcaseItem key={item.n}>
-                  <ShowcaseImage $themeColor={THEME_COLOR}>
-                    <img
-                      src={`/solution_img/01m/m_f${item.n}.png`}
-                      alt={item.title}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </ShowcaseImage>
-                  <ShowcaseCaption>{item.title}</ShowcaseCaption>
-                </ShowcaseItem>
-              ))}
-            </ShowcaseGrid>
-          </FeaturesShowcase>
-        </ContentWrapper>
-      </PageContainer>
+            {/* 주요 기능 섹션 */}
+            <SectionBar $themeColor={THEME_COLOR}>주요 기능</SectionBar>
+            <FeaturesShowcase>
+              <ShowcaseGrid>
+                {showcaseItems.map((item) => (
+                  <ShowcaseItem key={item.n}>
+                    <ShowcaseImage $themeColor={THEME_COLOR}>
+                      <img
+                        src={`/solution_img/01m/m_f${item.n}.png`}
+                        alt={item.title}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </ShowcaseImage>
+                    <ShowcaseCaption>{item.title}</ShowcaseCaption>
+                  </ShowcaseItem>
+                ))}
+              </ShowcaseGrid>
+            </FeaturesShowcase>
+          </ContentWrapper>
+        </PageContainer>
+      </PublicSContainer>
     </>
   );
 };

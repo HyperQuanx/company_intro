@@ -19,6 +19,7 @@ import {
   EventDescription,
   EventDetail,
 } from "../../styles/NextcoreAbout.styles";
+import { PublicSContainer } from "../../styles/PublicS.styles";
 
 const AboutHistory = () => {
   // 연혁 데이터 - 사용자가 직접 입력할 부분
@@ -405,44 +406,47 @@ const AboutHistory = () => {
           </HeroBannerDescription>
         </HeroBannerContent>
       </SolutionHeroBanner>
+      <PublicSContainer>
+        <HistorySection>
+          {/* 주요 통계 */}
+          <HistoryStats>
+            {historyData.stats.map((stat, idx) => (
+              <StatItem key={idx}>
+                <div className="stat-number">{stat.number}</div>
+                <div className="stat-label">{stat.label}</div>
+              </StatItem>
+            ))}
+          </HistoryStats>
 
-      <HistorySection>
-        {/* 주요 통계 */}
-        <HistoryStats>
-          {historyData.stats.map((stat, idx) => (
-            <StatItem key={idx}>
-              <div className="stat-number">{stat.number}</div>
-              <div className="stat-label">{stat.label}</div>
-            </StatItem>
-          ))}
-        </HistoryStats>
+          {/* 연혁 타임라인 */}
+          <HistoryTitle>
+            <h2>Company Timeline</h2>
+            <p>
+              지속적인 혁신과 발전으로 업계를 선도하는 넥스트코어테크놀로지의
+              주요 성과를 소개합니다.
+            </p>
+          </HistoryTitle>
 
-        {/* 연혁 타임라인 */}
-        <HistoryTitle>
-          <h2>Company Timeline</h2>
-          <p>
-            지속적인 혁신과 발전으로 업계를 선도하는 넥스트코어테크놀로지의 주요
-            성과를 소개합니다.
-          </p>
-        </HistoryTitle>
-
-        <TimelineContainer>
-          {historyData.timeline.map((yearData, yearIdx) => (
-            <TimelineYear key={yearIdx}>
-              <YearLabel>{yearData.year}</YearLabel>
-              <EventsList>
-                {yearData.events.map((event, eventIdx) => (
-                  <EventItem key={eventIdx}>
-                    <EventDate>{event.date}</EventDate>
-                    <EventDescription>{event.description}</EventDescription>
-                    {event.detail && <EventDetail>{event.detail}</EventDetail>}
-                  </EventItem>
-                ))}
-              </EventsList>
-            </TimelineYear>
-          ))}
-        </TimelineContainer>
-      </HistorySection>
+          <TimelineContainer>
+            {historyData.timeline.map((yearData, yearIdx) => (
+              <TimelineYear key={yearIdx}>
+                <YearLabel>{yearData.year}</YearLabel>
+                <EventsList>
+                  {yearData.events.map((event, eventIdx) => (
+                    <EventItem key={eventIdx}>
+                      <EventDate>{event.date}</EventDate>
+                      <EventDescription>{event.description}</EventDescription>
+                      {event.detail && (
+                        <EventDetail>{event.detail}</EventDetail>
+                      )}
+                    </EventItem>
+                  ))}
+                </EventsList>
+              </TimelineYear>
+            ))}
+          </TimelineContainer>
+        </HistorySection>
+      </PublicSContainer>
     </>
   );
 };

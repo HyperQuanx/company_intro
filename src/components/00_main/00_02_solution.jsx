@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   SolutionSection,
   SectionHeader,
-  CardsContainer,
-  CardRow,
-  SolutionCard,
-  IconWrapper,
-  CardTitle,
-  CardSubtitle,
-  Divider,
-  TagsContainer,
-  Tag,
+  SolutionGrid,
+  SolutionCardNew,
+  CardIconArea,
+  CardContent,
+  CardNumber,
+  CardTitleNew,
+  CardDescription,
+  CardTagList,
+  CardTagItem,
+  CardArrow,
+  SolutionBadge,
 } from "../../styles/Solution.styles";
 
 // 아이콘 컴포넌트들
@@ -53,57 +55,67 @@ const IoTIcon = () => (
 
 const solutionData = [
   {
-    title: "Nextcare Monitoring",
-    subtitle:
+    number: "01",
+    title: "Nextcare-M",
+    subtitle: "Monitoring",
+    description:
       "네트워크, 서버, 애플리케이션, 데이터베이스 등 IT 자원을 하나의 화면에서 실시간 모니터링하고 장애 대응까지 지원하는 통합 관제 솔루션",
     path: "/solutions/nextcare-m",
     icon: MonitoringIcon,
-    tags: ["서버/네트워크 장비", "보안 장비", "통신망(유,무선)", "통합 서비스"],
+    tags: ["서버/네트워크", "보안 장비", "통신망", "통합 서비스"],
+    color: "#128AB0",
+    badge: "CORE",
   },
   {
-    title: "Nextcare Energy",
-    subtitle:
+    number: "02",
+    title: "Nextcare-E",
+    subtitle: "Energy",
+    description:
       "전기, 열, 가스 등의 에너지 사용을 실시간으로 분석하고, 설비 최적 제어를 통해 에너지의 합리적 소비를 실현하는 솔루션",
     path: "/solutions/nextcare-e",
     icon: EnergyIcon,
-    tags: ["건축물 시설", "공장 시설", "발전소 시설", "주거 단지"],
+    tags: ["건축물", "공장", "발전소", "주거 단지"],
+    color: "#27ae60",
   },
   {
-    title: "Nextcare Safety",
-    subtitle:
+    number: "03",
+    title: "Nextcare-S",
+    subtitle: "Safety",
+    description:
       "작업자의 위치와 위험 요소를 실시간으로 감지하고 중대산업 안전사고를 예방/방지하기 위한 산업 현장 전용 안전 솔루션",
     path: "/solutions/nextcare-s",
     icon: SafetyIcon,
     tags: ["작업 환경", "작업자 안전", "작업 관리", "설비 안전"],
+    color: "#e67e22",
+    badge: "NEW",
   },
   {
-    title: "Nextcare AI",
-    subtitle:
-      "머신러닝과 컴퓨터 비전(이미지 처리/인식, 객체 감지 도구)을 기반으로 데이터 수집 및 분석하고 예측 모델링을 통해 운영 효율을 극대화하는 인공지능 최적화 솔루션",
+    number: "04",
+    title: "Nextcare-AI",
+    subtitle: "Artificial Intelligence",
+    description:
+      "머신러닝과 컴퓨터 비전을 기반으로 데이터 수집 및 분석하고 예측 모델링을 통해 운영 효율을 극대화하는 인공지능 최적화 솔루션",
     path: "/solutions/nextcare-ai",
     icon: AIIcon,
-    tags: ["AI 챗봇", "이미지/영상 분석", "데이터 및 예측 분석", "AI 리포트"],
+    tags: ["AI 챗봇", "영상 분석", "예측 분석", "AI 리포트"],
+    color: "#9b59b6",
   },
   {
-    title: "Nextcare IoT",
-    subtitle:
-      "다양한 장비와 센서를 연결해 실시간 상태를 원격으로 관제하고, 운영 이력을 기록/관리하는 IoT(Internet of Things)기반 관제 솔루션",
+    number: "05",
+    title: "Nextcare-IoT",
+    subtitle: "Internet of Things",
+    description:
+      "다양한 장비와 센서를 연결해 실시간 상태를 원격으로 관제하고, 운영 이력을 기록/관리하는 IoT 기반 관제 솔루션",
     path: "/solutions/nextcare-iot",
     icon: IoTIcon,
-    tags: [
-      "스마트 팜/스마트 홈",
-      "설비 자동화",
-      "센서/시설물 제어 관리",
-      "AI 리포트",
-    ],
+    tags: ["스마트 팜/홈", "설비 자동화", "센서 관리", "원격 제어"],
+    color: "#3498db",
   },
 ];
 
 const Solution = () => {
   const navigate = useNavigate();
-
-  const topRow = solutionData.slice(0, 3);
-  const bottomRow = solutionData.slice(3, 5);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const handleCardClick = (path) => {
     navigate(path);
@@ -112,53 +124,57 @@ const Solution = () => {
   return (
     <SolutionSection>
       <SectionHeader>
-        <h2>SOLUTION</h2>
-        <p>넥스트코어는 최고의 기술력으로 최적의 솔루션을 제공합니다.</p>
+        <span className="label">SOLUTIONS</span>
+        <h2>
+          산업 현장의 <span className="highlight">디지털 혁신</span>을 이끕니다
+        </h2>
+        <p>
+          넥스트코어는 최고의 기술력으로 고객 맞춤형 통합 관제 솔루션을
+          제공합니다.
+          <br />각 솔루션은 독립적으로 운영되거나 통합하여 시너지를 낼 수
+          있습니다.
+        </p>
       </SectionHeader>
 
-      <CardsContainer>
-        <CardRow>
-          {topRow.map((item, index) => (
-            <SolutionCard
-              key={index}
-              onClick={() => handleCardClick(item.path)}
-            >
-              <IconWrapper>
-                <item.icon />
-              </IconWrapper>
-              <CardTitle>{item.title}</CardTitle>
-              <CardSubtitle>{item.subtitle}</CardSubtitle>
-              <Divider />
-              <TagsContainer>
+      <SolutionGrid>
+        {solutionData.map((item, index) => (
+          <SolutionCardNew
+            key={index}
+            $themeColor={item.color}
+            $isHovered={hoveredIndex === index}
+            onClick={() => handleCardClick(item.path)}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            {item.badge && (
+              <SolutionBadge $type={item.badge}>{item.badge}</SolutionBadge>
+            )}
+            <CardIconArea $themeColor={item.color}>
+              <item.icon />
+            </CardIconArea>
+            <CardContent>
+              <CardNumber $themeColor={item.color}>{item.number}</CardNumber>
+              <CardTitleNew>
+                {item.title}
+                <span className="subtitle">{item.subtitle}</span>
+              </CardTitleNew>
+              <CardDescription>{item.description}</CardDescription>
+              <CardTagList>
                 {item.tags.map((tag, tagIndex) => (
-                  <Tag key={tagIndex}>{tag}</Tag>
+                  <CardTagItem key={tagIndex} $themeColor={item.color}>
+                    {tag}
+                  </CardTagItem>
                 ))}
-              </TagsContainer>
-            </SolutionCard>
-          ))}
-        </CardRow>
-
-        <CardRow>
-          {bottomRow.map((item, index) => (
-            <SolutionCard
-              key={index}
-              onClick={() => handleCardClick(item.path)}
-            >
-              <IconWrapper>
-                <item.icon />
-              </IconWrapper>
-              <CardTitle>{item.title}</CardTitle>
-              <CardSubtitle>{item.subtitle}</CardSubtitle>
-              <Divider />
-              <TagsContainer>
-                {item.tags.map((tag, tagIndex) => (
-                  <Tag key={tagIndex}>{tag}</Tag>
-                ))}
-              </TagsContainer>
-            </SolutionCard>
-          ))}
-        </CardRow>
-      </CardsContainer>
+              </CardTagList>
+            </CardContent>
+            <CardArrow $themeColor={item.color}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M5 12h14M12 5l7 7-7 7" strokeWidth="2" />
+              </svg>
+            </CardArrow>
+          </SolutionCardNew>
+        ))}
+      </SolutionGrid>
     </SolutionSection>
   );
 };

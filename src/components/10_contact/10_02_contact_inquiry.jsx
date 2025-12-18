@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import {
   HeroBannerBackground,
   HeroBannerContent,
@@ -24,6 +25,7 @@ import {
   ConLoadingSpinner,
 } from "../../styles/NextcoreContact.styles";
 import { AboutSectionTitle } from "../../styles/NextcoreAbout.styles";
+import { PublicSContainer } from "../../styles/PublicS.styles";
 
 // 문의 유형 옵션
 const INQUIRY_CATEGORY = [
@@ -51,6 +53,7 @@ const SUB_CATEGORY_OPTIONS = {
 };
 
 const ContactInquiry = () => {
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -66,6 +69,24 @@ const ContactInquiry = () => {
   const [submitStatus, setSubmitStatus] = useState(null);
 
   const formRef = useRef(null);
+
+  // URL 쿼리 파라미터로 솔루션 자동 선택
+  useEffect(() => {
+    const solution = searchParams.get("solution");
+    if (solution) {
+      // 유효한 솔루션인지 확인
+      const validSolutions = SUB_CATEGORY_OPTIONS["솔루션"].map(
+        (opt) => opt.value
+      );
+      if (validSolutions.includes(solution)) {
+        setFormData((prev) => ({
+          ...prev,
+          category: "솔루션",
+          subCategory: solution,
+        }));
+      }
+    }
+  }, [searchParams]);
 
   // 입력 핸들러
   const handleInputChange = (e) => {
@@ -175,8 +196,8 @@ const ContactInquiry = () => {
       submitData.append("문의내용", formData.content);
 
       const response = await fetch(
-        // "https://formsubmit.co/qbixroqkfwk@next-core.co.kr",
-        "https://formsubmit.co/qbixroqkfwk@gmail.com",
+        "https://formsubmit.co/qbixroqkfwk@next-core.co.kr",
+        // "https://formsubmit.co/qbixroqkfwk@gmail.com",
         {
           method: "POST",
           headers: {
@@ -276,216 +297,218 @@ const ContactInquiry = () => {
         </HeroBannerContent>
       </SolutionHeroBanner>
 
-      <ConRecruitSection>
-        <ConRecruitContainer>
-          <AboutSectionTitle>
-            <h3>문의하기</h3>
-          </AboutSectionTitle>
-          <ConSectionDescription>
-            아래 양식을 작성하여 문의해주세요. 담당자가 확인 후 빠르게
-            답변드리겠습니다.
-          </ConSectionDescription>
+      <PublicSContainer>
+        <ConRecruitSection>
+          <ConRecruitContainer>
+            <AboutSectionTitle>
+              <h3>문의하기</h3>
+            </AboutSectionTitle>
+            <ConSectionDescription>
+              아래 양식을 작성하여 문의해주세요. 담당자가 확인 후 빠르게
+              답변드리겠습니다.
+            </ConSectionDescription>
 
-          <ConFormWrapper ref={formRef} onSubmit={handleSubmit}>
-            {/* 문의 유형 선택 */}
-            <ConFormRow>
-              <ConFormGroup>
-                <ConFormLabel>
-                  문의 유형 <span className="required">*</span>
-                </ConFormLabel>
-                <ConFormSelect
-                  name="category"
-                  value={formData.category}
-                  onChange={handleInputChange}
-                  required
-                >
-                  {INQUIRY_CATEGORY.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </ConFormSelect>
-              </ConFormGroup>
-
-              <ConFormGroup>
-                <ConFormLabel>
-                  상세 유형 <span className="required">*</span>
-                </ConFormLabel>
-                <ConFormSelect
-                  name="subCategory"
-                  value={formData.subCategory}
-                  onChange={handleInputChange}
-                  disabled={!formData.category}
-                  required
-                >
-                  {formData.category ? (
-                    currentSubOptions.map((option) => (
+            <ConFormWrapper ref={formRef} onSubmit={handleSubmit}>
+              {/* 문의 유형 선택 */}
+              <ConFormRow>
+                <ConFormGroup>
+                  <ConFormLabel>
+                    문의 유형 <span className="required">*</span>
+                  </ConFormLabel>
+                  <ConFormSelect
+                    name="category"
+                    value={formData.category}
+                    onChange={handleInputChange}
+                    required
+                  >
+                    {INQUIRY_CATEGORY.map((option) => (
                       <option key={option.value} value={option.value}>
                         {option.label}
                       </option>
-                    ))
-                  ) : (
-                    <option value="">문의 유형을 먼저 선택해주세요</option>
-                  )}
-                </ConFormSelect>
-              </ConFormGroup>
-            </ConFormRow>
+                    ))}
+                  </ConFormSelect>
+                </ConFormGroup>
 
-            <ConDivider />
+                <ConFormGroup>
+                  <ConFormLabel>
+                    상세 유형 <span className="required">*</span>
+                  </ConFormLabel>
+                  <ConFormSelect
+                    name="subCategory"
+                    value={formData.subCategory}
+                    onChange={handleInputChange}
+                    disabled={!formData.category}
+                    required
+                  >
+                    {formData.category ? (
+                      currentSubOptions.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))
+                    ) : (
+                      <option value="">문의 유형을 먼저 선택해주세요</option>
+                    )}
+                  </ConFormSelect>
+                </ConFormGroup>
+              </ConFormRow>
 
-            {/* 인적 사항 */}
-            <ConFormRow>
+              <ConDivider />
+
+              {/* 인적 사항 */}
+              <ConFormRow>
+                <ConFormGroup>
+                  <ConFormLabel>
+                    성명 <span className="required">*</span>
+                  </ConFormLabel>
+                  <ConFormInput
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="홍길동"
+                    required
+                  />
+                </ConFormGroup>
+                <ConFormGroup>
+                  <ConFormLabel>회사/기관명</ConFormLabel>
+                  <ConFormInput
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    placeholder="(선택사항)"
+                  />
+                </ConFormGroup>
+              </ConFormRow>
+
+              <ConFormRow>
+                <ConFormGroup>
+                  <ConFormLabel>
+                    이메일 <span className="required">*</span>
+                  </ConFormLabel>
+                  <ConFormInput
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="example@email.com"
+                    required
+                  />
+                </ConFormGroup>
+                <ConFormGroup>
+                  <ConFormLabel>
+                    연락처 <span className="required">*</span>
+                  </ConFormLabel>
+                  <ConFormInput
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder="'-' 없이 숫자만 입력 (11자리)"
+                    maxLength={11}
+                    required
+                  />
+                </ConFormGroup>
+              </ConFormRow>
+
+              <ConDivider />
+
+              {/* 문의 제목 */}
               <ConFormGroup>
                 <ConFormLabel>
-                  성명 <span className="required">*</span>
+                  문의 제목 <span className="required">*</span>
                 </ConFormLabel>
                 <ConFormInput
                   type="text"
-                  name="name"
-                  value={formData.name}
+                  name="title"
+                  value={formData.title}
                   onChange={handleInputChange}
-                  placeholder="홍길동"
+                  placeholder="문의 제목을 입력해주세요"
                   required
                 />
               </ConFormGroup>
+
+              {/* 문의 내용 */}
               <ConFormGroup>
-                <ConFormLabel>회사/기관명</ConFormLabel>
-                <ConFormInput
-                  type="text"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleInputChange}
-                  placeholder="(선택사항)"
-                />
-              </ConFormGroup>
-            </ConFormRow>
-
-            <ConFormRow>
-              <ConFormGroup>
-                <ConFormLabel>
-                  이메일 <span className="required">*</span>
-                </ConFormLabel>
-                <ConFormInput
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="example@email.com"
-                  required
-                />
-              </ConFormGroup>
-              <ConFormGroup>
-                <ConFormLabel>
-                  연락처 <span className="required">*</span>
-                </ConFormLabel>
-                <ConFormInput
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  placeholder="'-' 없이 숫자만 입력 (11자리)"
-                  maxLength={11}
-                  required
-                />
-              </ConFormGroup>
-            </ConFormRow>
-
-            <ConDivider />
-
-            {/* 문의 제목 */}
-            <ConFormGroup>
-              <ConFormLabel>
-                문의 제목 <span className="required">*</span>
-              </ConFormLabel>
-              <ConFormInput
-                type="text"
-                name="title"
-                value={formData.title}
-                onChange={handleInputChange}
-                placeholder="문의 제목을 입력해주세요"
-                required
-              />
-            </ConFormGroup>
-
-            {/* 문의 내용 */}
-            <ConFormGroup>
-              <ConFormLabel
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <span>
-                  문의 내용 <span className="required">*</span>
-                </span>
-                <span
+                <ConFormLabel
                   style={{
-                    fontSize: "13px",
-                    color: "#667085",
-                    fontWeight: "400",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
                   }}
                 >
-                  {formData.content.length} / 1000
-                </span>
-              </ConFormLabel>
-              <ConFormTextarea
-                name="content"
-                value={formData.content}
-                onChange={handleInputChange}
-                placeholder="문의하실 내용을 상세히 작성해주세요. (최대 1000자)"
-                rows={8}
-                maxLength={1000}
-                required
-              />
-            </ConFormGroup>
+                  <span>
+                    문의 내용 <span className="required">*</span>
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "13px",
+                      color: "#667085",
+                      fontWeight: "400",
+                    }}
+                  >
+                    {formData.content.length} / 1000
+                  </span>
+                </ConFormLabel>
+                <ConFormTextarea
+                  name="content"
+                  value={formData.content}
+                  onChange={handleInputChange}
+                  placeholder="문의하실 내용을 상세히 작성해주세요. (최대 1000자)"
+                  rows={8}
+                  maxLength={1000}
+                  required
+                />
+              </ConFormGroup>
 
-            <ConDivider />
+              <ConDivider />
 
-            {/* 개인정보 동의 */}
-            <ConPrivacyCheckbox>
-              <input
-                type="checkbox"
-                id="privacy"
-                checked={privacyAgreed}
-                onChange={(e) => setPrivacyAgreed(e.target.checked)}
-              />
-              <label htmlFor="privacy" className="checkbox-text">
-                <strong>[필수]</strong> 개인정보 수집 및 이용에 동의합니다.
-                <br />
-                <span style={{ fontSize: "0.8rem", color: "#667085" }}>
-                  수집항목: 성명, 이메일, 연락처, 회사명 / 수집목적: 문의 답변 /
-                  보유기간: 문의 처리 완료 후 1년
-                </span>
-              </label>
-            </ConPrivacyCheckbox>
+              {/* 개인정보 동의 */}
+              <ConPrivacyCheckbox>
+                <input
+                  type="checkbox"
+                  id="privacy"
+                  checked={privacyAgreed}
+                  onChange={(e) => setPrivacyAgreed(e.target.checked)}
+                />
+                <label htmlFor="privacy" className="checkbox-text">
+                  <strong>[필수]</strong> 개인정보 수집 및 이용에 동의합니다.
+                  <br />
+                  <span style={{ fontSize: "0.8rem", color: "#667085" }}>
+                    수집항목: 성명, 이메일, 연락처, 회사명 / 수집목적: 문의 답변
+                    / 보유기간: 문의 처리 완료 후 1년
+                  </span>
+                </label>
+              </ConPrivacyCheckbox>
 
-            {/* 에러 메시지 */}
-            {submitStatus === "error" && (
-              <ConMessageBox className="error">
-                <div className="icon">&#10060;</div>
-                <div className="title">전송에 실패했습니다</div>
-                <div className="message">
-                  잠시 후 다시 시도해주세요. 문제가 지속되면
-                  이메일(qbixroqkfwk@next-core.co.kr)로 직접 보내주세요.
-                </div>
-              </ConMessageBox>
-            )}
-
-            {/* 제출 버튼 */}
-            <ConSubmitButton type="submit" disabled={isSubmitting}>
-              {isSubmitting ? (
-                <>
-                  <ConLoadingSpinner />
-                  문의 접수 중...
-                </>
-              ) : (
-                "문의하기"
+              {/* 에러 메시지 */}
+              {submitStatus === "error" && (
+                <ConMessageBox className="error">
+                  <div className="icon">&#10060;</div>
+                  <div className="title">전송에 실패했습니다</div>
+                  <div className="message">
+                    잠시 후 다시 시도해주세요. 문제가 지속되면
+                    이메일(qbixroqkfwk@next-core.co.kr)로 직접 보내주세요.
+                  </div>
+                </ConMessageBox>
               )}
-            </ConSubmitButton>
-          </ConFormWrapper>
-        </ConRecruitContainer>
-      </ConRecruitSection>
+
+              {/* 제출 버튼 */}
+              <ConSubmitButton type="submit" disabled={isSubmitting}>
+                {isSubmitting ? (
+                  <>
+                    <ConLoadingSpinner />
+                    문의 접수 중...
+                  </>
+                ) : (
+                  "문의하기"
+                )}
+              </ConSubmitButton>
+            </ConFormWrapper>
+          </ConRecruitContainer>
+        </ConRecruitSection>
+      </PublicSContainer>
     </>
   );
 };

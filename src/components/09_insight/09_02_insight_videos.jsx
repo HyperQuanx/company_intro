@@ -20,6 +20,7 @@ import {
   ModalContent,
   ModalCloseButton,
 } from "../../styles/Nextcore.styles";
+import { PublicSContainer } from "../../styles/PublicS.styles";
 
 // 히어로 배너 배경 이미지
 const HERO_BG_IMAGE = "/nextcore_text.png";
@@ -94,36 +95,38 @@ const Insight_videos = () => {
         </HeroBannerContent>
       </SolutionHeroBanner>
 
-      <PageContainer>
-        <ContentWrapper>
-          <VideoSection>
-            <VideoSectionTitle>
-              <span>넥스트코어</span> 레퍼런스 영상
-            </VideoSectionTitle>
+      <PublicSContainer>
+        <PageContainer>
+          <ContentWrapper>
+            <VideoSection>
+              <VideoSectionTitle>
+                <span>넥스트코어</span> 레퍼런스 영상
+              </VideoSectionTitle>
 
-            <VideoGrid>
-              {videoData.map((video, index) => (
-                <VideoCard key={index} onClick={() => openVideo(video.id)}>
-                  <VideoThumbnailWrapper>
-                    <img
-                      src={getThumbnail(video.id)}
-                      alt={video.title}
-                      onError={(e) => {
-                        e.target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
-                      }}
-                    />
-                    <VideoPlayButton />
-                  </VideoThumbnailWrapper>
-                  <VideoInfo>
-                    <h3>{video.title}</h3>
-                    <p>{video.description}</p>
-                  </VideoInfo>
-                </VideoCard>
-              ))}
-            </VideoGrid>
-          </VideoSection>
-        </ContentWrapper>
-      </PageContainer>
+              <VideoGrid>
+                {videoData.map((video, index) => (
+                  <VideoCard key={index} onClick={() => openVideo(video.id)}>
+                    <VideoThumbnailWrapper>
+                      <img
+                        src={getThumbnail(video.id)}
+                        alt={video.title}
+                        onError={(e) => {
+                          e.target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                        }}
+                      />
+                      <VideoPlayButton />
+                    </VideoThumbnailWrapper>
+                    <VideoInfo>
+                      <h3>{video.title}</h3>
+                      <p>{video.description}</p>
+                    </VideoInfo>
+                  </VideoCard>
+                ))}
+              </VideoGrid>
+            </VideoSection>
+          </ContentWrapper>
+        </PageContainer>
+      </PublicSContainer>
 
       {/* 유튜브 플레이어 모달 */}
       {selectedVideo && (

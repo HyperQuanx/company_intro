@@ -33,6 +33,7 @@ import {
   SolutionNavWrapper,
 } from "../../styles/Nextcare.styles";
 import { useLocation } from "react-router-dom";
+import { PublicSContainer } from "../../styles/PublicS.styles";
 
 // 테마 색상
 const THEME_COLOR = "#5F487A";
@@ -119,7 +120,7 @@ const AI_main = () => {
             <br />
             예측 모델링을 통해 운영 효율을 극대화합니다.
           </HeroBannerDescription>
-          <HeroBannerButton href="/contact/inquiry">
+          <HeroBannerButton href="/contact/inquiry?solution=Nextcare-AI">
             전문가 문의하기
           </HeroBannerButton>
         </HeroBannerContent>
@@ -135,215 +136,224 @@ const AI_main = () => {
         </StyledLink>
         <StyledLink
           to="/solutions/nextcare-ai/reference"
-          className={isActivePath("/solutions/nextcare-ai/reference") ? "active" : ""}
+          className={
+            isActivePath("/solutions/nextcare-ai/reference") ? "active" : ""
+          }
           $themeColor={THEME_COLOR}
         >
           구축 레퍼런스
         </StyledLink>
       </SolutionNavWrapper>
 
-      <PageContainer>
-        <ContentWrapper>
-          {/* 헤더 */}
-          <Header>
-            <TopShape $themeColor={THEME_COLOR}>Nextcare-AI</TopShape>
-            <HeaderIcon $themeColor={THEME_COLOR}>
-              <i className="fas fa-brain"></i>
-            </HeaderIcon>
-            <HeaderTitle $themeColor={THEME_COLOR}>AI 관제 솔루션</HeaderTitle>
-          </Header>
+      <PublicSContainer>
+        <PageContainer>
+          <ContentWrapper>
+            {/* 헤더 */}
+            <Header>
+              <TopShape $themeColor={THEME_COLOR}>Nextcare-AI</TopShape>
+              <HeaderIcon $themeColor={THEME_COLOR}>
+                <i className="fas fa-brain"></i>
+              </HeaderIcon>
+              <HeaderTitle $themeColor={THEME_COLOR}>
+                AI 관제 솔루션
+              </HeaderTitle>
+            </Header>
 
-          {/* 인트로 */}
-          <IntroSection>
-            <IntroBox>
-              <IntroTitle $themeColor={THEME_COLOR}>Nextcare-AI</IntroTitle>
-              <IntroDescription>
-                머신러닝, 컴퓨터 비전(이미지 처리, 이미지 인식, 객체 감지 도구)
-                기술을 통한 데이터 예측 및 최적화 솔루션
-              </IntroDescription>
-            </IntroBox>
-          </IntroSection>
+            {/* 인트로 */}
+            <IntroSection>
+              <IntroBox>
+                <IntroTitle $themeColor={THEME_COLOR}>Nextcare-AI</IntroTitle>
+                <IntroDescription>
+                  머신러닝, 컴퓨터 비전(이미지 처리, 이미지 인식, 객체 감지
+                  도구) 기술을 통한 데이터 예측 및 최적화 솔루션
+                </IntroDescription>
+              </IntroBox>
+            </IntroSection>
 
-          {/* 카테고리 버튼 */}
-          <CategoryNav>
-            {categories.map((cat, index) => (
-              <NavPill key={index} $themeColor={THEME_COLOR}>
-                {cat}
-              </NavPill>
-            ))}
-          </CategoryNav>
+            {/* 카테고리 버튼 */}
+            <CategoryNav>
+              {categories.map((cat, index) => (
+                <NavPill key={index} $themeColor={THEME_COLOR}>
+                  {cat}
+                </NavPill>
+              ))}
+            </CategoryNav>
 
-          {/* 주요 기술 */}
-          <SectionBar>주요 기술</SectionBar>
-          <FeatureDescription>
-            빅데이터 분석을 통한 <span className="highlight">능동적 대응</span>{" "}
-            및 <span className="highlight">변화 예측</span> 필요
-          </FeatureDescription>
+            {/* 주요 기술 */}
+            <SectionBar>주요 기술</SectionBar>
+            <FeatureDescription>
+              빅데이터 분석을 통한{" "}
+              <span className="highlight">능동적 대응</span> 및{" "}
+              <span className="highlight">변화 예측</span> 필요
+            </FeatureDescription>
 
-          {/* Convergence Technology 헤더 */}
-          <div
-            style={{
-              textAlign: "center",
-              padding: "15px 40px",
-              margin: "0 40px 20px",
-              background: `linear-gradient(135deg, ${THEME_COLOR}22 0%, ${THEME_COLOR}11 100%)`,
-              borderRadius: "10px",
-              border: `2px solid ${THEME_COLOR}44`,
-            }}
-          >
-            <span
-              style={{
-                fontSize: "1.2rem",
-                fontWeight: "700",
-                color: THEME_COLOR,
-              }}
-            >
-              Convergence Technology
-            </span>
-            <br />
-            <span style={{ fontSize: "1rem", color: "#666" }}>
-              (Mobile, Chatbot, Big Data, IoT)
-            </span>
-          </div>
-
-          {/* 기술 그리드 */}
-          <FeatureGridContainer
-            style={{ gridTemplateColumns: "repeat(4, 1fr)" }}
-          >
-            {techGridData.map((feature, index) => (
-              <FeatureGridItem key={index}>
-                <FeatureGridHeader $color={THEME_COLOR}>
-                  {feature.title}
-                </FeatureGridHeader>
-                <FeatureGridContent $themeColor={THEME_COLOR}>
-                  <ul>
-                    {feature.items.map((item, itemIndex) => (
-                      <li key={itemIndex}>{item}</li>
-                    ))}
-                  </ul>
-                </FeatureGridContent>
-              </FeatureGridItem>
-            ))}
-          </FeatureGridContainer>
-
-          {/* 하단 요약 박스 */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "stretch",
-              gap: "20px",
-              padding: "20px 40px",
-              flexWrap: "wrap",
-            }}
-          >
+            {/* Convergence Technology 헤더 */}
             <div
               style={{
-                padding: "15px 30px",
-                background: "#f8f9fa",
-                border: `2px solid ${THEME_COLOR}`,
-                borderRadius: "30px",
-                fontWeight: "600",
-                color: "#333",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
                 textAlign: "center",
+                padding: "15px 40px",
+                margin: "0 40px 20px",
+                background: `linear-gradient(135deg, ${THEME_COLOR}22 0%, ${THEME_COLOR}11 100%)`,
+                borderRadius: "10px",
+                border: `2px solid ${THEME_COLOR}44`,
               }}
             >
-              적기 실행
-              <br />
-              적기 Data 확보
-            </div>
-            <div
-              style={{
-                padding: "15px 30px",
-                background: THEME_COLOR,
-                borderRadius: "30px",
-                fontWeight: "600",
-                color: "white",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                textAlign: "center",
-              }}
-            >
-              "Seamless" Logistics Visibility
-            </div>
-            <div
-              style={{
-                padding: "15px 30px",
-                background: "#f8f9fa",
-                border: `2px solid ${THEME_COLOR}`,
-                borderRadius: "30px",
-                fontWeight: "600",
-                color: "#333",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                textAlign: "center",
-              }}
-            >
-              능동적 대응
-              <br />
-              변화 예측
-            </div>
-          </div>
-
-          {/* 주요 화면 */}
-          <SectionBar>주요 화면</SectionBar>
-          <ScreensContainer>
-            {screenData.map((screen, index) => (
-              <ScreenItem
-                key={index}
-                $cols={screen.images.length}
-                $noTitle={!screen.title}
+              <span
+                style={{
+                  fontSize: "1.2rem",
+                  fontWeight: "700",
+                  color: THEME_COLOR,
+                }}
               >
-                <ScreenDash>
-                  {screen.images.some((img) => img !== null)
-                    ? screen.images.map((img, imgIndex) =>
-                        img ? (
-                          <img
-                            key={imgIndex}
-                            src={img}
-                            alt={`${screen.title || "화면"} ${imgIndex + 1}`}
-                          />
-                        ) : (
+                Convergence Technology
+              </span>
+              <br />
+              <span style={{ fontSize: "1rem", color: "#666" }}>
+                (Mobile, Chatbot, Big Data, IoT)
+              </span>
+            </div>
+
+            {/* 기술 그리드 */}
+            <FeatureGridContainer
+              style={{ gridTemplateColumns: "repeat(4, 1fr)" }}
+            >
+              {techGridData.map((feature, index) => (
+                <FeatureGridItem key={index}>
+                  <FeatureGridHeader $color={THEME_COLOR}>
+                    {feature.title}
+                  </FeatureGridHeader>
+                  <FeatureGridContent $themeColor={THEME_COLOR}>
+                    <ul>
+                      {feature.items.map((item, itemIndex) => (
+                        <li key={itemIndex}>{item}</li>
+                      ))}
+                    </ul>
+                  </FeatureGridContent>
+                </FeatureGridItem>
+              ))}
+            </FeatureGridContainer>
+
+            {/* 하단 요약 박스 */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "stretch",
+                gap: "20px",
+                padding: "20px 40px",
+                flexWrap: "wrap",
+              }}
+            >
+              <div
+                style={{
+                  padding: "15px 30px",
+                  background: "#f8f9fa",
+                  border: `2px solid ${THEME_COLOR}`,
+                  borderRadius: "30px",
+                  fontWeight: "600",
+                  color: "#333",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                }}
+              >
+                적기 실행
+                <br />
+                적기 Data 확보
+              </div>
+              <div
+                style={{
+                  padding: "15px 30px",
+                  background: THEME_COLOR,
+                  borderRadius: "30px",
+                  fontWeight: "600",
+                  color: "white",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                }}
+              >
+                "Seamless" Logistics Visibility
+              </div>
+              <div
+                style={{
+                  padding: "15px 30px",
+                  background: "#f8f9fa",
+                  border: `2px solid ${THEME_COLOR}`,
+                  borderRadius: "30px",
+                  fontWeight: "600",
+                  color: "#333",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                }}
+              >
+                능동적 대응
+                <br />
+                변화 예측
+              </div>
+            </div>
+
+            {/* 주요 화면 */}
+            <SectionBar>주요 화면</SectionBar>
+            <ScreensContainer>
+              {screenData.map((screen, index) => (
+                <ScreenItem
+                  key={index}
+                  $cols={screen.images.length}
+                  $noTitle={!screen.title}
+                >
+                  <ScreenDash>
+                    {screen.images.some((img) => img !== null)
+                      ? screen.images.map((img, imgIndex) =>
+                          img ? (
+                            <img
+                              key={imgIndex}
+                              src={img}
+                              alt={`${screen.title || "화면"} ${imgIndex + 1}`}
+                            />
+                          ) : (
+                            <DashPlaceholder key={imgIndex}>
+                              이미지 영역
+                            </DashPlaceholder>
+                          )
+                        )
+                      : screen.images.map((_, imgIndex) => (
                           <DashPlaceholder key={imgIndex}>
                             이미지 영역
                           </DashPlaceholder>
-                        )
-                      )
-                    : screen.images.map((_, imgIndex) => (
-                        <DashPlaceholder key={imgIndex}>
-                          이미지 영역
-                        </DashPlaceholder>
-                      ))}
-                </ScreenDash>
-                {screen.title && <ScreenCaption>{screen.title}</ScreenCaption>}
-              </ScreenItem>
-            ))}
-            {/* 빈 공간 채우기 */}
-            {(() => {
-              const totalCols = 4;
-              const usedCols = screenData.reduce(
-                (acc, screen) => acc + screen.images.length,
-                0
-              );
-              const remainder = usedCols % totalCols;
-              const emptySlots = remainder === 0 ? 0 : totalCols - remainder;
-              return Array.from({ length: emptySlots }).map((_, index) => (
-                <ScreenItem key={`empty-${index}`} $placeholder>
-                  <ScreenDash>
-                    <DashPlaceholder>추후 추가 예정입니다.</DashPlaceholder>
+                        ))}
                   </ScreenDash>
-                  <ScreenCaption>Coming Soon</ScreenCaption>
+                  {screen.title && (
+                    <ScreenCaption>{screen.title}</ScreenCaption>
+                  )}
                 </ScreenItem>
-              ));
-            })()}
-          </ScreensContainer>
-        </ContentWrapper>
-      </PageContainer>
+              ))}
+              {/* 빈 공간 채우기 */}
+              {(() => {
+                const totalCols = 4;
+                const usedCols = screenData.reduce(
+                  (acc, screen) => acc + screen.images.length,
+                  0
+                );
+                const remainder = usedCols % totalCols;
+                const emptySlots = remainder === 0 ? 0 : totalCols - remainder;
+                return Array.from({ length: emptySlots }).map((_, index) => (
+                  <ScreenItem key={`empty-${index}`} $placeholder>
+                    <ScreenDash>
+                      <DashPlaceholder>추후 추가 예정입니다.</DashPlaceholder>
+                    </ScreenDash>
+                    <ScreenCaption>Coming Soon</ScreenCaption>
+                  </ScreenItem>
+                ));
+              })()}
+            </ScreensContainer>
+          </ContentWrapper>
+        </PageContainer>
+      </PublicSContainer>
     </>
   );
 };

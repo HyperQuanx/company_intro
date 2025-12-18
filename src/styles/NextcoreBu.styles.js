@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const BuPerPage = styled.div`
   width: 100%;
@@ -469,6 +469,466 @@ export const BuPerList = styled.ul`
       &::before {
         font-size: ${(props) => (props.$check ? "8px" : "10px")};
       }
+    }
+  }
+`;
+
+/* =========================
+ * 주요 제품 페이지 (슬라이드 16)
+ * ========================= */
+
+const fadeInUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+export const BuProductSection = styled.section`
+  width: 100%;
+  padding: 80px 0;
+  background: ${(props) => props.$bg || "#ffffff"};
+
+  @media (max-width: 768px) {
+    padding: 50px 0;
+  }
+`;
+
+export const BuProductContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  @media (max-width: 640px) {
+    padding: 0 16px;
+  }
+`;
+
+export const BuProductHeader = styled.div`
+  text-align: center;
+  margin-bottom: 60px;
+  animation: ${fadeInUp} 0.8s ease-out;
+
+  @media (max-width: 768px) {
+    margin-bottom: 40px;
+  }
+`;
+
+export const BuProductBadge = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+`;
+
+export const BuProductTitle = styled.h2`
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 16px;
+  line-height: 1.3;
+
+  span {
+    color: #4169e1;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+`;
+
+export const BuProductSubtitle = styled.p`
+  font-size: 1.15rem;
+  color: #64748b;
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
+/* 제품 카드 그리드 */
+export const BuProductGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 60px;
+
+  @media (max-width: 968px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+`;
+
+export const BuProductCard = styled.div`
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  transition: all 0.4s ease;
+  animation: ${fadeInUp} 0.8s ease-out;
+  animation-delay: ${(props) => props.$delay || "0s"};
+  animation-fill-mode: both;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+  }
+
+  &.featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @media (max-width: 968px) {
+      grid-template-columns: 1fr;
+    }
+  }
+`;
+
+export const BuProductCardImage = styled.div`
+  position: relative;
+  height: 280px;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .placeholder {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 20px;
+
+    .icon {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+  }
+
+  @media (max-width: 768px) {
+    height: 220px;
+  }
+`;
+
+export const BuProductCardContent = styled.div`
+  padding: 28px;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
+`;
+
+export const BuProductCardTag = styled.span`
+  display: inline-block;
+  padding: 6px 14px;
+  background: ${(props) => props.$color || "rgba(65, 105, 225, 0.1)"};
+  color: ${(props) => props.$textColor || "#4169e1"};
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 20px;
+  margin-bottom: 14px;
+`;
+
+export const BuProductCardTitle = styled.h3`
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 12px;
+  line-height: 1.4;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+`;
+
+export const BuProductCardDesc = styled.p`
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.7;
+  margin: 0;
+`;
+
+/* 인증서 섹션 */
+export const BuCertSection = styled.div`
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 50px;
+  align-items: center;
+  padding: 50px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 24px;
+  margin-bottom: 60px;
+  animation: ${fadeInUp} 0.8s ease-out;
+
+  @media (max-width: 968px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 30px;
+  }
+`;
+
+export const BuCertImage = styled.div`
+  position: relative;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .placeholder {
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #94a3b8;
+    font-size: 0.9rem;
+    text-align: center;
+
+    .icon {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+  }
+
+  @media (max-width: 968px) {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+`;
+
+export const BuCertContent = styled.div`
+  h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 16px;
+    line-height: 1.4;
+
+    span {
+      color: #ef4444;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #64748b;
+    line-height: 1.8;
+    margin: 0 0 24px;
+  }
+
+  @media (max-width: 768px) {
+    text-align: center;
+
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
+`;
+
+export const BuCertFeatures = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1rem;
+    color: #334155;
+    font-weight: 500;
+
+    &::before {
+      content: "\\2713";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: rgba(65, 105, 225, 0.1);
+      color: #4169e1;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    li {
+      justify-content: center;
+    }
+  }
+`;
+
+/* 디바이스 쇼케이스 */
+export const BuDeviceShowcase = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  animation: ${fadeInUp} 0.8s ease-out;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+`;
+
+export const BuDeviceCard = styled.div`
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
+  }
+`;
+
+export const BuDeviceImage = styled.div`
+  height: 180px;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .placeholder {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    text-align: center;
+
+    .icon {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+  }
+`;
+
+export const BuDeviceName = styled.h4`
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 6px;
+`;
+
+export const BuDeviceDesc = styled.p`
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0;
+`;
+
+/* 특징 리스트 */
+export const BuFeatureList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 60px;
+  animation: ${fadeInUp} 0.8s ease-out;
+
+  @media (max-width: 968px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+`;
+
+export const BuFeatureItem = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: #4169e1;
+    box-shadow: 0 8px 30px rgba(65, 105, 225, 0.1);
+  }
+
+  .icon {
+    width: 48px;
+    height: 48px;
+    /* background: linear-gradient(135deg, #4169e1 0%, #3b5fc7 100%); */
+    background-color: #f1f1f1;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .content {
+    h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 6px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #64748b;
+      margin: 0;
+      line-height: 1.6;
     }
   }
 `;

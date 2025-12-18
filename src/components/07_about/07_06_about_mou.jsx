@@ -17,6 +17,7 @@ import {
   MOUImageCardBody,
   AboutSectionTitle,
 } from "../../styles/NextcoreAbout.styles";
+import { PublicSContainer } from "../../styles/PublicS.styles";
 
 const AboutMOU = () => {
   const mouList = [
@@ -100,30 +101,32 @@ const AboutMOU = () => {
         </HeroBannerContent>
       </SolutionHeroBanner>
 
-      <MOUSection>
-        <MOUContainer>
-          <AboutSectionTitle>
-            <h3>기술 교류 및 MOU 실적</h3>
-          </AboutSectionTitle>
+      <PublicSContainer>
+        <MOUSection>
+          <MOUContainer>
+            <AboutSectionTitle>
+              <h3>기술 교류 및 MOU 실적</h3>
+            </AboutSectionTitle>
 
-          <MOUImageGrid>
-            {mouList.map((mou) => (
-              <MOUImageCard key={mou.id}>
-                <MOUImageCardHeader>{mou.title}</MOUImageCardHeader>
-                <MOUImageCardBody>
-                  <img
-                    src={mou.src}
-                    alt={mou.title}
-                    onError={(e) => {
-                      e.target.style.display = "none";
-                    }}
-                  />
-                </MOUImageCardBody>
-              </MOUImageCard>
-            ))}
-          </MOUImageGrid>
-        </MOUContainer>
-      </MOUSection>
+            <MOUImageGrid>
+              {mouList.map((mou) => (
+                <MOUImageCard key={mou.id}>
+                  <MOUImageCardHeader>{mou.title}</MOUImageCardHeader>
+                  <MOUImageCardBody>
+                    <img
+                      src={mou.src}
+                      alt={mou.title}
+                      onError={(e) => {
+                        e.target.style.display = "none";
+                      }}
+                    />
+                  </MOUImageCardBody>
+                </MOUImageCard>
+              ))}
+            </MOUImageGrid>
+          </MOUContainer>
+        </MOUSection>
+      </PublicSContainer>
     </>
   );
 };

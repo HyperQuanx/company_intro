@@ -31,6 +31,7 @@ import {
   ProgramIPScrollHint,
   AboutSectionTitle,
 } from "../../styles/NextcoreAbout.styles";
+import { PublicSContainer } from "../../styles/PublicS.styles";
 
 const AboutCertification = () => {
   const certifications = [
@@ -340,102 +341,106 @@ const AboutCertification = () => {
           </HeroBannerDescription>
         </HeroBannerContent>
       </SolutionHeroBanner>
-
-      <CertificationSection>
-        <CertificationContainer>
-          <AboutSectionTitle>
-            <h3>품질 인증 및 SW 현황</h3>
-          </AboutSectionTitle>
-
-          <CertificationGrid>
-            {certifications.map((cert) => (
-              <CertificationCard key={cert.id}>
-                <div className="cert-image">
-                  <img src={`/about/sw/sw_${cert.image}.png`} alt={cert.name} />
-                </div>
-                <div className="cert-name">{cert.name}</div>
-              </CertificationCard>
-            ))}
-          </CertificationGrid>
-        </CertificationContainer>
-      </CertificationSection>
-
-      <PatentSection>
-        <PatentContainer>
-          <AboutSectionTitle>
-            <h3>넥스트코어 특허 산업재산권</h3>
-          </AboutSectionTitle>
-
-          <PatentImageGrid>
-            {patentImages.map((patent) => (
-              <PatentImageCard key={patent.id}>
-                <img
-                  src={patent.src}
-                  alt={patent.alt}
-                  onError={(e) => {
-                    e.target.style.display = "none";
-                  }}
-                />
-              </PatentImageCard>
-            ))}
-          </PatentImageGrid>
-
-          <PatentTableContainer>
-            <PatentTable>
-              <thead>
-                <tr>
-                  <th style={{ width: "15%" }}>특허번호</th>
-                  <th style={{ width: "60%" }}>명칭</th>
-                  <th style={{ width: "25%" }}>등록일</th>
-                </tr>
-              </thead>
-              <tbody>
-                {patents.map((patent, idx) => (
-                  <tr key={idx}>
-                    <td>{patent.number}</td>
-                    <td>{patent.name}</td>
-                    <td>{patent.date}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </PatentTable>
-          </PatentTableContainer>
-        </PatentContainer>
-      </PatentSection>
-
-      <ProgramIPSection>
-        <ProgramIPContainer>
-          <ProgramIPTitleWrap>
+      <PublicSContainer>
+        <CertificationSection>
+          <CertificationContainer>
             <AboutSectionTitle>
-              <h3>넥스트코어 프로그램 지식재산권</h3>
+              <h3>품질 인증 및 SW 현황</h3>
             </AboutSectionTitle>
-            <ProgramIPScrollHint>내부 스크롤 가능합니다.</ProgramIPScrollHint>
-          </ProgramIPTitleWrap>
 
-          <ProgramIPTableContainer>
-            <ProgramIPTable>
-              <thead>
-                <tr>
-                  <th style={{ width: "12%" }}>등록번호</th>
-                  <th style={{ width: "15%" }}>명칭</th>
-                  <th style={{ width: "50%" }}>제목</th>
-                  <th style={{ width: "23%" }}>등록일</th>
-                </tr>
-              </thead>
-              <tbody>
-                {programIPs.map((program, idx) => (
-                  <tr key={idx}>
-                    <td>{program.registration}</td>
-                    <td>{program.name}</td>
-                    <td>{program.title}</td>
-                    <td>{program.date}</td>
+            <CertificationGrid>
+              {certifications.map((cert) => (
+                <CertificationCard key={cert.id}>
+                  <div className="cert-image">
+                    <img
+                      src={`/about/sw/sw_${cert.image}.png`}
+                      alt={cert.name}
+                    />
+                  </div>
+                  <div className="cert-name">{cert.name}</div>
+                </CertificationCard>
+              ))}
+            </CertificationGrid>
+          </CertificationContainer>
+        </CertificationSection>
+
+        <PatentSection>
+          <PatentContainer>
+            <AboutSectionTitle>
+              <h3>넥스트코어 특허 산업재산권</h3>
+            </AboutSectionTitle>
+
+            <PatentImageGrid>
+              {patentImages.map((patent) => (
+                <PatentImageCard key={patent.id}>
+                  <img
+                    src={patent.src}
+                    alt={patent.alt}
+                    onError={(e) => {
+                      e.target.style.display = "none";
+                    }}
+                  />
+                </PatentImageCard>
+              ))}
+            </PatentImageGrid>
+
+            <PatentTableContainer>
+              <PatentTable>
+                <thead>
+                  <tr>
+                    <th style={{ width: "15%" }}>특허번호</th>
+                    <th style={{ width: "60%" }}>명칭</th>
+                    <th style={{ width: "25%" }}>등록일</th>
                   </tr>
-                ))}
-              </tbody>
-            </ProgramIPTable>
-          </ProgramIPTableContainer>
-        </ProgramIPContainer>
-      </ProgramIPSection>
+                </thead>
+                <tbody>
+                  {patents.map((patent, idx) => (
+                    <tr key={idx}>
+                      <td>{patent.number}</td>
+                      <td>{patent.name}</td>
+                      <td>{patent.date}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </PatentTable>
+            </PatentTableContainer>
+          </PatentContainer>
+        </PatentSection>
+
+        <ProgramIPSection>
+          <ProgramIPContainer>
+            <ProgramIPTitleWrap>
+              <AboutSectionTitle>
+                <h3>넥스트코어 프로그램 지식재산권</h3>
+              </AboutSectionTitle>
+              <ProgramIPScrollHint>내부 스크롤 가능합니다.</ProgramIPScrollHint>
+            </ProgramIPTitleWrap>
+
+            <ProgramIPTableContainer>
+              <ProgramIPTable>
+                <thead>
+                  <tr>
+                    <th style={{ width: "12%" }}>등록번호</th>
+                    <th style={{ width: "15%" }}>명칭</th>
+                    <th style={{ width: "50%" }}>제목</th>
+                    <th style={{ width: "23%" }}>등록일</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {programIPs.map((program, idx) => (
+                    <tr key={idx}>
+                      <td>{program.registration}</td>
+                      <td>{program.name}</td>
+                      <td>{program.title}</td>
+                      <td>{program.date}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </ProgramIPTable>
+            </ProgramIPTableContainer>
+          </ProgramIPContainer>
+        </ProgramIPSection>
+      </PublicSContainer>
     </>
   );
 };

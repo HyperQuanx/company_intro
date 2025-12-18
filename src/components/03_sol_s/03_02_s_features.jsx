@@ -36,6 +36,7 @@ import {
   ShowcaseCaption,
 } from "../../styles/NextcareS.styles";
 import { useLocation } from "react-router-dom";
+import { PublicSContainer } from "../../styles/PublicS.styles";
 
 const S_features = () => {
   const benefits = [
@@ -71,7 +72,10 @@ const S_features = () => {
             <br />
             확인해보세요.
           </HeroBannerDescription>
-          <HeroBannerButton $themeColor={THEME_COLOR} href="/contact/inquiry">
+          <HeroBannerButton
+            $themeColor={THEME_COLOR}
+            href="/contact/inquiry?solution=Nextcare-S"
+          >
             전문가 문의하기
           </HeroBannerButton>
         </HeroBannerContent>
@@ -105,68 +109,70 @@ const S_features = () => {
         </StyledLink>
       </SolutionNavWrapper>
 
-      <PageContainer>
-        <ContentWrapper>
-          {/* 헤더 */}
-          <Header>
-            <TopShape $themeColor={THEME_COLOR}>Nextcare-S</TopShape>
-            <HeaderIcon $themeColor={THEME_COLOR}>
-              <i className="fas fa-shield-alt"></i>
-            </HeaderIcon>
-            <HeaderTitle $themeColor={THEME_COLOR}>
-              도입효과와 주요기능
-            </HeaderTitle>
-          </Header>
+      <PublicSContainer>
+        <PageContainer>
+          <ContentWrapper>
+            {/* 헤더 */}
+            <Header>
+              <TopShape $themeColor={THEME_COLOR}>Nextcare-S</TopShape>
+              <HeaderIcon $themeColor={THEME_COLOR}>
+                <i className="fas fa-shield-alt"></i>
+              </HeaderIcon>
+              <HeaderTitle $themeColor={THEME_COLOR}>
+                도입효과와 주요기능
+              </HeaderTitle>
+            </Header>
 
-          {/* 인트로 */}
-          <IntroSection>
-            <IntroBox>
-              <IntroTitle $themeColor={THEME_COLOR}>Nextcare-S</IntroTitle>
-              <IntroDescription>
-                중대재해처벌법/산업안전보건법을 위한 안전솔루션으로, 작업장의
-                위험요소를 실시간 모니터링하고 즉각적인 대응이 가능한 종합
-                안전관리 솔루션입니다.
-              </IntroDescription>
-            </IntroBox>
-          </IntroSection>
+            {/* 인트로 */}
+            <IntroSection>
+              <IntroBox>
+                <IntroTitle $themeColor={THEME_COLOR}>Nextcare-S</IntroTitle>
+                <IntroDescription>
+                  중대재해처벌법/산업안전보건법을 위한 안전솔루션으로, 작업장의
+                  위험요소를 실시간 모니터링하고 즉각적인 대응이 가능한 종합
+                  안전관리 솔루션입니다.
+                </IntroDescription>
+              </IntroBox>
+            </IntroSection>
 
-          {/* 도입효과 섹션 */}
-          <SectionBar $themeColor={THEME_COLOR}>도입효과</SectionBar>
-          <BenefitsSection>
-            <BenefitsColumn>
-              <BenefitTitle $themeColor={THEME_COLOR}>주요 이점</BenefitTitle>
-              {benefits.map((benefit, index) => (
-                <BenefitItem key={index} $themeColor={THEME_COLOR}>
-                  <BenefitText>{benefit}</BenefitText>
-                </BenefitItem>
-              ))}
-            </BenefitsColumn>
-          </BenefitsSection>
+            {/* 도입효과 섹션 */}
+            <SectionBar $themeColor={THEME_COLOR}>도입효과</SectionBar>
+            <BenefitsSection>
+              <BenefitsColumn>
+                <BenefitTitle $themeColor={THEME_COLOR}>주요 이점</BenefitTitle>
+                {benefits.map((benefit, index) => (
+                  <BenefitItem key={index} $themeColor={THEME_COLOR}>
+                    <BenefitText>{benefit}</BenefitText>
+                  </BenefitItem>
+                ))}
+              </BenefitsColumn>
+            </BenefitsSection>
 
-          {/* 주요 기능 섹션 */}
-          <SectionBar $themeColor={THEME_COLOR}>주요 기능</SectionBar>
-          <FeaturesShowcase>
-            <ShowcaseGrid>
-              {showcaseItems.map((item) => (
-                <ShowcaseItem key={item.n}>
-                  <ShowcaseImage $themeColor={THEME_COLOR}>
-                    <img
-                      src={`/solution_img/03s/s_f${item.n}.png`}
-                      alt={item.title}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </ShowcaseImage>
-                  <ShowcaseCaption>{item.title}</ShowcaseCaption>
-                </ShowcaseItem>
-              ))}
-            </ShowcaseGrid>
-          </FeaturesShowcase>
-        </ContentWrapper>
-      </PageContainer>
+            {/* 주요 기능 섹션 */}
+            <SectionBar $themeColor={THEME_COLOR}>주요 기능</SectionBar>
+            <FeaturesShowcase>
+              <ShowcaseGrid>
+                {showcaseItems.map((item) => (
+                  <ShowcaseItem key={item.n}>
+                    <ShowcaseImage $themeColor={THEME_COLOR}>
+                      <img
+                        src={`/solution_img/03s/s_f${item.n}.png`}
+                        alt={item.title}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </ShowcaseImage>
+                    <ShowcaseCaption>{item.title}</ShowcaseCaption>
+                  </ShowcaseItem>
+                ))}
+              </ShowcaseGrid>
+            </FeaturesShowcase>
+          </ContentWrapper>
+        </PageContainer>
+      </PublicSContainer>
     </>
   );
 };

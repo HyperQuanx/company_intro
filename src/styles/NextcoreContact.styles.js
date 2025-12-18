@@ -47,7 +47,7 @@ export const ConSectionTitle = styled.div`
 `;
 
 export const ConSectionDescription = styled.p`
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #667085;
   line-height: 1.6;
   margin-bottom: 40px;

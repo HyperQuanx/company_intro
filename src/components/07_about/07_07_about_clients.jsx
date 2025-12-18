@@ -9,6 +9,7 @@ import {
 } from "../../styles/Nextcare.styles";
 
 import ClientList from "../00_main/00_03_main_clientList";
+import { PublicSContainer } from "../../styles/PublicS.styles";
 
 const AboutClients = () => {
   return (
@@ -29,7 +30,9 @@ const AboutClients = () => {
         </HeroBannerContent>
       </SolutionHeroBanner>
 
-      <ClientList />
+      <PublicSContainer>
+        <ClientList />
+      </PublicSContainer>
     </>
   );
 };

@@ -26,6 +26,7 @@ import {
   AboutSectionTitle,
   ProgramIPTitleWrap,
 } from "../../styles/NextcoreAbout.styles";
+import { PublicSContainer } from "../../styles/PublicS.styles";
 
 const InsightNews = () => {
   const [sortOrder, setSortOrder] = useState("newest");
@@ -205,33 +206,36 @@ const InsightNews = () => {
         </HeroBannerContent>
       </SolutionHeroBanner>
 
-      <NewsSection>
-        <NewsContainer>
-          <ProgramIPTitleWrap>
-            <AboutSectionTitle>
-              <h3>넥스트코어테크놀로지 홍보 기사</h3>
-            </AboutSectionTitle>
+      <PublicSContainer>
+        <NewsSection>
+          <NewsContainer>
+            <ProgramIPTitleWrap>
+              <AboutSectionTitle>
+                <h3>넥스트코어테크놀로지 홍보 기사</h3>
+              </AboutSectionTitle>
 
-            <NewsSortContainer>
-              <NewsSortButton
-                $active={sortOrder === "newest"}
-                onClick={() => setSortOrder("newest")}
-              >
-                최신순
-              </NewsSortButton>
-              <NewsSortButton
-                $active={sortOrder === "oldest"}
-                onClick={() => setSortOrder("oldest")}
-              >
-                오래된순
-              </NewsSortButton>
-            </NewsSortContainer>
-          </ProgramIPTitleWrap>
+              <NewsSortContainer>
+                <NewsSortButton
+                  $active={sortOrder === "newest"}
+                  onClick={() => setSortOrder("newest")}
+                >
+                  최신순
+                </NewsSortButton>
+                <NewsSortButton
+                  $active={sortOrder === "oldest"}
+                  onClick={() => setSortOrder("oldest")}
+                >
+                  오래된순
+                </NewsSortButton>
+              </NewsSortContainer>
+            </ProgramIPTitleWrap>
 
-          <NewsGridContainer>
-            {newsData && newsData.length > 0 ? (
-              (sortOrder === "newest" ? [...newsData].reverse() : newsData).map(
-                (news) => (
+            <NewsGridContainer>
+              {newsData && newsData.length > 0 ? (
+                (sortOrder === "newest"
+                  ? [...newsData].reverse()
+                  : newsData
+                ).map((news) => (
                   <NewsCard
                     key={news.id}
                     href={news.link}
@@ -259,16 +263,16 @@ const InsightNews = () => {
                       {news.tag && <NewsTag>{news.tag}</NewsTag>}
                     </NewsContent>
                   </NewsCard>
-                )
-              )
-            ) : (
-              <EmptyState style={{ gridColumn: "1 / -1" }}>
-                <p>게시된 뉴스가 없습니다.</p>
-              </EmptyState>
-            )}
-          </NewsGridContainer>
-        </NewsContainer>
-      </NewsSection>
+                ))
+              ) : (
+                <EmptyState style={{ gridColumn: "1 / -1" }}>
+                  <p>게시된 뉴스가 없습니다.</p>
+                </EmptyState>
+              )}
+            </NewsGridContainer>
+          </NewsContainer>
+        </NewsSection>
+      </PublicSContainer>
     </>
   );
 };

@@ -38,6 +38,7 @@ import {
   SpecCard,
 } from "../../styles/NextcareIoT.styles";
 import { useLocation } from "react-router-dom";
+import { PublicSContainer } from "../../styles/PublicS.styles";
 
 const IoT_reference = () => {
   const location = useLocation();
@@ -74,7 +75,10 @@ const IoT_reference = () => {
             <br />
             확인해보세요.
           </HeroBannerDescription>
-          <HeroBannerButton $themeColor={THEME_COLOR} href="/contact/inquiry">
+          <HeroBannerButton
+            $themeColor={THEME_COLOR}
+            href="/contact/inquiry?solution=Nextcare-IoT"
+          >
             전문가 문의하기
           </HeroBannerButton>
         </HeroBannerContent>
@@ -99,81 +103,85 @@ const IoT_reference = () => {
         </StyledLink>
       </SolutionNavWrapper>
 
-      <PageContainer>
-        <ContentWrapper>
-          {/* 헤더 */}
-          <Header>
-            <TopShape $themeColor={THEME_COLOR}>Nextcare-IoT</TopShape>
-            <HeaderIcon $themeColor={THEME_COLOR}>
-              <i className="fas fa-network-wired"></i>
-            </HeaderIcon>
-            <HeaderTitle $themeColor={THEME_COLOR}>구축 레퍼런스</HeaderTitle>
-          </Header>
+      <PublicSContainer>
+        <PageContainer>
+          <ContentWrapper>
+            {/* 헤더 */}
+            <Header>
+              <TopShape $themeColor={THEME_COLOR}>Nextcare-IoT</TopShape>
+              <HeaderIcon $themeColor={THEME_COLOR}>
+                <i className="fas fa-network-wired"></i>
+              </HeaderIcon>
+              <HeaderTitle $themeColor={THEME_COLOR}>구축 레퍼런스</HeaderTitle>
+            </Header>
 
-          {/* 인트로 */}
-          <IntroSection>
-            <IntroBox>
-              <IntroTitle $themeColor={THEME_COLOR}>Nextcare-IoT</IntroTitle>
-              <IntroDescription>
-                IoT(Internet of Things) 기술을 활용한 장소·시간에 제약 없이 어떤
-                사물도 관계하는 솔루션의 구축 사례입니다.
-              </IntroDescription>
-            </IntroBox>
-          </IntroSection>
+            {/* 인트로 */}
+            <IntroSection>
+              <IntroBox>
+                <IntroTitle $themeColor={THEME_COLOR}>Nextcare-IoT</IntroTitle>
+                <IntroDescription>
+                  IoT(Internet of Things) 기술을 활용한 장소·시간에 제약 없이
+                  어떤 사물도 관계하는 솔루션의 구축 사례입니다.
+                </IntroDescription>
+              </IntroBox>
+            </IntroSection>
 
-          <SectionBar $themeColor={THEME_COLOR}>구축 사례</SectionBar>
-          <ScreensContainer>
-            {referenceData.map((screen, index) => (
-              <ScreenItem
-                key={index}
-                $cols={screen.images.length}
-                $noTitle={!screen.title}
-              >
-                <ScreenDash>
-                  {screen.images.some((img) => img !== null)
-                    ? screen.images.map((img, imgIndex) =>
-                        img ? (
-                          <img
-                            key={imgIndex}
-                            src={img}
-                            alt={`${screen.title || "화면"} ${imgIndex + 1}`}
-                          />
-                        ) : (
+            <SectionBar $themeColor={THEME_COLOR}>구축 사례</SectionBar>
+            <ScreensContainer>
+              {referenceData.map((screen, index) => (
+                <ScreenItem
+                  key={index}
+                  $cols={screen.images.length}
+                  $noTitle={!screen.title}
+                >
+                  <ScreenDash>
+                    {screen.images.some((img) => img !== null)
+                      ? screen.images.map((img, imgIndex) =>
+                          img ? (
+                            <img
+                              key={imgIndex}
+                              src={img}
+                              alt={`${screen.title || "화면"} ${imgIndex + 1}`}
+                            />
+                          ) : (
+                            <DashPlaceholder key={imgIndex}>
+                              이미지 영역
+                            </DashPlaceholder>
+                          )
+                        )
+                      : screen.images.map((_, imgIndex) => (
                           <DashPlaceholder key={imgIndex}>
                             이미지 영역
                           </DashPlaceholder>
-                        )
-                      )
-                    : screen.images.map((_, imgIndex) => (
-                        <DashPlaceholder key={imgIndex}>
-                          이미지 영역
-                        </DashPlaceholder>
-                      ))}
-                </ScreenDash>
-                {screen.title && <ScreenCaption>{screen.title}</ScreenCaption>}
-              </ScreenItem>
-            ))}
-            {/* 빈 공간 채우기 */}
-            {(() => {
-              const totalCols = 4;
-              const usedCols = referenceData.reduce(
-                (acc, screen) => acc + screen.images.length,
-                0
-              );
-              const remainder = usedCols % totalCols;
-              const emptySlots = remainder === 0 ? 0 : totalCols - remainder;
-              return Array.from({ length: emptySlots }).map((_, index) => (
-                <ScreenItem key={`empty-${index}`} $placeholder>
-                  <ScreenDash>
-                    <DashPlaceholder>추후 추가 예정입니다.</DashPlaceholder>
+                        ))}
                   </ScreenDash>
-                  <ScreenCaption>Coming Soon</ScreenCaption>
+                  {screen.title && (
+                    <ScreenCaption>{screen.title}</ScreenCaption>
+                  )}
                 </ScreenItem>
-              ));
-            })()}
-          </ScreensContainer>
-        </ContentWrapper>
-      </PageContainer>
+              ))}
+              {/* 빈 공간 채우기 */}
+              {(() => {
+                const totalCols = 4;
+                const usedCols = referenceData.reduce(
+                  (acc, screen) => acc + screen.images.length,
+                  0
+                );
+                const remainder = usedCols % totalCols;
+                const emptySlots = remainder === 0 ? 0 : totalCols - remainder;
+                return Array.from({ length: emptySlots }).map((_, index) => (
+                  <ScreenItem key={`empty-${index}`} $placeholder>
+                    <ScreenDash>
+                      <DashPlaceholder>추후 추가 예정입니다.</DashPlaceholder>
+                    </ScreenDash>
+                    <ScreenCaption>Coming Soon</ScreenCaption>
+                  </ScreenItem>
+                ));
+              })()}
+            </ScreensContainer>
+          </ContentWrapper>
+        </PageContainer>
+      </PublicSContainer>
     </>
   );
 };

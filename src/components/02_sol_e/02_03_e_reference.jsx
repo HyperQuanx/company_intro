@@ -35,6 +35,7 @@ import {
   EmptyLabel,
 } from "../../styles/NextcareE.styles";
 import { useLocation } from "react-router-dom";
+import { PublicSContainer } from "../../styles/PublicS.styles";
 
 const E_reference = () => {
   const location = useLocation();
@@ -113,7 +114,10 @@ const E_reference = () => {
             <br />
             확인해보세요.
           </HeroBannerDescription>
-          <HeroBannerButton $themeColor={THEME_COLOR} href="/contact/inquiry">
+          <HeroBannerButton
+            $themeColor={THEME_COLOR}
+            href="/contact/inquiry?solution=Nextcare-E"
+          >
             전문가 문의하기
           </HeroBannerButton>
         </HeroBannerContent>
@@ -147,217 +151,222 @@ const E_reference = () => {
         </StyledLink>
       </SolutionNavWrapper>
 
-      <PageContainer>
-        <ContentWrapper>
-          {/* 헤더 */}
-          <Header>
-            <TopShape $themeColor={THEME_COLOR}>Nextcare-E</TopShape>
-            <HeaderIcon $themeColor={THEME_COLOR}>
-              <i className="fas fa-bolt"></i>
-            </HeaderIcon>
-            <HeaderTitle $themeColor={THEME_COLOR}>구축 레퍼런스</HeaderTitle>
-          </Header>
+      <PublicSContainer>
+        <PageContainer>
+          <ContentWrapper>
+            {/* 헤더 */}
+            <Header>
+              <TopShape $themeColor={THEME_COLOR}>Nextcare-E</TopShape>
+              <HeaderIcon $themeColor={THEME_COLOR}>
+                <i className="fas fa-bolt"></i>
+              </HeaderIcon>
+              <HeaderTitle $themeColor={THEME_COLOR}>구축 레퍼런스</HeaderTitle>
+            </Header>
 
-          {/* 인트로 */}
-          <IntroSection>
-            <IntroBox>
-              <IntroTitle $themeColor={THEME_COLOR}>Nextcare-E</IntroTitle>
-              <IntroDescription>
-                전기, 열, 가스 등의 에너지의 시각화나 설비의 최적 운용 등을 통해
-                에너지의 합리적 소비를 실현하는 솔루션의 구축 사례입니다.
-              </IntroDescription>
-            </IntroBox>
-          </IntroSection>
+            {/* 인트로 */}
+            <IntroSection>
+              <IntroBox>
+                <IntroTitle $themeColor={THEME_COLOR}>Nextcare-E</IntroTitle>
+                <IntroDescription>
+                  전기, 열, 가스 등의 에너지의 시각화나 설비의 최적 운용 등을
+                  통해 에너지의 합리적 소비를 실현하는 솔루션의 구축 사례입니다.
+                </IntroDescription>
+              </IntroBox>
+            </IntroSection>
 
-          {/* 구축 사례 */}
-          <ReferenceSection>
-            <SectionBar $themeColor={THEME_COLOR}>
-              보바스 병원 BEMS(빌딩 에너지 관제 시스템)
-            </SectionBar>
-            <ReferenceGrid>
-              {bemsReferences.map((reference, index) => (
-                <ReferenceCard key={index}>
-                  <ReferenceDash $cols={reference.images.length}>
-                    {reference.images.some((img) => img !== null)
-                      ? reference.images.map((img, imgIndex) =>
-                          img ? (
-                            <img
-                              key={imgIndex}
-                              src={img}
-                              alt={`${reference.title} ${imgIndex + 1}`}
-                            />
-                          ) : (
+            {/* 구축 사례 */}
+            <ReferenceSection>
+              <SectionBar $themeColor={THEME_COLOR}>
+                보바스 병원 BEMS(빌딩 에너지 관제 시스템)
+              </SectionBar>
+              <ReferenceGrid>
+                {bemsReferences.map((reference, index) => (
+                  <ReferenceCard key={index}>
+                    <ReferenceDash $cols={reference.images.length}>
+                      {reference.images.some((img) => img !== null)
+                        ? reference.images.map((img, imgIndex) =>
+                            img ? (
+                              <img
+                                key={imgIndex}
+                                src={img}
+                                alt={`${reference.title} ${imgIndex + 1}`}
+                              />
+                            ) : (
+                              <DashPlaceholder key={imgIndex}>
+                                이미지 영역
+                              </DashPlaceholder>
+                            )
+                          )
+                        : reference.images.map((_, imgIndex) => (
                             <DashPlaceholder key={imgIndex}>
                               이미지 영역
                             </DashPlaceholder>
-                          )
-                        )
-                      : reference.images.map((_, imgIndex) => (
-                          <DashPlaceholder key={imgIndex}>
-                            이미지 영역
-                          </DashPlaceholder>
-                        ))}
-                  </ReferenceDash>
-                  <ReferenceTitle>{reference.title}</ReferenceTitle>
-                </ReferenceCard>
-              ))}
-            </ReferenceGrid>
-          </ReferenceSection>
-
-          {/* FEMS 구축 사례 */}
-          <ReferenceSection>
-            <SectionBar $themeColor={THEME_COLOR}>
-              세홍공장 FEMS (공장 에너지 관리 시스템)
-            </SectionBar>
-            <ReferenceGrid>
-              {femsReferences.map((reference, index) => (
-                <ReferenceCard key={index}>
-                  <ReferenceDash $cols={reference.images.length}>
-                    {reference.images.some((img) => img !== null)
-                      ? reference.images.map((img, imgIndex) =>
-                          img ? (
-                            <img
-                              key={imgIndex}
-                              src={img}
-                              alt={`${reference.title} ${imgIndex + 1}`}
-                            />
-                          ) : (
-                            <DashPlaceholder key={imgIndex}>
-                              이미지 영역
-                            </DashPlaceholder>
-                          )
-                        )
-                      : reference.images.map((_, imgIndex) => (
-                          <DashPlaceholder key={imgIndex}>
-                            이미지 영역
-                          </DashPlaceholder>
-                        ))}
-                  </ReferenceDash>
-                  <ReferenceTitle>{reference.title}</ReferenceTitle>
-                </ReferenceCard>
-              ))}
-              {(() => {
-                const totalCols = 3;
-                const usedCols = femsReferences.reduce(
-                  (acc, ref) => acc + ref.images.length,
-                  0
-                );
-                const remainder = usedCols % totalCols;
-                const emptySlots = remainder === 0 ? 0 : totalCols - remainder;
-                return Array.from({ length: emptySlots }).map((_, index) => (
-                  <ReferenceCard key={`empty-${index}`}>
-                    <EmptyPlaceholder>
-                      <EmptyText>추후 추가 예정입니다.</EmptyText>
-                      <EmptyLabel>Coming Soon</EmptyLabel>
-                    </EmptyPlaceholder>
+                          ))}
+                    </ReferenceDash>
+                    <ReferenceTitle>{reference.title}</ReferenceTitle>
                   </ReferenceCard>
-                ));
-              })()}
-            </ReferenceGrid>
-          </ReferenceSection>
+                ))}
+              </ReferenceGrid>
+            </ReferenceSection>
 
-          <ReferenceSection>
-            <SectionBar $themeColor={THEME_COLOR}>
-              레즐러 태양광 발전소 관리 시스템
-            </SectionBar>
-            <ReferenceGrid>
-              {rezReferences.map((reference, index) => (
-                <ReferenceCard key={index}>
-                  <ReferenceDash $cols={reference.images.length}>
-                    {reference.images.some((img) => img !== null)
-                      ? reference.images.map((img, imgIndex) =>
-                          img ? (
-                            <img
-                              key={imgIndex}
-                              src={img}
-                              alt={`${reference.title} ${imgIndex + 1}`}
-                            />
-                          ) : (
+            {/* FEMS 구축 사례 */}
+            <ReferenceSection>
+              <SectionBar $themeColor={THEME_COLOR}>
+                세홍공장 FEMS (공장 에너지 관리 시스템)
+              </SectionBar>
+              <ReferenceGrid>
+                {femsReferences.map((reference, index) => (
+                  <ReferenceCard key={index}>
+                    <ReferenceDash $cols={reference.images.length}>
+                      {reference.images.some((img) => img !== null)
+                        ? reference.images.map((img, imgIndex) =>
+                            img ? (
+                              <img
+                                key={imgIndex}
+                                src={img}
+                                alt={`${reference.title} ${imgIndex + 1}`}
+                              />
+                            ) : (
+                              <DashPlaceholder key={imgIndex}>
+                                이미지 영역
+                              </DashPlaceholder>
+                            )
+                          )
+                        : reference.images.map((_, imgIndex) => (
                             <DashPlaceholder key={imgIndex}>
                               이미지 영역
                             </DashPlaceholder>
-                          )
-                        )
-                      : reference.images.map((_, imgIndex) => (
-                          <DashPlaceholder key={imgIndex}>
-                            이미지 영역
-                          </DashPlaceholder>
-                        ))}
-                  </ReferenceDash>
-                  <ReferenceTitle>{reference.title}</ReferenceTitle>
-                </ReferenceCard>
-              ))}
-              {(() => {
-                const totalCols = 3;
-                const usedCols = rezReferences.reduce(
-                  (acc, ref) => acc + ref.images.length,
-                  0
-                );
-                const remainder = usedCols % totalCols;
-                const emptySlots = remainder === 0 ? 0 : totalCols - remainder;
-                return Array.from({ length: emptySlots }).map((_, index) => (
-                  <ReferenceCard key={`empty-${index}`}>
-                    <EmptyPlaceholder>
-                      <EmptyText>추후 추가 예정입니다.</EmptyText>
-                      <EmptyLabel>Coming Soon</EmptyLabel>
-                    </EmptyPlaceholder>
+                          ))}
+                    </ReferenceDash>
+                    <ReferenceTitle>{reference.title}</ReferenceTitle>
                   </ReferenceCard>
-                ));
-              })()}
-            </ReferenceGrid>
-          </ReferenceSection>
+                ))}
+                {(() => {
+                  const totalCols = 3;
+                  const usedCols = femsReferences.reduce(
+                    (acc, ref) => acc + ref.images.length,
+                    0
+                  );
+                  const remainder = usedCols % totalCols;
+                  const emptySlots =
+                    remainder === 0 ? 0 : totalCols - remainder;
+                  return Array.from({ length: emptySlots }).map((_, index) => (
+                    <ReferenceCard key={`empty-${index}`}>
+                      <EmptyPlaceholder>
+                        <EmptyText>추후 추가 예정입니다.</EmptyText>
+                        <EmptyLabel>Coming Soon</EmptyLabel>
+                      </EmptyPlaceholder>
+                    </ReferenceCard>
+                  ));
+                })()}
+              </ReferenceGrid>
+            </ReferenceSection>
 
-          {/* 기타 구축 사례 */}
-          <ReferenceSection>
-            <SectionBar $themeColor={THEME_COLOR}>기타 구축 사례</SectionBar>
-            <ReferenceGrid>
-              {otherReferences.map((reference, index) => (
-                <ReferenceCard key={index}>
-                  <ReferenceDash $cols={reference.images.length}>
-                    {reference.images.some((img) => img !== null)
-                      ? reference.images.map((img, imgIndex) =>
-                          img ? (
-                            <img
-                              key={imgIndex}
-                              src={img}
-                              alt={`${reference.title} ${imgIndex + 1}`}
-                            />
-                          ) : (
+            <ReferenceSection>
+              <SectionBar $themeColor={THEME_COLOR}>
+                레즐러 태양광 발전소 관리 시스템
+              </SectionBar>
+              <ReferenceGrid>
+                {rezReferences.map((reference, index) => (
+                  <ReferenceCard key={index}>
+                    <ReferenceDash $cols={reference.images.length}>
+                      {reference.images.some((img) => img !== null)
+                        ? reference.images.map((img, imgIndex) =>
+                            img ? (
+                              <img
+                                key={imgIndex}
+                                src={img}
+                                alt={`${reference.title} ${imgIndex + 1}`}
+                              />
+                            ) : (
+                              <DashPlaceholder key={imgIndex}>
+                                이미지 영역
+                              </DashPlaceholder>
+                            )
+                          )
+                        : reference.images.map((_, imgIndex) => (
                             <DashPlaceholder key={imgIndex}>
                               이미지 영역
                             </DashPlaceholder>
-                          )
-                        )
-                      : reference.images.map((_, imgIndex) => (
-                          <DashPlaceholder key={imgIndex}>
-                            이미지 영역
-                          </DashPlaceholder>
-                        ))}
-                  </ReferenceDash>
-                  <ReferenceTitle>{reference.title}</ReferenceTitle>
-                </ReferenceCard>
-              ))}
-              {(() => {
-                const totalCols = 3;
-                const usedCols = otherReferences.reduce(
-                  (acc, ref) => acc + ref.images.length,
-                  0
-                );
-                const remainder = usedCols % totalCols;
-                const emptySlots = remainder === 0 ? 0 : totalCols - remainder;
-                return Array.from({ length: emptySlots }).map((_, index) => (
-                  <ReferenceCard key={`empty-${index}`}>
-                    <EmptyPlaceholder>
-                      <EmptyText>추후 추가 예정입니다.</EmptyText>
-                      <EmptyLabel>Coming Soon</EmptyLabel>
-                    </EmptyPlaceholder>
+                          ))}
+                    </ReferenceDash>
+                    <ReferenceTitle>{reference.title}</ReferenceTitle>
                   </ReferenceCard>
-                ));
-              })()}
-            </ReferenceGrid>
-          </ReferenceSection>
-        </ContentWrapper>
-      </PageContainer>
+                ))}
+                {(() => {
+                  const totalCols = 3;
+                  const usedCols = rezReferences.reduce(
+                    (acc, ref) => acc + ref.images.length,
+                    0
+                  );
+                  const remainder = usedCols % totalCols;
+                  const emptySlots =
+                    remainder === 0 ? 0 : totalCols - remainder;
+                  return Array.from({ length: emptySlots }).map((_, index) => (
+                    <ReferenceCard key={`empty-${index}`}>
+                      <EmptyPlaceholder>
+                        <EmptyText>추후 추가 예정입니다.</EmptyText>
+                        <EmptyLabel>Coming Soon</EmptyLabel>
+                      </EmptyPlaceholder>
+                    </ReferenceCard>
+                  ));
+                })()}
+              </ReferenceGrid>
+            </ReferenceSection>
+
+            {/* 기타 구축 사례 */}
+            <ReferenceSection>
+              <SectionBar $themeColor={THEME_COLOR}>기타 구축 사례</SectionBar>
+              <ReferenceGrid>
+                {otherReferences.map((reference, index) => (
+                  <ReferenceCard key={index}>
+                    <ReferenceDash $cols={reference.images.length}>
+                      {reference.images.some((img) => img !== null)
+                        ? reference.images.map((img, imgIndex) =>
+                            img ? (
+                              <img
+                                key={imgIndex}
+                                src={img}
+                                alt={`${reference.title} ${imgIndex + 1}`}
+                              />
+                            ) : (
+                              <DashPlaceholder key={imgIndex}>
+                                이미지 영역
+                              </DashPlaceholder>
+                            )
+                          )
+                        : reference.images.map((_, imgIndex) => (
+                            <DashPlaceholder key={imgIndex}>
+                              이미지 영역
+                            </DashPlaceholder>
+                          ))}
+                    </ReferenceDash>
+                    <ReferenceTitle>{reference.title}</ReferenceTitle>
+                  </ReferenceCard>
+                ))}
+                {(() => {
+                  const totalCols = 3;
+                  const usedCols = otherReferences.reduce(
+                    (acc, ref) => acc + ref.images.length,
+                    0
+                  );
+                  const remainder = usedCols % totalCols;
+                  const emptySlots =
+                    remainder === 0 ? 0 : totalCols - remainder;
+                  return Array.from({ length: emptySlots }).map((_, index) => (
+                    <ReferenceCard key={`empty-${index}`}>
+                      <EmptyPlaceholder>
+                        <EmptyText>추후 추가 예정입니다.</EmptyText>
+                        <EmptyLabel>Coming Soon</EmptyLabel>
+                      </EmptyPlaceholder>
+                    </ReferenceCard>
+                  ));
+                })()}
+              </ReferenceGrid>
+            </ReferenceSection>
+          </ContentWrapper>
+        </PageContainer>
+      </PublicSContainer>
     </>
   );
 };
