@@ -194,9 +194,9 @@ const ContactRecruit = () => {
 
       // 4. 전송 (수정된 부분)
       // URL에서 '/ajax/'를 제거하고 본인의 이메일로 변경하세요.
-      // fetch 옵션에 headers: { "Accept": "application/json" }을 추가해야 리다이렉트 되지 않습니다.
       const response = await fetch(
         "https://formsubmit.co/qbixroqkfwk@gmail.com",
+        // "https://formsubmit.co/qbixroqkfwk@next-core.co.kr",
         {
           method: "POST",
           headers: {
