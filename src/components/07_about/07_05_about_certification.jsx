@@ -363,7 +363,7 @@ const AboutCertification = () => {
             </CertificationGrid>
           </CertificationContainer>
         </CertificationSection>
-
+        // tlqkf
         <PatentSection>
           <PatentContainer>
             <AboutSectionTitle>
@@ -406,7 +406,6 @@ const AboutCertification = () => {
             </PatentTableContainer>
           </PatentContainer>
         </PatentSection>
-
         <ProgramIPSection>
           <ProgramIPContainer>
             <ProgramIPTitleWrap>
