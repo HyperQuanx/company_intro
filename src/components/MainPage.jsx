@@ -27,7 +27,7 @@ import {
   SectionTitle,
   AboutContent,
 } from "../styles/MainPage.styles";
-// import Solution from "./00_main/00_02_solution";
+import Solution from "./00_main/00_02_solution";
 import ClientList from "./00_main/00_03_main_clientList";
 import {
   AbtVFixedVideoContainer,
@@ -168,9 +168,9 @@ const MainPage = () => {
       {/* 2. 스크롤 가능한 메인 컨텐츠 */}
       <MainContainer>
         {/* Solution Section */}
-        {/* <FullPageSection>
+        <FullPageSection>
           <Solution />
-        </FullPageSection> */}
+        </FullPageSection>
 
         {/* Client List Section */}
         <ClientList />
