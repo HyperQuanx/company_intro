@@ -33,6 +33,8 @@ import {
   AbtVFixedVideoContainer,
   AbtVMainContent,
   AbtVTransparentSection,
+  IntroContent,
+  IntroText,
 } from "../styles/NextcoreAbout.styles";
 
 /* 기존 캐러셀 데이터 - 주석 처리
