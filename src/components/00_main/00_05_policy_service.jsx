@@ -397,7 +397,7 @@ const PolicyService = () => {
                   <strong>전화:</strong> 070-5015-2313
                 </li>
                 <li>
-                  <strong>주소:</strong> 서울특별시 송파구 범원로 128 A동 610호
+                  <strong>주소:</strong> 서울특별시 송파구 법원로 128 A동 610호
                   (SK V1 GL 메트로시티, 본사)
                 </li>
               </ul>

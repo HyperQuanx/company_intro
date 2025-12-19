@@ -194,7 +194,7 @@ const Footer = () => {
             <div className="contact-text">
               <span className="label">Address</span>
               <span className="value">
-                서울특별시 송파구 범원로 128 A동 610호 (SK V1 GL 메트로시티)
+                서울특별시 송파구 법원로 128 A동 610호 (SK V1 GL 메트로시티)
               </span>
             </div>
           </div>

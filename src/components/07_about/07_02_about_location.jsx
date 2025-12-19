@@ -27,15 +27,14 @@ const AboutLocation = () => {
   const mapElRef = useRef(null);
 
   const addressMain =
-    "서울특별시 송파구 범원로 128 A동 610호 (SK V1 GL 메트로시티)";
+    "서울특별시 송파구 법원로 128 A동 610호 (SK V1 GL 메트로시티)";
   const transitText = "문정역 3번 출구 도보 5분";
 
   const phone = "070-5015-2313";
   const fax = "070-8240-2314";
   const email = "operational@next-core.co.kr";
 
-  // 운영 시 “정확 좌표”로 교체하세요 (아래 3번 가이드 참고)
-  const position = { lat: 37.4866, lng: 127.1216 };
+  const position = { lat: 37.4867, lng: 127.1195 };
 
   // Maps JS API 로더 (가장 단순한 script 방식)
   useEffect(() => {
@@ -87,7 +86,7 @@ const AboutLocation = () => {
       return;
     }
 
-    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+    const apiKey = import.meta.env.VITE_NEXTCORE_GOOGLE_MAPS_API_KEY;
     // 필요 시 libraries=places 추가 가능
     const script = document.createElement("script");
     script.id = scriptId;
