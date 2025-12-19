@@ -5,6 +5,9 @@ export const AppContainer = styled.div`
   flex-direction: column;
   min-height: 100vh;
   font-family: "NanumSquare", sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 `;
 
 export const HeaderContainer = styled.header`
@@ -19,6 +22,8 @@ export const HeaderContainer = styled.header`
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  width: 100%;
 
   @media (max-width: 768px) {
     padding: 0 1.5rem;
@@ -36,12 +41,24 @@ export const Logo = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
+  flex-shrink: 0;
 
   a {
     color: inherit;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    height: 100%;
+  }
+
+  img {
+    max-height: 100%;
+    width: auto;
+    max-width: 150px;
+
+    @media (max-width: 768px) {
+      max-width: 200px;
+    }
   }
 
   span {
@@ -114,7 +131,7 @@ export const NavItem = styled.li`
 
   > a {
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: ${(props) => (props.$isActive ? "#fff" : "#333")};
     background-color: ${(props) =>

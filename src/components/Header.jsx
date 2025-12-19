@@ -11,7 +11,7 @@ import {
   MobileNavItem,
   MobileSubMenu,
 } from "../styles/Layout.styles";
-import logoIcon from "../../public/nextcore_main_icon.png";
+import logoIcon from "../../public/nextcore_text.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -157,8 +157,6 @@ const Header = () => {
           <img
             src={logoIcon}
             alt="NEXTCORE Technology Logo"
-            width="auto"
-            height="30"
           />
         </Link>
       </Logo>
