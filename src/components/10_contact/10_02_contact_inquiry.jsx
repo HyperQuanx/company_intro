@@ -196,8 +196,8 @@ const ContactInquiry = () => {
       submitData.append("문의내용", formData.content);
 
       const response = await fetch(
-        "https://formsubmit.co/qbixroqkfwk@next-core.co.kr",
-        // "https://formsubmit.co/qbixroqkfwk@gmail.com",
+        // "https://formsubmit.co/qbixroqkfwk@next-core.co.kr",
+        "https://formsubmit.co/qbixroqkfwk@gmail.com",
         {
           method: "POST",
           headers: {
@@ -489,7 +489,7 @@ const ContactInquiry = () => {
                   <div className="title">전송에 실패했습니다</div>
                   <div className="message">
                     잠시 후 다시 시도해주세요. 문제가 지속되면
-                    이메일(qbixroqkfwk@next-core.co.kr)로 직접 보내주세요.
+                    이메일(qbixroqkfwk@gmail.com)로 직접 보내주세요.
                   </div>
                 </ConMessageBox>
               )}

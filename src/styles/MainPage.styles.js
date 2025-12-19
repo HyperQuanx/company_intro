@@ -44,7 +44,6 @@ export const HeroSection = styled.section`
   justify-content: center;
   align-items: center;
 
-  /* 모바일/태블릿 Hero 섹션 높이 */
   @media (max-width: 968px) {
     position: relative;
     top: 0;
@@ -477,5 +476,478 @@ export const AboutContent = styled.div`
     align-items: center;
     color: #888;
     font-weight: 600;
+  }
+`;
+
+/* ===== Statistics Section ===== */
+export const StatsSection = styled.section`
+  background: linear-gradient(135deg, #0a1628 0%, #1a365d 100%);
+  padding: 100px 40px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+  }
+`;
+
+export const StatsContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+`;
+
+export const StatsSectionTitle = styled.div`
+  text-align: center;
+  margin-bottom: 60px;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 40px;
+
+    h2 {
+      font-size: 1.8rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+`;
+
+export const StatsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+`;
+
+export const StatCard = styled.div`
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #55b3d6;
+    box-shadow: 0 20px 40px rgba(85, 179, 214, 0.2);
+  }
+
+  .stat-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #55b3d6 0%, #4169e1 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      stroke: white;
+    }
+  }
+
+  .stat-number {
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #55b3d6 0%, #61ce70 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    padding: 30px 20px;
+
+    .stat-number {
+      font-size: 2.5rem;
+    }
+  }
+`;
+
+/* ===== Why Choose Us Section ===== */
+export const WhyChooseSection = styled.section`
+  background: #ffffff;
+  padding: 100px 40px;
+
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+  }
+`;
+
+export const WhyChooseContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+export const WhyChooseSectionTitle = styled.div`
+  text-align: center;
+  margin-bottom: 60px;
+
+  .kicker {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #55b3d6;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1a1a2e;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 40px;
+
+    h2 {
+      font-size: 1.8rem;
+    }
+  }
+`;
+
+export const WhyChooseGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+
+  @media (max-width: 968px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const WhyChooseCard = styled.div`
+  background: #f8f9fa;
+  border-radius: 20px;
+  padding: 40px 30px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #55b3d6 0%, #61ce70 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    background: #ffffff;
+    border-color: #55b3d6;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+
+    &::before {
+      transform: scaleX(1);
+    }
+
+    .card-icon {
+      background: linear-gradient(135deg, #55b3d6 0%, #4169e1 100%);
+
+      svg {
+        stroke: white;
+      }
+    }
+  }
+
+  .card-icon {
+    width: 70px;
+    height: 70px;
+    background: #e8f4f8;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    transition: all 0.4s ease;
+
+    svg {
+      width: 35px;
+      height: 35px;
+      stroke: #55b3d6;
+      transition: all 0.4s ease;
+    }
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 12px;
+  }
+
+  .card-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    padding: 30px 24px;
+  }
+`;
+
+/* ===== CTA Section ===== */
+export const CTASection = styled.section`
+  background: linear-gradient(135deg, #55b3d6 0%, #4169e1 100%);
+  padding: 100px 40px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+  }
+
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+  }
+`;
+
+export const CTAContainer = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 150px;
+`;
+
+export const CTATitle = styled.h2`
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 20px;
+  line-height: 1.3;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+`;
+
+export const CTADescription = styled.p`
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 40px;
+  line-height: 1.7;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+`;
+
+export const CTAButtonGroup = styled.div`
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
+
+export const CTAButtonStyled = styled.button`
+  padding: 16px 36px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  ${(props) =>
+    props.$variant === "primary"
+      ? `
+    background: #ffffff;
+    color: #4169e1;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+  `
+      : `
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #ffffff;
+      transform: translateY(-3px);
+    }
+  `}
+
+  @media (max-width: 768px) {
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+`;
+
+/* ===== Tech Partners Section ===== */
+export const PartnersSection = styled.section`
+  background: #f8f9fa;
+  padding: 80px 40px;
+
+  @media (max-width: 768px) {
+    padding: 50px 20px;
+  }
+`;
+
+export const PartnersContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+export const PartnersSectionTitle = styled.div`
+  text-align: center;
+  margin-bottom: 50px;
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #666;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+
+    h3 {
+      font-size: 1.2rem;
+    }
+  }
+`;
+
+export const PartnersGrid = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+
+  @media (max-width: 768px) {
+    gap: 30px;
+  }
+`;
+
+export const PartnerLogo = styled.div`
+  padding: 20px 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  span {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #888;
+  }
+
+  @media (max-width: 768px) {
+    padding: 15px 20px;
+    min-width: 120px;
+
+    span {
+      font-size: 0.9rem;
+    }
   }
 `;

@@ -96,7 +96,7 @@ const screenData = [
     image: "/solution_img/01m/m_b_ref02.png",
   },
   {
-    title: "스마트 Path를 통한 전체 구간 EndtoEND 통합 관제",
+    title: "스마트 Path를 통한 전체 구간 End-to-End 통합 관제",
     image: "/solution_img/01m/m_b_ref03.png",
   },
   {
@@ -219,7 +219,7 @@ const M_main = () => {
             {/* 주요 기능 */}
             <SectionBar>주요 기능</SectionBar>
             <FeatureDescription>
-              통합망관제, 서비스 품질 관리, 장애 관리, 자산 관리 등{" "}
+              통합망 관제, 서비스 품질 관리, 장애 관리, 자산 관리 등{" "}
               <span className="highlight">고객의 관점</span>에서 서비스에 대한
               체계적인 모니터링 시스템 제공
             </FeatureDescription>
@@ -250,7 +250,7 @@ const M_main = () => {
                       <HighlightText $themeColor={THEME_COLOR}>
                         스마트 컨포넌트 Plug-IN 환경
                       </HighlightText>{" "}
-                      제공/ 고객을 위한 저렴한 구축비용 제공
+                      제공 / 고객을 위한 저렴한 구축비용 제공
                     </li>
                   </ul>
                 </FeatureBox>

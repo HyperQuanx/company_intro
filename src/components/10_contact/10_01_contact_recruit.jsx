@@ -194,8 +194,8 @@ const ContactRecruit = () => {
       // 4. 전송 (수정된 부분)
       // URL에서 '/ajax/'를 제거하고 본인의 이메일로 변경하세요.
       const response = await fetch(
-        // "https://formsubmit.co/qbixroqkfwk@gmail.com",
-        "https://formsubmit.co/qbixroqkfwk@next-core.co.kr",
+        "https://formsubmit.co/qbixroqkfwk@gmail.com",
+        // "https://formsubmit.co/qbixroqkfwk@next-core.co.kr",
         {
           method: "POST",
           headers: {
@@ -526,7 +526,7 @@ const ContactRecruit = () => {
                   <div className="title">전송에 실패했습니다</div>
                   <div className="message">
                     잠시 후 다시 시도해주세요. 문제가 지속되면
-                    이메일(qbixroqkfwk@next-core.co.kr)로 직접 보내주세요.
+                    이메일(qbixroqkfwk@gmail.com)로 직접 보내주세요.
                   </div>
                 </ConMessageBox>
               )}

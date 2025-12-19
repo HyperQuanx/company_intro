@@ -62,8 +62,8 @@ const techGridData = [
   {
     title: "Analytics / Manage (Event Mgmt.)",
     items: [
-      "가시성 관리 구간상 예외상황 Proactive '감지 ~ 조치' 관리",
-      "자동-수동 감지 및 유관채널 Notification, 상태/사후관리",
+      `가시성 관리 구간상 예외상황 Proactive${(<br />)} '감지 -> 조치' 관리`,
+      "ㄴ 자동-수동 감지 및 유관채널 Notification, 상태/사후관리",
       "Exception Event 관리 프로세스 운영",
     ],
   },
@@ -80,7 +80,7 @@ const techGridData = [
     items: [
       "네트워크 운영 & 상시 KPI(SLA)관리",
       "정형/비정형(Ad-hoc) 분석 및 Status Report 제공",
-      "서비스/회선/구간/기간별 다차원 검색 및 분석, 시각화",
+      "ㄴ 서비스/회선/구간/기간별 다차원 검색 및 분석, 시각화",
     ],
   },
 ];

@@ -12,6 +12,7 @@ import {
   Divider,
   TagsContainer,
   Tag,
+  CardArrow,
 } from "../../styles/Solution.styles";
 
 // 아이콘 컴포넌트들
@@ -48,6 +49,12 @@ const IoTIcon = () => (
     <circle cx="12" cy="12" r="2" />
     <path d="M16.24 7.76a6 6 0 010 8.49M7.76 16.24a6 6 0 010-8.49" />
     <path d="M19.07 4.93a10 10 0 010 14.14M4.93 19.07a10 10 0 010-14.14" />
+  </svg>
+);
+
+const ArrowIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M5 12h14M12 5l7 7-7 7" />
   </svg>
 );
 
@@ -112,8 +119,16 @@ const Solution = () => {
   return (
     <SolutionSection>
       <SectionHeader>
-        <h2>SOLUTION</h2>
-        <p>넥스트코어는 최고의 기술력으로 최적의 솔루션을 제공합니다.</p>
+        <h2>
+          비즈니스의 모든 것을
+          <br />
+          <span className="gradient-text">통합 관제</span>하다
+        </h2>
+        <p>
+          넥스트코어테크놀로지는 IT 인프라부터 에너지, 안전, AI, IoT까지
+          <br />
+          기업의 핵심 자산을 실시간으로 모니터링하고 관리합니다.
+        </p>
       </SectionHeader>
 
       <CardsContainer>
@@ -134,6 +149,9 @@ const Solution = () => {
                   <Tag key={tagIndex}>{tag}</Tag>
                 ))}
               </TagsContainer>
+              <CardArrow>
+                <ArrowIcon />
+              </CardArrow>
             </SolutionCard>
           ))}
         </CardRow>
@@ -155,6 +173,9 @@ const Solution = () => {
                   <Tag key={tagIndex}>{tag}</Tag>
                 ))}
               </TagsContainer>
+              <CardArrow>
+                <ArrowIcon />
+              </CardArrow>
             </SolutionCard>
           ))}
         </CardRow>

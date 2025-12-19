@@ -97,7 +97,7 @@ const referenceData = [
     images: ["/solution_img/01m/m_ref15.png"],
   },
   {
-    title: "KT 파키스탄 IT Park 센터 통합 관제",
+    title: "KT 파키스탄 IT Park Center 통합 관제",
     images: ["/solution_img/01m/m_ref16.png"],
   },
 ];

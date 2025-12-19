@@ -14,3 +14,10 @@ const loadingFadeInUp = keyframes`
 export const PublicSContainer = styled.section`
   animation: ${loadingFadeInUp} 0.8s ease-out;
 `;
+
+export const PublicCenCen = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;

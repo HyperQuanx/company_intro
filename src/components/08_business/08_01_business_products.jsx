@@ -139,8 +139,8 @@ const BusinessProducts = () => {
               </p>
               <BuCertFeatures>
                 <li>지정번호: 2021030</li>
-                <li>지정기간: 2021. 6. 7. ~ 2025. 6. 6.</li>
-                <li>제품명: 3D기반 디지털 안전관리 플랫폼 v1.0</li>
+                <li>지정기간: 2021. 6. 7. ~ 2026. 6. 6.</li>
+                <li>제품명: 3D기반 디지털 안전관리 플랫폼</li>
                 <li>조달청장 직인 공식 인증</li>
               </BuCertFeatures>
             </BuCertContent>

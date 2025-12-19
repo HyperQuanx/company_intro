@@ -44,10 +44,10 @@ import { PublicSContainer } from "../../styles/PublicS.styles";
 
 const M_features = () => {
   const benefits = [
-    "신기술 서비스 최적화 시스템 구축 및 안정적인 통합제 관리",
+    "신기술 서비스 최적화 시스템 구축 및 안정적인 통합관제 환경 제공",
     "Non-Stop Service (NMS, SMS, TMS, FMS 통합 가능)",
-    "운영자 단순화, 집중화, 실시간 제어 및 정보 무지의 정보 관제로 운영 비용 절감 효과",
-    "권제 대상인프 내 NMS, SMS, TMS, FMS 기능 통합 가능",
+    "운영의 단순화, 집중화, 실시간 제어 및 장비 유지의 정밀 관제로 운영 비용 절감 효과",
+    "관제 대상인프라 내 NMS, SMS, TMS, FMS 기능 통합 가능",
   ];
 
   const showcaseItems = [

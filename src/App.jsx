@@ -30,6 +30,8 @@ import BusinessProducts from "./components/08_business/08_01_business_products";
 import BusinessPerformance from "./components/08_business/08_02_business_performance";
 import ContactRecruit from "./components/10_contact/10_01_contact_recruit";
 import ContactInquiry from "./components/10_contact/10_02_contact_inquiry";
+import PolicyPrivacy from "./components/00_main/00_04_policy_privacy";
+import PolicyService from "./components/00_main/00_05_policy_service";
 
 function App() {
   return (
@@ -42,6 +44,10 @@ function App() {
           <Routes>
             {/* 메인페이지 */}
             <Route path="/" element={<MainPage />} />
+
+            {/* 00 정책 */}
+            <Route path="/policy/privacy" element={<PolicyPrivacy />} />
+            <Route path="/policy/service" element={<PolicyService />} />
 
             {/* 01 Nextcare-M */}
             <Route path="/solutions/nextcare-m" element={<M_main />} />
@@ -102,7 +108,7 @@ function App() {
             <Route path="/about/mou" element={<AboutMou />} />
             <Route path="/about/clients" element={<AboutClients />} />
 
-            {/* 사업분야 */}
+            {/* 08 사업분야 */}
             <Route path="/business/products" element={<BusinessProducts />} />
             <Route
               path="/business/performance"
@@ -113,7 +119,7 @@ function App() {
             <Route path="/insight/news" element={<InsightNews />} />
             <Route path="/insight/videos" element={<Insight_videos />} />
 
-            {/* 고객센터 */}
+            {/* 10 고객센터 */}
             <Route path="/contact/recruit" element={<ContactRecruit />} />
             <Route path="/contact/inquiry" element={<ContactInquiry />} />
           </Routes>

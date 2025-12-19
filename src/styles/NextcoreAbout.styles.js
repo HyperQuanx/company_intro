@@ -2665,8 +2665,8 @@ export const AbtVFixedVideoContainer = styled.div`
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 비율을 유지하면서 빈 공간 없이 가득 채움 */
-    display: block; /* 이미지 하단 미세한 공백 제거용 */
+    object-fit: cover;
+    display: block;
   }
 
   /* img {
@@ -2685,7 +2685,7 @@ export const AbtVFixedVideoContainer = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* 필요 없으면 제거 */
+    background: rgba(0, 0, 0, 0.5);
   }
 `;
 
@@ -2693,7 +2693,13 @@ export const AbtVFixedVideoContainer = styled.div`
 export const AbtVMainContent = styled.div`
   position: relative;
   width: 100%;
-  z-index: 1; /* 비디오보다 위에 와야 함 */
+  z-index: 1;
+
+  &.abtVMainBack {
+    @media (max-width: 968px) {
+      background: linear-gradient(135deg, #0a1628 0%);
+    }
+  }
 `;
 
 // 3. [가림막 섹션] 비디오를 가리는 일반 배경색 섹션 (흰색 등)

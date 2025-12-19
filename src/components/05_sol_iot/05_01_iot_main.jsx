@@ -57,10 +57,13 @@ const gatewaySpecs = [
     section: "Ext. Network Interface",
     description: "WCDMA Modem WiFi (USB Dongle Type)",
   },
-  { section: "LAN", description: "2Port(10/1000)" },
-  { section: "I/O Interface", description: "RS232, RS485" },
-  { section: "USB", description: "2Port 이상" },
-  { section: "Core", description: "ARM Cortex-A8" },
+  { section: "I/O Interface LAN", description: "2Port(10/1000)" },
+  {
+    section: "I/O Interface RS232, RS485",
+    description: "5Port 가능 (Debug 포함)",
+  },
+  { section: "I/O Interface USB", description: "2Port 이상" },
+  { section: "Core", description: "ARM Coretex-A8" },
   { section: "Clock", description: "1GHz" },
   { section: "SDRAM", description: "2Gb (256MB) DDR3" },
   { section: "eMMC", description: "4GB" },
@@ -97,6 +100,29 @@ const screenData = [
   {
     title: "비콘, 바코드, 태블릿",
     images: ["/solution_img/05iot/iot_b_ref08.png"],
+  },
+];
+
+const iotDescData = [
+  {
+    title: "다양한센서·설비 및 CCTV 등의",
+    sub: "데이터 및 프로토콜 정합",
+    items: ["Sensor", "Facility", "CCTV", "etc."],
+  },
+  {
+    title: "LTE-무선통신을 통한",
+    sub: "IOT G/W 데이터 수집",
+    icon: "📡",
+  },
+  {
+    title: "서버 환경데이터 분석 및",
+    sub: "운영 및 고장자료 생성",
+    icon: "💻",
+  },
+  {
+    title: "Web 포털 고장 확인",
+    sub: "전국 지게차 운영에 정보 활용",
+    icon: "📊",
   },
 ];
 
@@ -189,39 +215,24 @@ const IoT_main = () => {
                 flexWrap: "wrap",
               }}
             >
-              {[
-                {
-                  title: "다양한센서·설비 및 CCTV 등의",
-                  sub: "데이터 및 프로토콜 정합",
-                  items: ["Sensor", "Facility", "CCTV", "etc."],
-                },
-                {
-                  title: "LTE-무선통신을 통한",
-                  sub: "IOTG/W 데이터 수집",
-                  icon: "📡",
-                },
-                {
-                  title: "서버 환경데이터 분석 및",
-                  sub: "운영 및 고장자료 생성",
-                  icon: "💻",
-                },
-                {
-                  title: "Web 포털 고장 확인",
-                  sub: "전국 지자체 운영에 정보 활용",
-                  icon: "📊",
-                },
-              ].map((step, index) => (
+              {iotDescData.map((step, index) => (
                 <div
                   key={index}
+                  className="iotdCard"
                   style={{
                     flex: "1",
                     minWidth: "180px",
+                    minHeight: "150px",
                     textAlign: "center",
                     padding: "15px",
                     background: index === 0 ? `${THEME_COLOR}15` : "#f8f9fa",
                     borderRadius: "10px",
                     border: `1px solid ${index === 0 ? THEME_COLOR : "#ddd"}`,
                     position: "relative",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
                   <div
