@@ -101,10 +101,13 @@ const AboutLocation = () => {
     };
   }, [addressMain, position.lat, position.lng]);
 
-  // “자세히보기”는 API 키 없이 가능한 Maps URL 사용(권장)
+  const searchAddress =
+    "서울특별시 송파구 법원로 128 SK V1 GL 메트로시티 A동 610호";
+
+  // 구글 맵 공식 검색 URL (표준 방식)
   const googleMapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    addressMain
-  )}`; // Maps URLs 문서 :contentReference[oaicite:0]{index=0}
+    searchAddress
+  )}`;
 
   return (
     <PageSection>
